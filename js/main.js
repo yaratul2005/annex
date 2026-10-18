@@ -1,5 +1,5 @@
 /**
- * ANNEX BD - Hand-Crafted Studio Front-End Controller
+ * ANNEX BD — Hand-Crafted Studio Front-End Controller
  * Domain: annexbd.tech
  * Zero Emojis | Respects Reduced Motion | No Gimmicks
  */
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initEstimator();
   initBookingModal();
+  initScrollReveal();
 });
 
 /* --------------------------------------------------------------------------
@@ -16,27 +17,34 @@ document.addEventListener('DOMContentLoaded', () => {
    -------------------------------------------------------------------------- */
 function initMobileNav() {
   const toggleBtn = document.getElementById('mobile-nav-toggle');
-  const closeBtn = document.getElementById('mobile-nav-close');
-  const drawer = document.getElementById('mobile-nav-drawer');
-  const links = document.querySelectorAll('.mobile-nav-link');
+  const closeBtn  = document.getElementById('mobile-nav-close');
+  const drawer    = document.getElementById('mobile-nav-drawer');
+  const links     = document.querySelectorAll('.mobile-nav-link');
 
   if (!toggleBtn || !drawer) return;
 
   function openMenu() {
-    drawer.classList.remove('translate-x-full');
-    document.body.classList.add('overflow-hidden');
+    drawer.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-open');
   }
 
   function closeMenu() {
-    drawer.classList.add('translate-x-full');
-    document.body.classList.remove('overflow-hidden');
+    drawer.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
   }
 
   toggleBtn.addEventListener('click', openMenu);
   if (closeBtn) closeBtn.addEventListener('click', closeMenu);
 
-  links.forEach(link => {
-    link.addEventListener('click', closeMenu);
+  links.forEach(link => link.addEventListener('click', closeMenu));
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeMenu();
   });
 }
 
@@ -51,17 +59,18 @@ function initFaqAccordion() {
     if (!trigger) return;
 
     trigger.addEventListener('click', () => {
-      const isOpen = row.classList.contains('active');
+      const isOpen = row.classList.contains('is-open');
 
       // Close all other rows
       rows.forEach(r => {
-        if (r !== row) r.classList.remove('active');
+        r.classList.remove('is-open');
+        const t = r.querySelector('.faq-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
       });
 
-      if (isOpen) {
-        row.classList.remove('active');
-      } else {
-        row.classList.add('active');
+      if (!isOpen) {
+        row.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
       }
     });
   });
@@ -71,13 +80,13 @@ function initFaqAccordion() {
    3. Studio Project Estimator
    -------------------------------------------------------------------------- */
 function initEstimator() {
-  const serviceSelect = document.getElementById('estimator-service');
-  const scaleSelect = document.getElementById('estimator-scale');
-  const addons = document.querySelectorAll('.estimator-addon');
-  const timelineEl = document.getElementById('estimator-timeline');
-  const priceRangeEl = document.getElementById('estimator-price-range');
+  const serviceSelect  = document.getElementById('estimator-service');
+  const scaleSelect    = document.getElementById('estimator-scale');
+  const addons         = document.querySelectorAll('.estimator-addon');
+  const timelineEl     = document.getElementById('estimator-timeline');
+  const priceRangeEl   = document.getElementById('estimator-price-range');
   const deliverablesEl = document.getElementById('estimator-deliverables');
-  const bookBtn = document.getElementById('estimator-book-btn');
+  const bookBtn        = document.getElementById('estimator-book-btn');
 
   if (!serviceSelect || !scaleSelect) return;
 
@@ -152,33 +161,25 @@ function initEstimator() {
   };
 
   function update() {
-    const serviceKey = serviceSelect.value;
-    const scaleKey = scaleSelect.value;
+    const serviceKey  = serviceSelect.value;
+    const scaleKey    = scaleSelect.value;
     const serviceData = catalog[serviceKey] || catalog.web_dev;
-    const scaleData = serviceData.scales[scaleKey] || serviceData.scales.starter;
+    const scaleData   = serviceData.scales[scaleKey] || serviceData.scales.starter;
 
-    let timeline = scaleData.timeline;
-    let price = scaleData.price;
-    let deliverables = [...scaleData.deliverables];
+    const deliverables = [...scaleData.deliverables];
 
     addons.forEach(cb => {
-      if (cb.checked) {
-        deliverables.push(cb.getAttribute('data-title'));
-      }
+      if (cb.checked) deliverables.push(cb.getAttribute('data-title'));
     });
 
-    if (timelineEl) timelineEl.textContent = timeline;
-    if (priceRangeEl) priceRangeEl.textContent = price;
+    if (timelineEl)   timelineEl.textContent   = scaleData.timeline;
+    if (priceRangeEl) priceRangeEl.textContent = scaleData.price;
 
     if (deliverablesEl) {
       deliverablesEl.innerHTML = '';
       deliverables.forEach(item => {
         const li = document.createElement('li');
-        li.className = 'flex items-start text-sm text-neutral-700 leading-snug';
-        li.innerHTML = `
-          <span class="mr-2.5 text-neutral-900 font-semibold">•</span>
-          <span>${item}</span>
-        `;
+        li.innerHTML = `<span>${item}</span>`;
         deliverablesEl.appendChild(li);
       });
     }
@@ -188,68 +189,74 @@ function initEstimator() {
   scaleSelect.addEventListener('change', update);
   addons.forEach(cb => cb.addEventListener('change', update));
 
+  // Initial render
   update();
 
   if (bookBtn) {
     bookBtn.addEventListener('click', () => {
-      const modal = document.getElementById('booking-modal');
-      const detailsInput = document.getElementById('booking-notes');
+      const modal       = document.getElementById('booking-modal');
+      const notesInput  = document.getElementById('booking-notes');
       const serviceName = (catalog[serviceSelect.value] || catalog.web_dev).name;
-      const scaleText = scaleSelect.options[scaleSelect.selectedIndex].text;
+      const scaleText   = scaleSelect.options[scaleSelect.selectedIndex].text;
 
-      if (detailsInput) {
-        detailsInput.value = `Selected Service: ${serviceName}\nScale: ${scaleText}\nTimeline: ${timelineEl.textContent}\nEstimated Range: ${priceRangeEl.textContent}`;
+      if (notesInput && timelineEl && priceRangeEl) {
+        notesInput.value =
+          `Selected Service: ${serviceName}\n` +
+          `Scale: ${scaleText}\n` +
+          `Timeline: ${timelineEl.textContent}\n` +
+          `Estimated Range: ${priceRangeEl.textContent}`;
       }
 
-      if (modal) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.classList.add('overflow-hidden');
-      }
+      if (modal) openModal(modal);
     });
   }
 }
 
 /* --------------------------------------------------------------------------
-   4. Booking Modal ("Book a free 20-minute call")
+   4. Booking Modal
    -------------------------------------------------------------------------- */
+function openModal(modal) {
+  modal.classList.add('is-open');
+  document.body.classList.add('nav-open');
+  modal.querySelector('.modal-input, .modal-textarea')?.focus();
+}
+
+function closeModal(modal) {
+  modal.classList.remove('is-open');
+  document.body.classList.remove('nav-open');
+}
+
 function initBookingModal() {
-  const modal = document.getElementById('booking-modal');
+  const modal       = document.getElementById('booking-modal');
   const openButtons = document.querySelectorAll('.open-booking-modal');
   const closeButton = document.getElementById('booking-modal-close');
-  const form = document.getElementById('booking-form');
+  const form        = document.getElementById('booking-form');
 
   if (!modal) return;
 
-  function open() {
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    document.body.classList.add('overflow-hidden');
-  }
+  openButtons.forEach(btn => btn.addEventListener('click', () => openModal(modal)));
+  if (closeButton) closeButton.addEventListener('click', () => closeModal(modal));
 
-  function close() {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-    document.body.classList.remove('overflow-hidden');
-  }
+  // Click-outside to close
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal(modal);
+  });
 
-  openButtons.forEach(btn => btn.addEventListener('click', open));
-  if (closeButton) closeButton.addEventListener('click', close);
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) close();
+  // Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(modal);
   });
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', e => {
       e.preventDefault();
 
-      const name = document.getElementById('booking-name')?.value || 'Client';
+      const name  = document.getElementById('booking-name')?.value  || 'Client';
       const email = document.getElementById('booking-email')?.value || '';
       const notes = document.getElementById('booking-notes')?.value || '';
 
-      const subject = encodeURIComponent(`Consultation Request: 20-Minute Call - ${name}`);
-      const body = encodeURIComponent(
+      const subject = encodeURIComponent(`Consultation Request: 20-Minute Call — ${name}`);
+      const body    = encodeURIComponent(
         `Name: ${name}\n` +
         `Email: ${email}\n\n` +
         `Project Notes:\n${notes}\n\n` +
@@ -257,7 +264,36 @@ function initBookingModal() {
       );
 
       window.location.href = `mailto:support@annexbd.tech?subject=${subject}&body=${body}`;
-      close();
+      closeModal(modal);
     });
   }
+}
+
+/* --------------------------------------------------------------------------
+   5. Scroll Reveal (Intersection Observer)
+   -------------------------------------------------------------------------- */
+function initScrollReveal() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReduced) {
+    // If user prefers reduced motion, just make everything visible immediately
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.classList.add('is-visible');
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }

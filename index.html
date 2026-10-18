@@ -1,46 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ANNEX — Web Development &amp; Meta Ads Studio</title>
-  
+
   <!-- Primary Meta Tags -->
-  <meta name="title" content="ANNEX — Web Development & Meta Ads Studio">
+  <meta name="title" content="ANNEX — Web Development &amp; Meta Ads Studio">
   <meta name="description" content="ANNEX (annexbd.tech) is a digital design and engineering studio. We build custom websites and performance Meta ad systems for growing businesses, operating virtually from Dhaka-1215, Bangladesh.">
   <meta name="author" content="ANNEX BD">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://annexbd.tech/">
 
-  <!-- GEO Location Meta Tags -->
+  <!-- GEO Location -->
   <meta name="geo.region" content="BD-13">
   <meta name="geo.placename" content="Dhaka-1215, Bangladesh">
   <meta name="geo.position" content="23.7516;90.3923">
   <meta name="ICBM" content="23.7516, 90.3923">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://annexbd.tech/">
-  <meta property="og:title" content="ANNEX — Web Development & Meta Ads Studio">
+  <meta property="og:title" content="ANNEX — Web Development &amp; Meta Ads Studio">
   <meta property="og:description" content="We design and build high-performance websites and Meta ad systems for growing businesses.">
   <meta property="og:image" content="https://annexbd.tech/assets/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ANNEX — Web Development &amp; Meta Ads Studio">
+  <meta name="twitter:description" content="Bespoke web engineering and ROI-focused Meta advertising from Dhaka, Bangladesh.">
+  <meta name="twitter:image" content="https://annexbd.tech/assets/og-image.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <meta name="theme-color" content="#111111">
 
-  <!-- Google Fonts: Instrument Serif & Inter -->
+  <!-- Fonts (preconnect + preload for LCP) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS via CDN (Utility Foundation) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Hand-Crafted Studio Stylesheet -->
+  <!-- Studio Stylesheet (self-contained, zero Tailwind dependency) -->
   <link rel="stylesheet" href="css/styles.css">
 
-  <!-- Structured Data JSON-LD (Real Data Only) -->
+  <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -50,14 +54,15 @@
         "@id": "https://annexbd.tech/#organization",
         "name": "ANNEX",
         "url": "https://annexbd.tech",
-        "logo": "https://annexbd.tech/assets/logo.png",
+        "logo": "https://annexbd.tech/assets/logo-white-trimmed.png",
         "email": "support@annexbd.tech",
         "address": {
           "@type": "PostalAddress",
           "postalCode": "1215",
           "addressLocality": "Dhaka",
           "addressCountry": "BD"
-        }
+        },
+        "sameAs": ["https://github.com/yaratul2005/annex"]
       },
       {
         "@type": "ProfessionalService",
@@ -65,1032 +70,900 @@
         "name": "ANNEX Studio",
         "url": "https://annexbd.tech",
         "email": "support@annexbd.tech",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Digital Services",
+          "itemListElement": [
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Website Development"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Meta Ads Support"}}
+          ]
+        },
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Dhaka-1215",
           "addressLocality": "Dhaka",
+          "postalCode": "1215",
           "addressCountry": "Bangladesh"
-        }
+        },
+        "areaServed": "Worldwide"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://annexbd.tech/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What website development projects do you handle?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We design and build e-commerce stores with bKash, Nagad, Stripe payment gateways, school and institutional administrative portals, corporate company websites, and creator portfolios. Every project is custom-coded for mobile performance and Vercel edge deployment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you manage Meta advertising campaigns?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We configure server-side Conversions API (CAPI) tracking, conduct structured creative testing, build lead funnels including WhatsApp Click-to-Chat, and provide weekly ROAS performance reviews."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does virtual collaboration work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We communicate via scheduled video sprint reviews, direct messaging channels (WhatsApp / Discord), and version-controlled Git repositories. All staging environments are deployed to live preview URLs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are your after-sales and maintenance rates?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We offer transparent hourly billing with itemized task logs for updates and bug fixes, as well as monthly maintenance retainers with guaranteed SLA response times."
+            }
+          }
+        ]
       }
     ]
   }
   </script>
 </head>
-<body class="font-sans-body">
+<body>
 
-  <!-- ==========================================================================
-       1. HEADER
-       Logo left, 4 nav links, ONE primary CTA button right. Simple, sticky.
-       ========================================================================== -->
-  <header class="sticky top-0 z-40 bg-[#111111]/90 backdrop-blur-md border-b border-white/10 transition-colors">
-    <div class="site-container">
-      <div class="flex items-center justify-between h-20">
-        
-        <!-- Logo Left -->
-        <a href="#hero" class="flex items-center gap-2 text-white text-decoration-none">
-          <img src="assets/logo-white-trimmed.png" 
-               alt="ANNEX" 
-               class="h-8 w-auto object-contain"
-               width="170" 
-               height="32">
-        </a>
+<!-- =========================================================================
+     1. HEADER
+     Sticky, logo left, 4 nav links, one primary CTA right.
+     ========================================================================= -->
+<header class="site-header">
+  <div class="site-container">
+    <div class="header-inner">
 
-        <!-- 4 Nav Links -->
-        <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-neutral-300">
-          <a href="#services" class="hover:text-white transition-colors">Services</a>
-          <a href="#architecture" class="hover:text-white transition-colors">Architecture</a>
-          <a href="#work" class="hover:text-white transition-colors">Work</a>
-          <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
-        </nav>
+      <!-- Logo -->
+      <a href="#hero" class="header-logo no-underline" aria-label="ANNEX — Home">
+        <img src="assets/logo-white-trimmed.png"
+             alt="ANNEX"
+             width="170"
+             height="32">
+      </a>
 
-        <!-- ONE Primary CTA Right -->
-        <div class="hidden md:flex items-center">
-          <button type="button" class="open-booking-modal btn-cta-primary">
-            Book a free 20-minute call
-          </button>
-        </div>
-
-        <!-- Mobile Menu Toggle Button -->
-        <div class="flex md:hidden">
-          <button type="button" id="mobile-nav-toggle" aria-label="Open navigation menu" class="p-2 text-neutral-300 hover:text-white focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 7h16M4 17h16"/>
-            </svg>
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer Menu -->
-  <aside id="mobile-nav-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-[#111111] border-l border-white/10 p-6 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out md:hidden flex flex-col justify-between" aria-label="Mobile Navigation Drawer">
-    <div>
-      <div class="flex items-center justify-between pb-6 border-b border-white/10">
-        <img src="assets/logo-white-trimmed.png" alt="ANNEX" class="h-7 w-auto object-contain">
-        <button type="button" id="mobile-nav-close" aria-label="Close navigation menu" class="p-2 text-neutral-400 hover:text-white">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
-
-      <nav class="mt-8 flex flex-col gap-5 text-lg font-medium text-neutral-300">
-        <a href="#services" class="mobile-nav-link hover:text-white">Services</a>
-        <a href="#architecture" class="mobile-nav-link hover:text-white">Architecture</a>
-        <a href="#work" class="mobile-nav-link hover:text-white">Work</a>
-        <a href="#faq" class="mobile-nav-link hover:text-white">FAQ</a>
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#work">Work</a>
+        <a href="#faq">FAQ</a>
       </nav>
-    </div>
 
-    <div class="pt-6 border-t border-white/10">
-      <button type="button" class="open-booking-modal btn-cta-primary w-full">
-        Book a free 20-minute call
-      </button>
-    </div>
-  </aside>
-
-  <main>
-    <!-- ==========================================================================
-         2. HERO (Section Dark)
-         Split layout. Plain-language headline, 1 sentence support, 1 primary CTA,
-         1 quiet link. Right: large image slot (browser mockup placeholder).
-         ========================================================================== -->
-    <section id="hero" class="section-dark section-rhythm border-b border-white/10">
-      <div class="site-container">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          <!-- Hero Left Column -->
-          <div class="lg:col-span-7 space-y-8">
-            
-            <h1 class="text-[44px] sm:text-[62px] lg:text-[76px] leading-[1.05] tracking-tight text-white font-serif-display">
-              We design websites and run Meta ads that turn attention into revenue.
-            </h1>
-
-            <p class="text-lg sm:text-xl text-neutral-300 leading-relaxed max-w-xl font-normal">
-              Operating virtually from Bangladesh, we build bespoke web architectures and ROI-focused ad campaigns for growing businesses, schools, and private companies.
-            </p>
-
-            <div class="flex flex-wrap items-center gap-6 pt-2">
-              <button type="button" class="open-booking-modal btn-cta-primary">
-                Book a free 20-minute call
-              </button>
-
-              <a href="#work" class="link-quiet text-neutral-300 hover:text-white">
-                <span>See selected work</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-              </a>
-            </div>
-
-          </div>
-
-          <!-- Hero Right Column: Large Browser Mockup Placeholder -->
-          <div class="lg:col-span-5">
-            <div class="browser-frame shadow-2xl">
-              <div class="browser-chrome">
-                <span class="browser-dot"></span>
-                <span class="browser-dot"></span>
-                <span class="browser-dot"></span>
-                <span class="ml-2 font-technical-mono text-[11px] text-neutral-400 opacity-60">annexbd.tech</span>
-              </div>
-              <div class="relative aspect-[4/3] bg-[#161616] overflow-hidden flex items-center justify-center">
-                <img src="assets/laptop-branding.png" 
-                     alt="ANNEX Studio Preview" 
-                     class="w-full h-full object-contain p-3"
-                     width="940" 
-                     height="788">
-                <div class="absolute top-3 right-3">
-                  <span class="placeholder-badge text-[10px]">PLACEHOLDER</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         3. PROOF BAR
-         Single row slot for 4-6 client logos (PLACEHOLDER), grayscale.
-         ========================================================================== -->
-    <section class="section-dark py-12 border-b border-white/10" aria-label="Client Recognition">
-      <div class="site-container">
-        
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <span class="text-xs font-technical-mono uppercase tracking-wider text-neutral-400">
-            Trusted by teams &amp; brands [PLACEHOLDER]
-          </span>
-
-          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center">
-            <div class="placeholder-slot py-3 px-6 text-neutral-400 text-xs font-technical-mono">
-              <span class="placeholder-badge mb-0">LOGO 01</span>
-            </div>
-            <div class="placeholder-slot py-3 px-6 text-neutral-400 text-xs font-technical-mono">
-              <span class="placeholder-badge mb-0">LOGO 02</span>
-            </div>
-            <div class="placeholder-slot py-3 px-6 text-neutral-400 text-xs font-technical-mono">
-              <span class="placeholder-badge mb-0">LOGO 03</span>
-            </div>
-            <div class="placeholder-slot py-3 px-6 text-neutral-400 text-xs font-technical-mono">
-              <span class="placeholder-badge mb-0">LOGO 04</span>
-            </div>
-            <div class="placeholder-slot py-3 px-6 text-neutral-400 text-xs font-technical-mono hidden lg:flex">
-              <span class="placeholder-badge mb-0">LOGO 05</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         4. SERVICES (Section Light: Warm Off-White #F6F4EF)
-         Only TWO lead services (Website Development, Meta Ads), each as a large
-         full-width block with an asymmetric two-column layout, alternating image side.
-         Remaining services as one compact "Also included" text list, not cards.
-         ========================================================================== -->
-    <section id="services" class="section-light section-rhythm">
-      <div class="site-container space-y-24 lg:space-y-32">
-        
-        <!-- Section Header -->
-        <div class="max-w-2xl space-y-4">
-          <h2 class="text-4xl sm:text-5xl lg:text-6xl text-neutral-900 font-serif-display">
-            What we do
-          </h2>
-          <p class="text-lg text-neutral-600 leading-relaxed">
-            We focus on two core pillars that directly affect business growth: bespoke web engineering and high-intent Meta advertising.
-          </p>
-        </div>
-
-        <!-- Lead Service 1: Website Development -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          <div class="lg:col-span-6 space-y-6">
-            <span class="font-technical-mono text-xs uppercase tracking-wider text-neutral-500 font-semibold">
-              01 / Core Service
-            </span>
-
-            <h3 class="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 font-serif-display leading-tight">
-              Website Development
-            </h3>
-
-            <p class="text-base sm:text-lg text-neutral-700 leading-relaxed">
-              We design and build bespoke, responsive websites engineered for speed, search visibility, and conversion. Every project is tailored specifically to your audience and operational needs:
-            </p>
-
-            <ul class="space-y-3 text-neutral-800 text-[15px]">
-              <li class="flex items-start gap-3">
-                <span class="text-neutral-900 font-bold">•</span>
-                <span><strong>E-Commerce Platforms:</strong> Fast-loading online stores integrated with local payment gateways (bKash, Nagad, Rocket, SSLCommerz) and international gateways (Stripe, PayPal).</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-neutral-900 font-bold">•</span>
-                <span><strong>School &amp; College Portals:</strong> Centralized digital administration for admissions, computerized fee payments, and staff records.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-neutral-900 font-bold">•</span>
-                <span><strong>Corporate &amp; Private Company Sites:</strong> Institutional platforms built for credibility, compliance, and enterprise lead capture.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-neutral-900 font-bold">•</span>
-                <span><strong>Portfolios:</strong> Distinctive showcases for creators, founders, and specialized service firms.</span>
-              </li>
-            </ul>
-
-            <div class="pt-2">
-              <button type="button" class="open-booking-modal btn-cta-primary">
-                Book a free 20-minute call
-              </button>
-            </div>
-          </div>
-
-          <div class="lg:col-span-6">
-            <div class="placeholder-slot aspect-[4/3] bg-neutral-200/60 border-neutral-300 text-neutral-600">
-              <span class="placeholder-badge">PLACEHOLDER</span>
-              <p class="text-xs text-neutral-500 text-center max-w-[260px]">
-                Web Development Showcase Visual / Interactive Screenshot
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Lead Service 2: Meta Ads Support (Alternating Side) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          <div class="lg:col-span-6 order-2 lg:order-1">
-            <div class="placeholder-slot aspect-[4/3] bg-neutral-200/60 border-neutral-300 text-neutral-600">
-              <span class="placeholder-badge">PLACEHOLDER</span>
-              <p class="text-xs text-neutral-500 text-center max-w-[260px]">
-                Meta Ads Performance Dashboard / Campaign Flow Visual
-              </p>
-            </div>
-          </div>
-
-          <div class="lg:col-span-6 order-1 lg:order-2 space-y-6">
-            <span class="font-technical-mono text-xs uppercase tracking-wider text-neutral-500 font-semibold">
-              02 / Growth Service
-            </span>
-
-            <h3 class="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 font-serif-display leading-tight">
-              Meta Ads Support
-            </h3>
-
-            <p class="text-base sm:text-lg text-neutral-700 leading-relaxed">
-              Paid social advertising designed for verifiable business outcomes. We manage campaigns across Facebook and Instagram to drive qualified customer acquisition, brand reach, and high-intent leads:
-            </p>
-
-            <ul class="space-y-3 text-neutral-800 text-[15px]">
-              <li class="flex items-start gap-3">
-                <span class="text-neutral-900 font-bold">•</span>
-                <span><strong>Server-Side Tracking (CAPI):</strong> Full Conversions API integration to ensure reliable data measurement independent of browser ad-blockers.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-neutral-900 font-bold">•</span>
-                <span><strong>Lead Generation Funnels:</strong> Direct-to-WhatsApp chats, customized lead forms, and CRM routing for B2B and B2C clients.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-neutral-900 font-bold">•</span>
-                <span><strong>Multi-Stage Retargeting:</strong> Re-engaging warm visitors, video viewers, and cart abandoners with promotional incentives.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-neutral-900 font-bold">•</span>
-                <span><strong>Weekly Reporting:</strong> Transparent performance reviews focusing on Return on Ad Spend (ROAS) and cost per acquired lead.</span>
-              </li>
-            </ul>
-
-            <div class="pt-2">
-              <button type="button" class="open-booking-modal btn-cta-primary">
-                Book a free 20-minute call
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Remaining Services: Compact "Also included" text list (No cards) -->
-        <div class="pt-16 border-t border-neutral-300">
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div class="md:col-span-4">
-              <h4 class="text-2xl font-serif-display text-neutral-900">Also included in our practice</h4>
-              <p class="text-sm text-neutral-600 mt-2">
-                Specialized technical support services available independently or bundled with core engagements.
-              </p>
-            </div>
-
-            <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8 text-[15px]">
-              <div class="space-y-1">
-                <strong class="text-neutral-900 block font-semibold">1. Canva branding with premium tools</strong>
-                <p class="text-neutral-600 text-sm">Brand identity kits, editable pitch decks, vector assets, and social media creative guidelines.</p>
-              </div>
-
-              <div class="space-y-1">
-                <strong class="text-neutral-900 block font-semibold">2. DevOps, Git, DNS &amp; hosting management</strong>
-                <p class="text-neutral-600 text-sm">Edge hosting on Vercel, Git CI/CD deployments, DNS propagation, and SSL certificate hardening.</p>
-              </div>
-
-              <div class="space-y-1">
-                <strong class="text-neutral-900 block font-semibold">3. Tech &amp; IT systems support</strong>
-                <p class="text-neutral-600 text-sm">API integrations, database maintenance, infrastructure troubleshooting, and system health checks.</p>
-              </div>
-
-              <div class="space-y-1">
-                <strong class="text-neutral-900 block font-semibold">4. After-sales service &amp; hourly retainers</strong>
-                <p class="text-neutral-600 text-sm">Transparent per-hour rate maintenance, speed tuning, security patching, and guaranteed response SLAs.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         WEB ARCHITECTURE & STANDARDS (NEW SECTION - Section Dark)
-         Showcasing the new web platform asset in a bespoke studio layout.
-         ========================================================================== -->
-    <section id="architecture" class="section-dark section-rhythm border-t border-white/10">
-      <div class="site-container space-y-16">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          <!-- Image Column (Left) -->
-          <div class="lg:col-span-6">
-            <div class="browser-frame shadow-2xl">
-              <div class="browser-chrome">
-                <span class="browser-dot"></span>
-                <span class="browser-dot"></span>
-                <span class="browser-dot"></span>
-                <span class="ml-2 font-technical-mono text-[11px] text-neutral-400 opacity-60">annexbd.tech/architecture</span>
-              </div>
-              <div class="relative aspect-[4/3] bg-[#161616] overflow-hidden flex items-center justify-center p-4">
-                <img src="assets/web-trimmed.png" 
-                     alt="ANNEX Web Platform Architecture" 
-                     class="w-full h-full object-contain"
-                     width="745" 
-                     height="641">
-                <div class="absolute top-3 right-3">
-                  <span class="placeholder-badge text-[10px]">PLACEHOLDER</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Content Column (Right) -->
-          <div class="lg:col-span-6 space-y-6">
-            <span class="font-technical-mono text-xs uppercase tracking-wider text-neutral-400 font-semibold">
-              Web Architecture &amp; Standards
-            </span>
-
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl text-white font-serif-display leading-tight">
-              Engineered for speed, stability, and measurable business impact.
-            </h2>
-
-            <p class="text-base sm:text-lg text-neutral-300 leading-relaxed font-normal">
-              Whether building an e-commerce platform with automated payment gateways, an institutional school portal, or an enterprise corporate presence, we engineer clean-code architectures deployed directly to the Vercel edge.
-            </p>
-
-            <div class="space-y-4 pt-2 border-t border-white/10">
-              <div class="space-y-1">
-                <strong class="text-white text-base font-semibold block">E-Commerce &amp; Gateway Integration</strong>
-                <p class="text-sm text-neutral-400">Streamlined checkout flows supporting bKash Merchant, Nagad, Rocket, SSLCommerz, and Stripe, paired with courier tracking logistics.</p>
-              </div>
-
-              <div class="space-y-1">
-                <strong class="text-white text-base font-semibold block">School &amp; Institutional Systems</strong>
-                <p class="text-sm text-neutral-400">Digital student enrollment, automated tuition fee collection with computerized receipts, and faculty administration.</p>
-              </div>
-
-              <div class="space-y-1">
-                <strong class="text-white text-base font-semibold block">Corporate Governance &amp; Portfolios</strong>
-                <p class="text-sm text-neutral-400">Institutional authority platforms with investor relations, compliance, and bespoke personal brand showcases.</p>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-6 pt-4">
-              <button type="button" class="open-booking-modal btn-cta-primary">
-                Book a free 20-minute call
-              </button>
-
-              <a href="#work" class="link-quiet text-neutral-300 hover:text-white">
-                <span>View case studies</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-              </a>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         5. SELECTED WORK (Section Light: Warm Off-White #F6F4EF)
-         Bento grid of 3-4 case study tiles with mixed sizes and large image areas.
-         Each tile: project image, client name, one-line result (PLACEHOLDER).
-         ========================================================================== -->
-    <section id="work" class="section-light section-rhythm border-t border-neutral-300">
-      <div class="site-container space-y-16">
-        
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div class="max-w-2xl space-y-3">
-            <h2 class="text-4xl sm:text-5xl lg:text-6xl text-neutral-900 font-serif-display">
-              Selected work
-            </h2>
-            <p class="text-base text-neutral-600">
-              A collection of digital platforms, e-commerce stores, and performance campaigns built for our partners.
-            </p>
-          </div>
-
-          <button type="button" class="open-booking-modal btn-cta-primary self-start md:self-auto">
-            Book a free 20-minute call
-          </button>
-        </div>
-
-        <!-- Bento Grid of Case Studies -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-          
-          <!-- Case Study 1 (Large - 8 Cols) -->
-          <article class="md:col-span-8 space-y-4">
-            <div class="placeholder-slot aspect-[16/10] bg-neutral-200/60 border-neutral-300">
-              <span class="placeholder-badge">PLACEHOLDER</span>
-              <p class="text-xs text-neutral-500 text-center max-w-[280px]">
-                Case Study 01: E-Commerce Retail Platform Screenshot
-              </p>
-            </div>
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 pt-1">
-              <h3 class="text-2xl font-serif-display text-neutral-900">
-                Client Name [PLACEHOLDER]
-              </h3>
-              <span class="text-sm text-neutral-600 font-technical-mono">
-                Result: 3.4x ROAS on Meta ads &amp; sub-second page loads [PLACEHOLDER]
-              </span>
-            </div>
-          </article>
-
-          <!-- Case Study 2 (Compact - 4 Cols) -->
-          <article class="md:col-span-4 space-y-4">
-            <div class="placeholder-slot aspect-[4/3] md:aspect-auto md:h-[calc(100%-48px)] bg-neutral-200/60 border-neutral-300">
-              <span class="placeholder-badge">PLACEHOLDER</span>
-              <p class="text-xs text-neutral-500 text-center max-w-[200px]">
-                Case Study 02: School SIS Portal
-              </p>
-            </div>
-            <div class="pt-1">
-              <h3 class="text-2xl font-serif-display text-neutral-900">
-                School Client [PLACEHOLDER]
-              </h3>
-              <p class="text-sm text-neutral-600 font-technical-mono mt-1">
-                Result: Automated fee collection for 1,200+ students [PLACEHOLDER]
-              </p>
-            </div>
-          </article>
-
-          <!-- Case Study 3 (Equal - 6 Cols) -->
-          <article class="md:col-span-6 space-y-4">
-            <div class="placeholder-slot aspect-[16/10] bg-neutral-200/60 border-neutral-300">
-              <span class="placeholder-badge">PLACEHOLDER</span>
-              <p class="text-xs text-neutral-500 text-center max-w-[240px]">
-                Case Study 03: Corporate Enterprise Platform
-              </p>
-            </div>
-            <div class="pt-1">
-              <h3 class="text-2xl font-serif-display text-neutral-900">
-                Enterprise Co. [PLACEHOLDER]
-              </h3>
-              <p class="text-sm text-neutral-600 font-technical-mono mt-1">
-                Result: Institutional site deployed with zero-downtime DNS cutover [PLACEHOLDER]
-              </p>
-            </div>
-          </article>
-
-          <!-- Case Study 4 (Equal - 6 Cols) -->
-          <article class="md:col-span-6 space-y-4">
-            <div class="placeholder-slot aspect-[16/10] bg-neutral-200/60 border-neutral-300">
-              <span class="placeholder-badge">PLACEHOLDER</span>
-              <p class="text-xs text-neutral-500 text-center max-w-[240px]">
-                Case Study 04: Brand Identity &amp; Creator Portfolio
-              </p>
-            </div>
-            <div class="pt-1">
-              <h3 class="text-2xl font-serif-display text-neutral-900">
-                Creative Studio [PLACEHOLDER]
-              </h3>
-              <p class="text-sm text-neutral-600 font-technical-mono mt-1">
-                Result: High-intent inquiry rate increased 2.2x post-redesign [PLACEHOLDER]
-              </p>
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         6. PROCESS (Section Dark)
-         4 steps in a clean horizontal row with large numerals, no cards,
-         thin dividers only.
-         ========================================================================== -->
-    <section id="process" class="section-dark section-rhythm border-t border-white/10">
-      <div class="site-container space-y-16">
-        
-        <div class="max-w-2xl space-y-3">
-          <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-serif-display">
-            How we work
-          </h2>
-          <p class="text-base text-neutral-400">
-            A structured, transparent delivery process from initial scoping to ongoing support.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          
-          <!-- Step 01 -->
-          <div class="border-t border-white/20 pt-6 space-y-4">
-            <span class="font-serif-display text-4xl sm:text-5xl text-neutral-400 block">01</span>
-            <h3 class="text-xl font-serif-display text-white">Discovery &amp; Scoping</h3>
-            <p class="text-sm text-neutral-300 leading-relaxed">
-              We audit your requirements, define technical specs, clarify audience intent, and outline milestone deliverables.
-            </p>
-          </div>
-
-          <!-- Step 02 -->
-          <div class="border-t border-white/20 pt-6 space-y-4">
-            <span class="font-serif-display text-4xl sm:text-5xl text-neutral-400 block">02</span>
-            <h3 class="text-xl font-serif-display text-white">Sprint Architecture</h3>
-            <p class="text-sm text-neutral-300 leading-relaxed">
-              We engineer the responsive UI, connect payment gateways or Meta CAPI tracking, and test cross-device functionality.
-            </p>
-          </div>
-
-          <!-- Step 03 -->
-          <div class="border-t border-white/20 pt-6 space-y-4">
-            <span class="font-serif-display text-4xl sm:text-5xl text-neutral-400 block">03</span>
-            <h3 class="text-xl font-serif-display text-white">Edge Deployment</h3>
-            <p class="text-sm text-neutral-300 leading-relaxed">
-              Rigorous QA, DNS propagation, SSL hardening, and production launch on the Vercel edge network.
-            </p>
-          </div>
-
-          <!-- Step 04 -->
-          <div class="border-t border-white/20 pt-6 space-y-4">
-            <span class="font-serif-display text-4xl sm:text-5xl text-neutral-400 block">04</span>
-            <h3 class="text-xl font-serif-display text-white">Ongoing SLA &amp; Support</h3>
-            <p class="text-sm text-neutral-300 leading-relaxed">
-              Standard per-hour maintenance, campaign optimization, security patches, and guaranteed turnaround times.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         7. ESTIMATOR (Section Light: Warm Off-White #F6F4EF)
-         Restyled as a clean two-column tool with a price range output slot
-         marked with PLACEHOLDER values.
-         ========================================================================== -->
-    <section id="estimator" class="section-light section-rhythm border-t border-neutral-300">
-      <div class="site-container">
-        
-        <div class="max-w-2xl mb-12 space-y-3">
-          <h2 class="text-4xl sm:text-5xl lg:text-6xl text-neutral-900 font-serif-display">
-            Project scope estimator
-          </h2>
-          <p class="text-base text-neutral-600">
-            Select your requirements to see estimated delivery timelines and indicative scope deliverables.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
-          <!-- Estimator Inputs Column -->
-          <div class="lg:col-span-7 space-y-8">
-            
-            <div class="space-y-2">
-              <label for="estimator-service" class="block text-xs font-technical-mono uppercase tracking-wider text-neutral-600 font-semibold">
-                Service Category
-              </label>
-              <select id="estimator-service" class="w-full bg-white border border-neutral-300 rounded-[8px] px-4 py-3.5 text-base text-neutral-900 focus:outline-none focus:border-neutral-900 transition-colors">
-                <option value="web_dev" selected>Website Development (Portfolio, E-Commerce, School, Corporate)</option>
-                <option value="meta_ads">Meta Ads Support (Promotion, Lead Generation, CAPI Tracking)</option>
-              </select>
-            </div>
-
-            <div class="space-y-2">
-              <label for="estimator-scale" class="block text-xs font-technical-mono uppercase tracking-wider text-neutral-600 font-semibold">
-                Project Scale
-              </label>
-              <select id="estimator-scale" class="w-full bg-white border border-neutral-300 rounded-[8px] px-4 py-3.5 text-base text-neutral-900 focus:outline-none focus:border-neutral-900 transition-colors">
-                <option value="starter" selected>Starter (Focused Launch Sprint)</option>
-                <option value="growth">Growth (Comprehensive Feature Integration)</option>
-                <option value="enterprise">Enterprise (Custom Platform Architecture)</option>
-              </select>
-            </div>
-
-            <div class="space-y-3">
-              <span class="block text-xs font-technical-mono uppercase tracking-wider text-neutral-600 font-semibold">
-                Optional Support Add-ons
-              </span>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                <label class="flex items-center gap-3 p-3 bg-white border border-neutral-300 rounded-[8px] cursor-pointer hover:border-neutral-500 transition-colors">
-                  <input type="checkbox" class="estimator-addon rounded text-neutral-900 focus:ring-0" data-title="Payment Gateway Integration (bKash/Nagad/Stripe)">
-                  <span class="text-neutral-800">Payment Gateways</span>
-                </label>
-                <label class="flex items-center gap-3 p-3 bg-white border border-neutral-300 rounded-[8px] cursor-pointer hover:border-neutral-500 transition-colors">
-                  <input type="checkbox" class="estimator-addon rounded text-neutral-900 focus:ring-0" data-title="Meta CAPI Server Tracking">
-                  <span class="text-neutral-800">Meta CAPI Tracking</span>
-                </label>
-                <label class="flex items-center gap-3 p-3 bg-white border border-neutral-300 rounded-[8px] cursor-pointer hover:border-neutral-500 transition-colors">
-                  <input type="checkbox" class="estimator-addon rounded text-neutral-900 focus:ring-0" data-title="Canva Brand Kit & Pitch Deck">
-                  <span class="text-neutral-800">Canva Brand Kit</span>
-                </label>
-                <label class="flex items-center gap-3 p-3 bg-white border border-neutral-300 rounded-[8px] cursor-pointer hover:border-neutral-500 transition-colors">
-                  <input type="checkbox" class="estimator-addon rounded text-neutral-900 focus:ring-0" data-title="Dedicated Hourly Retainer Support">
-                  <span class="text-neutral-800">Hourly Retainer SLA</span>
-                </label>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Estimator Output Column -->
-          <div class="lg:col-span-5 bg-white border border-neutral-300 rounded-[12px] p-8 space-y-6">
-            
-            <div class="border-b border-neutral-200 pb-4">
-              <span class="text-xs font-technical-mono uppercase tracking-wider text-neutral-500 block">
-                Estimated Timeline
-              </span>
-              <div id="estimator-timeline" class="text-2xl font-serif-display text-neutral-900 mt-1">
-                2–3 weeks
-              </div>
-            </div>
-
-            <!-- Price Range Output Slot (PLACEHOLDER) -->
-            <div class="border-b border-neutral-200 pb-4">
-              <div class="flex items-baseline justify-between">
-                <span class="text-xs font-technical-mono uppercase tracking-wider text-neutral-500">
-                  Estimated Price Range
-                </span>
-                <span class="placeholder-badge text-[10px] py-0.5 px-2">PLACEHOLDER</span>
-              </div>
-              <div id="estimator-price-range" class="text-2xl font-technical-mono text-neutral-900 font-semibold mt-1">
-                $750 – $1,200
-              </div>
-              <p class="text-xs text-neutral-500 mt-1">
-                Indicative range. Exact quote finalized after discovering your detailed requirements.
-              </p>
-            </div>
-
-            <div>
-              <span class="text-xs font-technical-mono uppercase tracking-wider text-neutral-500 block mb-3">
-                Included Deliverables
-              </span>
-              <ul id="estimator-deliverables" class="space-y-2.5">
-                <!-- Populated dynamically via JS -->
-              </ul>
-            </div>
-
-            <div class="pt-2">
-              <button type="button" id="estimator-book-btn" class="btn-cta-primary w-full">
-                Book a free 20-minute call
-              </button>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         8. TESTIMONIALS (Section Light: Warm Off-White)
-         Large quote layout with photo, name, company (PLACEHOLDER).
-         ========================================================================== -->
-    <section class="section-light section-rhythm border-t border-neutral-300" aria-label="Client Feedback">
-      <div class="site-container">
-        
-        <div class="max-w-4xl mx-auto space-y-8">
-          
-          <span class="placeholder-badge">PLACEHOLDER</span>
-
-          <blockquote class="text-3xl sm:text-4xl lg:text-5xl text-neutral-900 font-serif-display leading-snug">
-            "Client testimonial statement goes here. A straightforward review highlighting project delivery, communication clarity, and business outcomes."
-          </blockquote>
-
-          <div class="flex items-center gap-4 pt-4">
-            <div class="w-12 h-12 rounded-full bg-neutral-300 border border-neutral-400 flex items-center justify-center text-xs font-technical-mono text-neutral-600 flex-shrink-0">
-              PHOTO
-            </div>
-            <div>
-              <div class="text-base font-semibold text-neutral-900">
-                Client Name [PLACEHOLDER]
-              </div>
-              <div class="text-sm text-neutral-600">
-                Founder / Director, Company Name [PLACEHOLDER]
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         9. ABOUT / TEAM (Section Dark)
-         Photo plus short bio slot (PLACEHOLDER).
-         ========================================================================== -->
-    <section class="section-dark section-rhythm border-t border-white/10" aria-label="About the Studio">
-      <div class="site-container">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          <div class="lg:col-span-5">
-            <div class="placeholder-slot aspect-[4/5] bg-neutral-900 border-white/15 text-neutral-400">
-              <span class="placeholder-badge">PLACEHOLDER</span>
-              <p class="text-xs text-neutral-500 text-center max-w-[200px]">
-                Studio Founder / Team Photo
-              </p>
-            </div>
-          </div>
-
-          <div class="lg:col-span-7 space-y-6">
-            <span class="font-technical-mono text-xs uppercase tracking-wider text-neutral-400">
-              About ANNEX
-            </span>
-
-            <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-serif-display leading-tight">
-              A dedicated digital team operating virtually from Bangladesh.
-            </h2>
-
-            <div class="space-y-4 text-base sm:text-lg text-neutral-300 leading-relaxed font-normal">
-              <p>
-                Hi, I'm Ratul. Together with our engineering team, we partner with founders, institutions, and businesses to build dependable web platforms and scale customer acquisition through Meta ads.
-              </p>
-              <p class="text-neutral-400 text-base">
-                [PLACEHOLDER: Short studio background, founding vision, and technical philosophy will be detailed here.]
-              </p>
-            </div>
-
-            <div class="pt-2">
-              <button type="button" class="open-booking-modal btn-cta-primary">
-                Book a free 20-minute call
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         10. FAQ (Section Light: Warm Off-White)
-         Minimal accordion, thin dividers, no boxes.
-         ========================================================================== -->
-    <section id="faq" class="section-light section-rhythm border-t border-neutral-300">
-      <div class="site-container">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
-          <div class="lg:col-span-5 space-y-4">
-            <h2 class="text-4xl sm:text-5xl lg:text-6xl text-neutral-900 font-serif-display">
-              Frequently asked questions
-            </h2>
-            <p class="text-base text-neutral-600 leading-relaxed">
-              Straightforward answers about our engagement models, delivery timelines, and ongoing support terms.
-            </p>
-          </div>
-
-          <div class="lg:col-span-7 divide-y divide-neutral-300 border-t border-neutral-300">
-            
-            <!-- Item 1 -->
-            <div class="faq-row">
-              <button type="button" class="faq-trigger" aria-expanded="false">
-                <span>What website development projects do you handle?</span>
-                <span class="faq-icon-cross">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                  </svg>
-                </span>
-              </button>
-              <div class="faq-answer text-neutral-700">
-                We design and build e-commerce stores (with bKash, Nagad, Stripe payment gateways), school and institutional administrative portals, corporate company websites, and creator portfolios. Every project is custom-coded for mobile performance and Vercel edge deployment.
-              </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="faq-row">
-              <button type="button" class="faq-trigger" aria-expanded="false">
-                <span>How do you manage Meta advertising campaigns?</span>
-                <span class="faq-icon-cross">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                  </svg>
-                </span>
-              </button>
-              <div class="faq-answer text-neutral-700">
-                We configure server-side Conversions API (CAPI) tracking, conduct structured creative testing, build lead funnels (including WhatsApp Click-to-Chat), and provide weekly ROAS performance reviews.
-              </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="faq-row">
-              <button type="button" class="faq-trigger" aria-expanded="false">
-                <span>How does virtual collaboration work?</span>
-                <span class="faq-icon-cross">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                  </svg>
-                </span>
-              </button>
-              <div class="faq-answer text-neutral-700">
-                We communicate via scheduled video sprint reviews, direct messaging channels (WhatsApp / Discord), and version-controlled Git repositories. All staging environments are deployed to live preview URLs.
-              </div>
-            </div>
-
-            <!-- Item 4 -->
-            <div class="faq-row">
-              <button type="button" class="faq-trigger" aria-expanded="false">
-                <span>What are your after-sales and maintenance rates?</span>
-                <span class="faq-icon-cross">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                  </svg>
-                </span>
-              </button>
-              <div class="faq-answer text-neutral-700">
-                We offer transparent hourly billing with itemized task logs for updates and bug fixes, as well as monthly maintenance retainers with guaranteed SLA response times.
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         11. FINAL CTA (Section Dark)
-         Full-width dark section, one headline, one button, WhatsApp link beside it.
-         ========================================================================== -->
-    <section class="section-dark section-rhythm border-t border-white/10 text-center">
-      <div class="site-container max-w-3xl space-y-8">
-        
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-serif-display leading-tight">
-          Ready to discuss your project?
-        </h2>
-
-        <p class="text-base sm:text-lg text-neutral-300 max-w-xl mx-auto leading-relaxed">
-          Book a 20-minute introductory call to review your goals, scope timeline, and budget.
-        </p>
-
-        <div class="flex flex-wrap items-center justify-center gap-6 pt-2">
-          <button type="button" class="open-booking-modal btn-cta-primary">
-            Book a free 20-minute call
-          </button>
-
-          <a href="https://wa.me/8801700000000?text=Hello%20ANNEX,%20I%20would%20like%20to%20discuss%20a%20project." 
-             target="_blank" 
-             rel="noopener noreferrer" 
-             class="link-quiet text-neutral-300 hover:text-white">
-            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-            </svg>
-            <span>Or chat via WhatsApp</span>
-          </a>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- ==========================================================================
-       12. FOOTER
-       Compact, 3 columns, real contact details only.
-       ========================================================================== -->
-  <footer class="bg-[#0c0c0c] border-t border-white/10 py-16 text-neutral-400 text-sm">
-    <div class="site-container">
-      
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
-        
-        <!-- Col 1: Brand & Operating Location -->
-        <div class="md:col-span-5 space-y-3">
-          <img src="assets/logo-white-trimmed.png" alt="ANNEX" class="h-7 w-auto object-contain">
-          <p class="text-neutral-400 max-w-sm text-sm">
-            Web development, Meta advertising, and technical support. Operating virtually from Dhaka-1215, Bangladesh.
-          </p>
-        </div>
-
-        <!-- Col 2: Navigation Links -->
-        <div class="md:col-span-3 space-y-2 font-medium">
-          <div class="text-xs font-technical-mono uppercase tracking-wider text-neutral-500 mb-2">Navigation</div>
-          <div><a href="#services" class="hover:text-white transition-colors">Services</a></div>
-          <div><a href="#architecture" class="hover:text-white transition-colors">Architecture</a></div>
-          <div><a href="#work" class="hover:text-white transition-colors">Selected Work</a></div>
-          <div><a href="#faq" class="hover:text-white transition-colors">FAQ</a></div>
-        </div>
-
-        <!-- Col 3: Real Contact Details Only -->
-        <div class="md:col-span-4 space-y-2 font-medium">
-          <div class="text-xs font-technical-mono uppercase tracking-wider text-neutral-500 mb-2">Direct Inquiries</div>
-          <div>
-            <a href="mailto:support@annexbd.tech" class="text-white hover:underline">support@annexbd.tech</a>
-          </div>
-          <div class="text-neutral-400">
-            annexbd.tech
-          </div>
-          <div class="text-neutral-500 text-xs pt-1">
-            Dhaka-1215, Bangladesh
-          </div>
-        </div>
-
-      </div>
-
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-technical-mono">
-        <div>
-          &copy; 2026 ANNEX (annexbd.tech). All rights reserved.
-        </div>
-        <div>
-          Deployed on Vercel Edge
-        </div>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- ==========================================================================
-       MODAL: "Book a free 20-minute call"
-       ========================================================================== -->
-  <div id="booking-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="relative w-full max-w-lg bg-[#141414] border border-white/20 rounded-[12px] p-6 sm:p-8 shadow-2xl text-white">
-      
-      <div class="flex items-center justify-between pb-4 border-b border-white/10">
-        <div>
-          <h3 class="text-2xl font-serif-display text-white">Book a free 20-minute call</h3>
-          <p class="text-xs text-neutral-400 mt-1">Let's discuss your project scope and timeline.</p>
-        </div>
-        <button type="button" id="booking-modal-close" aria-label="Close booking modal" class="p-1.5 text-neutral-400 hover:text-white rounded hover:bg-white/5">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
+      <!-- Desktop CTA -->
+      <div class="header-cta">
+        <button type="button" class="btn-cta-primary open-booking-modal">
+          Book a free 20-minute call
         </button>
       </div>
 
-      <form id="booking-form" class="mt-6 space-y-4">
-        <div>
-          <label for="booking-name" class="block text-xs font-technical-mono uppercase text-neutral-400 mb-1">Your Name</label>
-          <input type="text" id="booking-name" required placeholder="e.g. Ratul / Enterprise Co" class="w-full bg-black border border-white/20 rounded-[8px] px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-white">
-        </div>
-
-        <div>
-          <label for="booking-email" class="block text-xs font-technical-mono uppercase text-neutral-400 mb-1">Email Address</label>
-          <input type="email" id="booking-email" required placeholder="name@company.com" class="w-full bg-black border border-white/20 rounded-[8px] px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-white">
-        </div>
-
-        <div>
-          <label for="booking-notes" class="block text-xs font-technical-mono uppercase text-neutral-400 mb-1">Project Notes / Preferred Time</label>
-          <textarea id="booking-notes" rows="4" placeholder="Briefly describe what you'd like to build or achieve..." class="w-full bg-black border border-white/20 rounded-[8px] px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-white"></textarea>
-        </div>
-
-        <div class="pt-2">
-          <button type="submit" class="btn-cta-primary w-full">
-            Book a free 20-minute call
-          </button>
-        </div>
-      </form>
+      <!-- Mobile Toggle -->
+      <button type="button" id="mobile-nav-toggle" class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 7h16M4 17h16"/>
+        </svg>
+      </button>
 
     </div>
   </div>
+</header>
 
-  <!-- ==========================================================================
-       FLOATING WHATSAPP BUTTON (Mobile Only)
-       ========================================================================== -->
-  <a href="https://wa.me/8801700000000?text=Hello%20ANNEX,%20I%20would%20like%20to%20discuss%20a%20project." 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     class="floating-whatsapp-btn" 
-     aria-label="Chat on WhatsApp">
-    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-    </svg>
-  </a>
+<!-- Mobile Drawer -->
+<aside id="mobile-nav-drawer" class="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div>
+    <div class="drawer-header">
+      <img src="assets/logo-white-trimmed.png" alt="ANNEX" height="28" style="width:auto;object-fit:contain;">
+      <button type="button" id="mobile-nav-close" class="drawer-close-btn" aria-label="Close navigation menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="drawer-nav" aria-label="Mobile navigation">
+      <a href="#services" class="mobile-nav-link">Services</a>
+      <a href="#architecture" class="mobile-nav-link">Architecture</a>
+      <a href="#work" class="mobile-nav-link">Work</a>
+      <a href="#faq" class="mobile-nav-link">FAQ</a>
+    </nav>
+  </div>
+  <div class="drawer-footer">
+    <button type="button" class="btn-cta-primary btn-full open-booking-modal">
+      Book a free 20-minute call
+    </button>
+  </div>
+</aside>
 
-  <!-- Front-End Controller -->
-  <script src="js/main.js"></script>
+<main>
+
+<!-- =========================================================================
+     2. HERO (Dark)
+     Split layout. Headline left, browser mockup right.
+     ========================================================================= -->
+<section id="hero" class="section-dark section-rhythm border-bottom-dark">
+  <div class="site-container">
+
+    <div class="arch-grid reveal">
+
+      <!-- Left: Copy -->
+      <div class="space-y-6">
+        <h1 class="font-serif-display text-hero" style="color:#ffffff;line-height:1.04;">
+          We design websites and run Meta ads that turn attention into revenue.
+        </h1>
+
+        <p class="text-body leading-relaxed" style="color:var(--text-light-sub);max-width:500px;">
+          Operating virtually from Bangladesh, we build bespoke web architectures and ROI-focused ad campaigns for growing businesses, schools, and private companies.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-6" style="padding-top:8px;">
+          <button type="button" class="btn-cta-primary open-booking-modal">
+            Book a free 20-minute call
+          </button>
+          <a href="#work" class="link-quiet" style="color:var(--text-light-sub);">
+            <span>See selected work</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Browser Mockup -->
+      <div class="reveal" style="transition-delay:120ms;">
+        <div class="browser-frame">
+          <div class="browser-chrome">
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <span class="font-technical-mono" style="font-size:11px;color:var(--text-light-muted);opacity:0.7;margin-left:8px;">annexbd.tech</span>
+          </div>
+          <div class="browser-content aspect-4-3" style="padding:12px;position:relative;">
+            <img src="assets/laptop-branding.png"
+                 alt="ANNEX Studio Preview"
+                 style="width:100%;height:100%;object-fit:contain;"
+                 width="940"
+                 height="788">
+            <div style="position:absolute;top:12px;right:12px;">
+              <span class="placeholder-badge">PLACEHOLDER</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     3. PROOF BAR (Dark)
+     Single row of 4-6 client logo slots (grayscale PLACEHOLDER).
+     ========================================================================= -->
+<section class="section-dark border-bottom-dark" style="padding-top:48px;padding-bottom:48px;" aria-label="Client recognition">
+  <div class="site-container">
+    <div class="proof-bar reveal">
+      <span class="proof-bar-label">Trusted by teams &amp; brands [PLACEHOLDER]</span>
+      <div class="logo-grid">
+        <div class="placeholder-slot" style="padding:12px 20px;min-height:48px;">
+          <span class="placeholder-badge" style="margin-bottom:0;">LOGO 01</span>
+        </div>
+        <div class="placeholder-slot" style="padding:12px 20px;min-height:48px;">
+          <span class="placeholder-badge" style="margin-bottom:0;">LOGO 02</span>
+        </div>
+        <div class="placeholder-slot" style="padding:12px 20px;min-height:48px;">
+          <span class="placeholder-badge" style="margin-bottom:0;">LOGO 03</span>
+        </div>
+        <div class="placeholder-slot" style="padding:12px 20px;min-height:48px;">
+          <span class="placeholder-badge" style="margin-bottom:0;">LOGO 04</span>
+        </div>
+        <div class="placeholder-slot" style="padding:12px 20px;min-height:48px;">
+          <span class="placeholder-badge" style="margin-bottom:0;">LOGO 05</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     4. SERVICES (Light)
+     Two lead services as large asymmetric blocks. "Also included" text list.
+     ========================================================================= -->
+<section id="services" class="section-light section-rhythm">
+  <div class="site-container">
+
+    <div class="services-header reveal" style="margin-bottom:80px;">
+      <h2 class="font-serif-display text-h2" style="color:var(--text-dark);margin-bottom:16px;">What we do</h2>
+      <p class="text-body leading-relaxed" style="color:var(--text-dark-sub);">
+        We focus on two core pillars that directly affect business growth: bespoke web engineering and high-intent Meta advertising.
+      </p>
+    </div>
+
+    <!-- Service 1: Website Development -->
+    <div class="service-block reveal" style="margin-bottom:80px;">
+      <div class="space-y-6">
+        <span class="service-label">01 / Core Service</span>
+        <h3 class="font-serif-display text-h3" style="color:var(--text-dark);">Website Development</h3>
+        <p class="text-body leading-relaxed" style="color:var(--text-dark-sub);">
+          We design and build bespoke, responsive websites engineered for speed, search visibility, and conversion. Every project is tailored specifically to your audience and operational needs:
+        </p>
+        <ul class="service-list">
+          <li><strong>E-Commerce Platforms:</strong> Fast-loading online stores integrated with local payment gateways (bKash, Nagad, Rocket, SSLCommerz) and international gateways (Stripe, PayPal).</li>
+          <li><strong>School &amp; College Portals:</strong> Centralized digital administration for admissions, computerized fee payments, and staff records.</li>
+          <li><strong>Corporate &amp; Private Company Sites:</strong> Institutional platforms built for credibility, compliance, and enterprise lead capture.</li>
+          <li><strong>Portfolios:</strong> Distinctive showcases for creators, founders, and specialized service firms.</li>
+        </ul>
+        <div style="padding-top:8px;">
+          <button type="button" class="btn-cta-primary open-booking-modal">Book a free 20-minute call</button>
+        </div>
+      </div>
+
+      <div class="placeholder-slot aspect-4-3 reveal" style="background-color:rgba(17,17,17,0.06);border-color:var(--neutral-300);color:var(--text-dark-muted);transition-delay:100ms;">
+        <span class="placeholder-badge">PLACEHOLDER</span>
+        <p style="font-size:13px;color:var(--text-dark-muted);text-align:center;max-width:240px;">Web Development Showcase Visual / Interactive Screenshot</p>
+      </div>
+    </div>
+
+    <!-- Service 2: Meta Ads (alternating) -->
+    <div class="service-block reveal">
+      <div class="placeholder-slot aspect-4-3 order-last-mobile reveal" style="background-color:rgba(17,17,17,0.06);border-color:var(--neutral-300);color:var(--text-dark-muted);transition-delay:100ms;">
+        <span class="placeholder-badge">PLACEHOLDER</span>
+        <p style="font-size:13px;color:var(--text-dark-muted);text-align:center;max-width:240px;">Meta Ads Performance Dashboard / Campaign Flow Visual</p>
+      </div>
+
+      <div class="space-y-6 order-first-mobile">
+        <span class="service-label">02 / Growth Service</span>
+        <h3 class="font-serif-display text-h3" style="color:var(--text-dark);">Meta Ads Support</h3>
+        <p class="text-body leading-relaxed" style="color:var(--text-dark-sub);">
+          Paid social advertising designed for verifiable business outcomes. We manage campaigns across Facebook and Instagram to drive qualified customer acquisition, brand reach, and high-intent leads:
+        </p>
+        <ul class="service-list">
+          <li><strong>Server-Side Tracking (CAPI):</strong> Full Conversions API integration to ensure reliable data measurement independent of browser ad-blockers.</li>
+          <li><strong>Lead Generation Funnels:</strong> Direct-to-WhatsApp chats, customized lead forms, and CRM routing for B2B and B2C clients.</li>
+          <li><strong>Multi-Stage Retargeting:</strong> Re-engaging warm visitors, video viewers, and cart abandoners with promotional incentives.</li>
+          <li><strong>Weekly Reporting:</strong> Transparent performance reviews focusing on Return on Ad Spend (ROAS) and cost per acquired lead.</li>
+        </ul>
+        <div style="padding-top:8px;">
+          <button type="button" class="btn-cta-primary open-booking-modal">Book a free 20-minute call</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Also Included -->
+    <div class="also-included reveal">
+      <div>
+        <h4 class="font-serif-display text-h4" style="color:var(--text-dark);margin-bottom:8px;">Also included in our practice</h4>
+        <p style="font-size:14px;color:var(--text-dark-sub);line-height:1.65;">
+          Specialized technical support services available independently or bundled with core engagements.
+        </p>
+      </div>
+      <div class="also-included-items">
+        <div class="also-item">
+          <strong>1. Canva branding with premium tools</strong>
+          <p>Brand identity kits, editable pitch decks, vector assets, and social media creative guidelines.</p>
+        </div>
+        <div class="also-item">
+          <strong>2. DevOps, Git, DNS &amp; hosting management</strong>
+          <p>Edge hosting on Vercel, Git CI/CD deployments, DNS propagation, and SSL certificate hardening.</p>
+        </div>
+        <div class="also-item">
+          <strong>3. Tech &amp; IT systems support</strong>
+          <p>API integrations, database maintenance, infrastructure troubleshooting, and system health checks.</p>
+        </div>
+        <div class="also-item">
+          <strong>4. After-sales service &amp; hourly retainers</strong>
+          <p>Transparent per-hour rate maintenance, speed tuning, security patching, and guaranteed response SLAs.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     5. WEB ARCHITECTURE & STANDARDS (Dark)
+     Studio editorial block with web-trimmed.png asset.
+     ========================================================================= -->
+<section id="architecture" class="section-dark section-rhythm border-top-dark">
+  <div class="site-container">
+
+    <div class="arch-grid">
+
+      <!-- Left: Browser Frame with asset -->
+      <div class="reveal">
+        <div class="browser-frame">
+          <div class="browser-chrome">
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <span class="font-technical-mono" style="font-size:11px;color:var(--text-light-muted);opacity:0.7;margin-left:8px;">annexbd.tech/architecture</span>
+          </div>
+          <div class="browser-content aspect-4-3" style="padding:16px;position:relative;">
+            <img src="assets/web-trimmed.png"
+                 alt="ANNEX Web Platform Architecture"
+                 style="width:100%;height:100%;object-fit:contain;"
+                 width="745"
+                 height="641">
+            <div style="position:absolute;top:12px;right:12px;">
+              <span class="placeholder-badge">PLACEHOLDER</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="space-y-6 reveal" style="transition-delay:100ms;">
+        <span class="font-technical-mono uppercase tracking-wider" style="font-size:11px;color:var(--text-light-muted);">Web Architecture &amp; Standards</span>
+
+        <h2 class="font-serif-display text-h2" style="color:#ffffff;">
+          Engineered for speed, stability, and measurable business impact.
+        </h2>
+
+        <p class="text-body leading-relaxed" style="color:var(--text-light-sub);">
+          Whether building an e-commerce platform with automated payment gateways, an institutional school portal, or an enterprise corporate presence, we engineer clean-code architectures deployed directly to the Vercel edge.
+        </p>
+
+        <div class="arch-detail-list">
+          <div class="arch-detail-item">
+            <strong>E-Commerce &amp; Gateway Integration</strong>
+            <p>Streamlined checkout flows supporting bKash Merchant, Nagad, Rocket, SSLCommerz, and Stripe, paired with courier tracking logistics.</p>
+          </div>
+          <div class="arch-detail-item">
+            <strong>School &amp; Institutional Systems</strong>
+            <p>Digital student enrollment, automated tuition fee collection with computerized receipts, and faculty administration.</p>
+          </div>
+          <div class="arch-detail-item">
+            <strong>Corporate Governance &amp; Portfolios</strong>
+            <p>Institutional authority platforms with investor relations, compliance, and bespoke personal brand showcases.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-6" style="padding-top:8px;">
+          <button type="button" class="btn-cta-primary open-booking-modal">Book a free 20-minute call</button>
+          <a href="#work" class="link-quiet" style="color:var(--text-light-sub);">
+            <span>View case studies</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     6. SELECTED WORK (Light)
+     Bento grid of 3-4 case study tiles. PLACEHOLDER.
+     ========================================================================= -->
+<section id="work" class="section-light section-rhythm border-top-light">
+  <div class="site-container">
+
+    <div class="work-header reveal" style="margin-bottom:64px;">
+      <div style="max-width:560px;">
+        <h2 class="font-serif-display text-h2" style="color:var(--text-dark);margin-bottom:12px;">Selected work</h2>
+        <p style="font-size:15px;color:var(--text-dark-sub);">A collection of digital platforms, e-commerce stores, and performance campaigns built for our partners.</p>
+      </div>
+      <button type="button" class="btn-cta-primary open-booking-modal" style="flex-shrink:0;">
+        Book a free 20-minute call
+      </button>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="bento-grid reveal">
+
+      <!-- Case Study 1 (Large) -->
+      <article class="case-tile bento-large">
+        <div class="placeholder-slot aspect-16-10" style="background-color:rgba(17,17,17,0.06);border-color:var(--neutral-300);">
+          <span class="placeholder-badge">PLACEHOLDER</span>
+          <p style="font-size:12px;color:var(--text-dark-muted);text-align:center;max-width:260px;">Case Study 01: E-Commerce Retail Platform</p>
+        </div>
+        <div class="case-tile-meta">
+          <h3 class="font-serif-display text-h4" style="color:var(--text-dark);">Client Name [PLACEHOLDER]</h3>
+          <span class="font-technical-mono" style="font-size:13px;color:var(--text-dark-sub);">Result: 3.4x ROAS on Meta ads &amp; sub-second page loads [PLACEHOLDER]</span>
+        </div>
+      </article>
+
+      <!-- Case Study 2 (Small) -->
+      <article class="case-tile bento-small">
+        <div class="placeholder-slot aspect-4-3" style="background-color:rgba(17,17,17,0.06);border-color:var(--neutral-300);">
+          <span class="placeholder-badge">PLACEHOLDER</span>
+          <p style="font-size:12px;color:var(--text-dark-muted);text-align:center;max-width:180px;">Case Study 02: School SIS Portal</p>
+        </div>
+        <div>
+          <h3 class="font-serif-display text-h4" style="color:var(--text-dark);">School Client [PLACEHOLDER]</h3>
+          <p class="font-technical-mono" style="font-size:13px;color:var(--text-dark-sub);margin-top:4px;">Result: Automated fee collection for 1,200+ students [PLACEHOLDER]</p>
+        </div>
+      </article>
+
+      <!-- Case Study 3 (Half) -->
+      <article class="case-tile bento-half">
+        <div class="placeholder-slot aspect-16-10" style="background-color:rgba(17,17,17,0.06);border-color:var(--neutral-300);">
+          <span class="placeholder-badge">PLACEHOLDER</span>
+          <p style="font-size:12px;color:var(--text-dark-muted);text-align:center;max-width:220px;">Case Study 03: Corporate Enterprise Platform</p>
+        </div>
+        <div>
+          <h3 class="font-serif-display text-h4" style="color:var(--text-dark);">Enterprise Co. [PLACEHOLDER]</h3>
+          <p class="font-technical-mono" style="font-size:13px;color:var(--text-dark-sub);margin-top:4px;">Result: Institutional site launched with zero-downtime DNS cutover [PLACEHOLDER]</p>
+        </div>
+      </article>
+
+      <!-- Case Study 4 (Half) -->
+      <article class="case-tile bento-half">
+        <div class="placeholder-slot aspect-16-10" style="background-color:rgba(17,17,17,0.06);border-color:var(--neutral-300);">
+          <span class="placeholder-badge">PLACEHOLDER</span>
+          <p style="font-size:12px;color:var(--text-dark-muted);text-align:center;max-width:220px;">Case Study 04: Brand Identity &amp; Creator Portfolio</p>
+        </div>
+        <div>
+          <h3 class="font-serif-display text-h4" style="color:var(--text-dark);">Creative Studio [PLACEHOLDER]</h3>
+          <p class="font-technical-mono" style="font-size:13px;color:var(--text-dark-sub);margin-top:4px;">Result: High-intent inquiry rate increased 2.2x post-redesign [PLACEHOLDER]</p>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     7. PROCESS (Dark)
+     4 steps, large numerals, thin dividers, no cards.
+     ========================================================================= -->
+<section id="process" class="section-dark section-rhythm border-top-dark">
+  <div class="site-container">
+
+    <div class="process-header reveal" style="margin-bottom:64px;">
+      <h2 class="font-serif-display text-h2" style="color:#ffffff;margin-bottom:12px;">How we work</h2>
+      <p style="font-size:15px;color:var(--text-light-sub);">A structured, transparent delivery process from initial scoping to ongoing support.</p>
+    </div>
+
+    <div class="process-grid reveal" style="transition-delay:80ms;">
+      <div class="process-step">
+        <span class="process-numeral">01</span>
+        <div>
+          <h3 class="font-serif-display" style="color:#ffffff;font-size:20px;margin-bottom:8px;">Discovery &amp; Scoping</h3>
+          <p style="font-size:14px;color:var(--text-light-sub);line-height:1.65;">We audit your requirements, define technical specs, clarify audience intent, and outline milestone deliverables.</p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <span class="process-numeral">02</span>
+        <div>
+          <h3 class="font-serif-display" style="color:#ffffff;font-size:20px;margin-bottom:8px;">Sprint Architecture</h3>
+          <p style="font-size:14px;color:var(--text-light-sub);line-height:1.65;">We engineer the responsive UI, connect payment gateways or Meta CAPI tracking, and test cross-device functionality.</p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <span class="process-numeral">03</span>
+        <div>
+          <h3 class="font-serif-display" style="color:#ffffff;font-size:20px;margin-bottom:8px;">Edge Deployment</h3>
+          <p style="font-size:14px;color:var(--text-light-sub);line-height:1.65;">Rigorous QA, DNS propagation, SSL hardening, and production launch on the Vercel edge network.</p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <span class="process-numeral">04</span>
+        <div>
+          <h3 class="font-serif-display" style="color:#ffffff;font-size:20px;margin-bottom:8px;">Ongoing SLA &amp; Support</h3>
+          <p style="font-size:14px;color:var(--text-light-sub);line-height:1.65;">Standard per-hour maintenance, campaign optimization, security patches, and guaranteed turnaround times.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     8. ESTIMATOR (Light)
+     Two-column tool with live price range output.
+     ========================================================================= -->
+<section id="estimator" class="section-light section-rhythm border-top-light">
+  <div class="site-container">
+
+    <div class="reveal" style="max-width:600px;margin-bottom:56px;">
+      <h2 class="font-serif-display text-h2" style="color:var(--text-dark);margin-bottom:12px;">Project scope estimator</h2>
+      <p style="font-size:15px;color:var(--text-dark-sub);">Select your requirements to see estimated delivery timelines and indicative scope deliverables.</p>
+    </div>
+
+    <div class="estimator-layout reveal" style="transition-delay:80ms;">
+
+      <!-- Inputs -->
+      <div class="estimator-inputs">
+
+        <div class="form-group">
+          <label class="form-label" for="estimator-service">Service Category</label>
+          <select id="estimator-service" class="form-select">
+            <option value="web_dev" selected>Website Development (Portfolio, E-Commerce, School, Corporate)</option>
+            <option value="meta_ads">Meta Ads Support (Promotion, Lead Generation, CAPI Tracking)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="estimator-scale">Project Scale</label>
+          <select id="estimator-scale" class="form-select">
+            <option value="starter" selected>Starter — Focused Launch Sprint</option>
+            <option value="growth">Growth — Comprehensive Feature Integration</option>
+            <option value="enterprise">Enterprise — Custom Platform Architecture</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <span class="form-label">Optional Support Add-ons</span>
+          <div class="addon-grid">
+            <label class="addon-label">
+              <input type="checkbox" class="estimator-addon" data-title="Payment Gateway Integration (bKash / Nagad / Stripe)">
+              <span>Payment Gateways</span>
+            </label>
+            <label class="addon-label">
+              <input type="checkbox" class="estimator-addon" data-title="Meta CAPI Server Tracking">
+              <span>Meta CAPI Tracking</span>
+            </label>
+            <label class="addon-label">
+              <input type="checkbox" class="estimator-addon" data-title="Canva Brand Kit &amp; Pitch Deck">
+              <span>Canva Brand Kit</span>
+            </label>
+            <label class="addon-label">
+              <input type="checkbox" class="estimator-addon" data-title="Dedicated Hourly Retainer Support">
+              <span>Hourly Retainer SLA</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Output Card -->
+      <div class="estimator-output">
+
+        <div class="output-row">
+          <span class="output-label">Estimated Timeline</span>
+          <div id="estimator-timeline" class="output-value">2–3 weeks</div>
+        </div>
+
+        <div class="output-row">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px;">
+            <span class="output-label">Estimated Price Range</span>
+            <span class="placeholder-badge" style="font-size:9px;">PLACEHOLDER</span>
+          </div>
+          <div id="estimator-price-range" class="output-value-mono">$750 – $1,200</div>
+          <p class="output-note">Indicative range. Exact quote finalized after scoping your detailed requirements.</p>
+        </div>
+
+        <div>
+          <span class="output-label" style="display:block;margin-bottom:12px;">Included Deliverables</span>
+          <ul id="estimator-deliverables" class="deliverables-list">
+            <!-- Populated via JS -->
+          </ul>
+        </div>
+
+        <div style="padding-top:8px;">
+          <button type="button" id="estimator-book-btn" class="btn-cta-primary btn-full">
+            Book a free 20-minute call
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     9. TESTIMONIALS (Light)
+     Large quote layout. PLACEHOLDER.
+     ========================================================================= -->
+<section class="section-light section-rhythm border-top-light" aria-label="Client feedback">
+  <div class="site-container">
+    <div class="testimonial-inner reveal">
+      <span class="placeholder-badge" style="margin-bottom:32px;">PLACEHOLDER</span>
+      <blockquote class="testimonial-quote">
+        "Client testimonial statement goes here. A straightforward review highlighting project delivery, communication clarity, and business outcomes."
+      </blockquote>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">PHOTO</div>
+        <div>
+          <div style="font-size:15px;font-weight:600;color:var(--text-dark);">Client Name [PLACEHOLDER]</div>
+          <div style="font-size:13px;color:var(--text-dark-sub);">Founder / Director, Company Name [PLACEHOLDER]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     10. ABOUT / TEAM (Dark)
+     Photo + bio PLACEHOLDER.
+     ========================================================================= -->
+<section class="section-dark section-rhythm border-top-dark" aria-label="About the studio">
+  <div class="site-container">
+
+    <div class="about-grid reveal">
+
+      <div class="placeholder-slot aspect-4-5" style="background-color:rgba(255,255,255,0.04);border-color:var(--border-dark);color:var(--text-light-muted);">
+        <span class="placeholder-badge">PLACEHOLDER</span>
+        <p style="font-size:12px;color:var(--text-light-muted);text-align:center;max-width:180px;">Studio Founder / Team Photo</p>
+      </div>
+
+      <div class="space-y-6">
+        <span class="font-technical-mono uppercase tracking-wider" style="font-size:11px;color:var(--text-light-muted);">About ANNEX</span>
+        <h2 class="font-serif-display text-h2" style="color:#ffffff;">A dedicated digital team operating virtually from Bangladesh.</h2>
+        <div class="space-y-4">
+          <p class="text-body leading-relaxed" style="color:var(--text-light-sub);">
+            Hi, I'm Ratul. Together with our engineering team, we partner with founders, institutions, and businesses to build dependable web platforms and scale customer acquisition through Meta ads.
+          </p>
+          <p style="font-size:15px;color:var(--text-light-muted);">
+            [PLACEHOLDER: Short studio background, founding vision, and technical philosophy will be detailed here.]
+          </p>
+        </div>
+        <div style="padding-top:8px;">
+          <button type="button" class="btn-cta-primary open-booking-modal">Book a free 20-minute call</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     11. FAQ (Light)
+     Minimal accordion, thin dividers, no boxes.
+     ========================================================================= -->
+<section id="faq" class="section-light section-rhythm border-top-light">
+  <div class="site-container">
+
+    <div class="faq-layout reveal">
+
+      <div class="space-y-4">
+        <h2 class="font-serif-display text-h2" style="color:var(--text-dark);">Frequently asked questions</h2>
+        <p style="font-size:15px;color:var(--text-dark-sub);line-height:1.65;">
+          Straightforward answers about our engagement models, delivery timelines, and ongoing support terms.
+        </p>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-row">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>What website development projects do you handle?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            We design and build e-commerce stores (with bKash, Nagad, Stripe payment gateways), school and institutional administrative portals, corporate company websites, and creator portfolios. Every project is custom-coded for mobile performance and Vercel edge deployment.
+          </div>
+        </div>
+
+        <div class="faq-row">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>How do you manage Meta advertising campaigns?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            We configure server-side Conversions API (CAPI) tracking, conduct structured creative testing, build lead funnels (including WhatsApp Click-to-Chat), and provide weekly ROAS performance reviews.
+          </div>
+        </div>
+
+        <div class="faq-row">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>How does virtual collaboration work?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            We communicate via scheduled video sprint reviews, direct messaging channels (WhatsApp / Discord), and version-controlled Git repositories. All staging environments are deployed to live preview URLs.
+          </div>
+        </div>
+
+        <div class="faq-row">
+          <button type="button" class="faq-trigger" aria-expanded="false">
+            <span>What are your after-sales and maintenance rates?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            We offer transparent hourly billing with itemized task logs for updates and bug fixes, as well as monthly maintenance retainers with guaranteed SLA response times.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     12. FINAL CTA (Dark)
+     Full-width dark, one headline, one button + WhatsApp link.
+     ========================================================================= -->
+<section class="section-dark section-rhythm border-top-dark">
+  <div class="site-container">
+    <div class="final-cta-inner reveal">
+
+      <h2 class="font-serif-display text-h2" style="color:#ffffff;margin-bottom:20px;">Ready to discuss your project?</h2>
+
+      <p style="font-size:17px;color:var(--text-light-sub);line-height:1.65;margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto;">
+        Book a 20-minute introductory call to review your goals, scope timeline, and budget.
+      </p>
+
+      <div class="final-cta-actions">
+        <button type="button" class="btn-cta-primary open-booking-modal">
+          Book a free 20-minute call
+        </button>
+
+        <a href="https://wa.me/8801700000000?text=Hello%20ANNEX%2C%20I%20would%20like%20to%20discuss%20a%20project."
+           target="_blank"
+           rel="noopener noreferrer"
+           class="link-quiet"
+           style="color:var(--text-light-sub);">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="color:#25D366;flex-shrink:0;">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          <span>Or chat via WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- =========================================================================
+     13. FOOTER
+     Compact, 3 columns, real contact details only.
+     ========================================================================= -->
+<footer class="site-footer">
+  <div class="site-container">
+
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div>
+        <img src="assets/logo-white-trimmed.png" alt="ANNEX" height="28" style="width:auto;object-fit:contain;margin-bottom:16px;">
+        <p style="color:var(--text-light-sub);font-size:14px;line-height:1.65;max-width:300px;">
+          Web development, Meta advertising, and technical support. Operating virtually from Dhaka-1215, Bangladesh.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <span class="footer-col-label">Navigation</span>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#services">Services</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#work">Selected Work</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <span class="footer-col-label">Direct Inquiries</span>
+        <div class="footer-nav">
+          <a href="mailto:support@annexbd.tech" style="color:#ffffff;">support@annexbd.tech</a>
+          <span style="color:var(--text-light-sub);">annexbd.tech</span>
+          <span style="color:var(--text-light-muted);font-size:12px;">Dhaka-1215, Bangladesh</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 ANNEX (annexbd.tech). All rights reserved.</div>
+      <div>Deployed on Vercel Edge</div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- =========================================================================
+     BOOKING MODAL
+     ========================================================================= -->
+<div id="booking-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+
+    <div class="modal-header">
+      <div>
+        <h3 id="modal-title" class="font-serif-display" style="font-size:26px;color:#ffffff;margin-bottom:4px;">Book a free 20-minute call</h3>
+        <p style="font-size:13px;color:var(--text-light-muted);">Let's discuss your project scope and timeline.</p>
+      </div>
+      <button type="button" id="booking-modal-close" class="modal-close" aria-label="Close booking modal">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <form id="booking-form" class="modal-form" novalidate>
+      <div class="modal-field">
+        <label class="modal-label" for="booking-name">Your Name</label>
+        <input type="text" id="booking-name" class="modal-input" required placeholder="e.g. Ratul / Enterprise Co">
+      </div>
+      <div class="modal-field">
+        <label class="modal-label" for="booking-email">Email Address</label>
+        <input type="email" id="booking-email" class="modal-input" required placeholder="name@company.com">
+      </div>
+      <div class="modal-field">
+        <label class="modal-label" for="booking-notes">Project Notes / Preferred Time</label>
+        <textarea id="booking-notes" class="modal-textarea" rows="4" placeholder="Briefly describe what you'd like to build or achieve..."></textarea>
+      </div>
+      <div style="padding-top:8px;">
+        <button type="submit" class="btn-cta-primary btn-full">Book a free 20-minute call</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+<!-- =========================================================================
+     FLOATING WHATSAPP (Mobile only)
+     ========================================================================= -->
+<a href="https://wa.me/8801700000000?text=Hello%20ANNEX%2C%20I%20would%20like%20to%20discuss%20a%20project."
+   target="_blank"
+   rel="noopener noreferrer"
+   class="floating-wa"
+   aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+  </svg>
+</a>
+
+
+<!-- Front-End Controller -->
+<script src="js/main.js"></script>
 
 </body>
 </html>

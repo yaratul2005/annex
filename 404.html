@@ -3,47 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Node Not Found | ANNEX BD</title>
+  <title>404 — Page Not Found | ANNEX</title>
   <meta name="robots" content="noindex, follow">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            cyber: {
-              black: '#07090E',
-              dark: '#0D121D',
-              cyan: '#00F2FE'
-            }
-          }
-        }
-      }
-    }
-  </script>
 </head>
-<body class="bg-cyber-black text-slate-100 min-h-screen flex items-center justify-center p-4 antialiased">
-  <div class="max-w-md w-full glass-panel rounded-2xl p-8 border border-white/10 text-center space-y-6">
-    <div class="w-16 h-16 mx-auto rounded-2xl bg-cyan-500/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-mono font-bold text-xl">
-      404
-    </div>
+<body class="bg-[#111111] text-white min-h-screen flex items-center justify-center p-6 antialiased font-sans-body">
+  <div class="max-w-md w-full border border-white/10 rounded-[12px] p-8 sm:p-10 text-center space-y-6 bg-[#161616]">
+    <span class="font-serif-display text-5xl text-neutral-400 block">404</span>
 
     <div class="space-y-2">
-      <h1 class="text-2xl font-bold font-heading text-white">Edge Node Not Found</h1>
-      <p class="text-sm text-slate-400 font-mono">
-        The requested resource path does not exist on the annexbd.tech edge network.
+      <h1 class="text-3xl font-serif-display text-white">Page not found</h1>
+      <p class="text-sm text-neutral-400">
+        The page you are looking for doesn't exist or has been moved.
       </p>
     </div>
 
-    <div class="pt-2 flex flex-col gap-3 font-mono text-xs">
-      <a href="/" class="w-full py-3 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold uppercase tracking-wider hover:opacity-90 transition-opacity">
-        Return to Edge Gateway
+    <div class="pt-2 flex flex-col gap-3 text-sm">
+      <a href="/" class="btn-cta-primary w-full text-center">
+        Return to home
       </a>
-      <a href="mailto:support@annexbd.tech" class="text-slate-400 hover:text-cyan-400 transition-colors">
-        Contact: support@annexbd.tech
+      <a href="mailto:support@annexbd.tech" class="text-neutral-400 hover:text-white transition-colors text-xs font-technical-mono">
+        support@annexbd.tech
       </a>
     </div>
   </div>

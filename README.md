@@ -6,17 +6,17 @@ GitHub Repository: [https://github.com/yaratul2005/annex](https://github.com/yar
 
 ---
 
-## Aesthetic & Design Philosophy
+## Aesthetic & Design Philosophy (Hand-Crafted Studio)
 
-- **Color Palette:**
-  - **Base Canvas:** Deep Pitch Black (`#000000` / `#050508`).
-  - **Primary Element:** Crisp, High-Contrast Pure White (`#ffffff`) for dominant headlines, primary action buttons, glowing badges, and brand typography.
-  - **Artistic Accents:**
-    - **Electric Orange (`#ff5500`):** Meta Ads Growth Lab, high ROAS, conversion funnels.
-    - **Cyber / Vercel Blue (`#0070f3`):** Web development architectures, Vercel Edge, DevOps.
-    - **Crimson Red (`#ff2a55`):** Live operational telemetry, critical security, high-priority SLA.
-    - **Emerald Green (`#10b981`):** System operational status and revenue benchmarks.
-- **Strict Clean Design:** **Zero emojis**. All icons, signals, and markers are precision vector SVGs.
+- **Color System:**
+  - **Alternating Section Rhythm:** Alternating between a warm off-white (`#F6F4EF`) and a deep neutral dark (`#111111`) for organic reading cadence.
+  - **Single Accent Color:** Warm studio terracotta (`#D94826`) used strictly for primary CTAs, links, and key highlights.
+- **Typography:**
+  - **Headings:** Distinctive editorial display serif (`Instrument Serif`).
+  - **Body Text:** Clean, legible sans-serif (`Inter`).
+  - **Technical Details:** Monospace reserved strictly for tiny specs, tags, and prices.
+- **CTA Rule:** Exactly one primary CTA label everywhere: `"Book a free 20-minute call"`, accompanied by a mobile floating WhatsApp button.
+- **Content Integrity:** Hand-crafted studio structure with clean `[PLACEHOLDER]` slots for case studies, testimonials, and team bios. Zero fabricated numbers or client names. Zero emojis.
 - **Brand Assets:** Transparent high-resolution logo formatted and trimmed for dark headers (`assets/logo-white-trimmed.png`) and standard web use (`assets/logo-trimmed.png`).
 - **Interactive Features:** Real-time Dhaka-1215 telemetry clock, interactive particle constellation canvas, project scope & timeline calculator, dynamic service architecture tabs, and contact/quote dispatch modal with email and direct WhatsApp hooks.
 - **SEO + GEO + AEO Optimization:** Google Rich Snippets Schema JSON-LD, localized geographic meta tags for **Dhaka-1215, Bangladesh**, Answer Engine Optimization (AEO) for Perplexity, ChatGPT, Gemini, and Claude AI search indexing.

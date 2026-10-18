@@ -1,0 +1,291 @@
+/* ==========================================================================
+   ANNEX BD - Digital & IT Systems Engineering (2026 UI/UX Theme)
+   Primary Domain: annexbd.tech | Dhaka-1215, Bangladesh
+   Palette: Deep Pitch Black + Pure White Primary + Artistic Orange, Blue & Red Accents
+   Zero Emojis Allowed | Pure Scalable Precision SVGs & High-Craft Styling
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --bg-pitch: #000000;
+  --bg-deep: #050508;
+  --bg-card: rgba(12, 12, 14, 0.72);
+  --bg-card-hover: rgba(20, 20, 24, 0.85);
+  
+  /* Primary White Definition */
+  --primary-white: #ffffff;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.25);
+  --border-white-glow: rgba(255, 255, 255, 0.5);
+
+  /* Artistic Triad Accents */
+  --accent-orange: #ff5500;
+  --accent-orange-glow: rgba(255, 85, 0, 0.35);
+  --accent-blue: #0070f3;
+  --accent-cyan: #00f0ff;
+  --accent-blue-glow: rgba(0, 112, 243, 0.35);
+  --accent-red: #ff2a55;
+  --accent-red-glow: rgba(255, 42, 85, 0.35);
+  --accent-emerald: #10b981;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+}
+
+/* Base Resets & Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--bg-pitch);
+  color: var(--text-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--bg-pitch);
+}
+
+/* Custom Selection */
+::selection {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Typography */
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em;
+}
+
+/* Sleek Monochrome Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+  border: 1px solid #000000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
+
+/* Cyber Matrix Background Grid */
+.bg-grid-cyber {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Multi-Accent Artistic Radial Ambient Glow */
+.bg-artistic-ambient {
+  background: 
+    radial-gradient(circle at 20% 0%, rgba(255, 85, 0, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(0, 112, 243, 0.09) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(255, 42, 85, 0.05) 0%, transparent 55%);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-strong);
+  box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.7), 0 0 20px 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-nav {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+/* High-Contrast White Primary Headlines */
+.headline-white {
+  color: #ffffff;
+  text-shadow: 0 0 35px rgba(255, 255, 255, 0.2);
+}
+
+.gradient-text-white-artistic {
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 60%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Artistic Color Accents for Services */
+.gradient-text-orange {
+  background: linear-gradient(135deg, #ffffff 0%, #ff5500 55%, #ff8833 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #ffffff 0%, #0070f3 55%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.gradient-text-red {
+  background: linear-gradient(135deg, #ffffff 0%, #ff2a55 55%, #ff6b8b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Stark White Primary Action Buttons */
+.btn-primary-white {
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px -3px rgba(255, 255, 255, 0.35);
+}
+
+.btn-primary-white:hover {
+  background: #f4f4f5;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px 0 rgba(255, 255, 255, 0.55);
+}
+
+.btn-outline-white {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transition: all 0.25s ease;
+}
+
+.btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Glow Effects */
+.glow-white {
+  box-shadow: 0 0 30px -5px rgba(255, 255, 255, 0.3);
+}
+
+.glow-orange {
+  box-shadow: 0 0 25px -5px var(--accent-orange-glow);
+}
+
+.glow-blue {
+  box-shadow: 0 0 25px -5px var(--accent-blue-glow);
+}
+
+.glow-red {
+  box-shadow: 0 0 25px -5px var(--accent-red-glow);
+}
+
+/* Pulse Keyframes for Status Badges */
+@keyframes cyberPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.4;
+  }
+}
+
+.cyber-ping {
+  animation: cyberPulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Holographic Edge Scanline */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.scanline-effect {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
+
+/* Infinite Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Service Card Interactive Hover with Top Glow */
+.service-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+/* Tab Active State */
+.web-tab-btn.active {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Toast */
+#toast-notification {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}

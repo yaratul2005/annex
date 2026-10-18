@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#ff5500" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0070f3" stop-opacity="0.2" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Outer Rounded Pitch Black Pill Background with Crisp White Stroke -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#000000" stroke="rgba(255,255,255,0.25)" stroke-width="2" />
+  
+  <!-- Ambient Core Glow -->
+  <circle cx="32" cy="32" r="18" fill="url(#glowGrad)" opacity="0.3" filter="url(#glow)" />
+  
+  <!-- Stark Pure White Geometric 'A' Glyph for ANNEX -->
+  <path d="M 32 12 L 48 48 L 41 48 L 36.5 37 L 27.5 37 L 23 48 L 16 48 Z M 32 24 L 29.5 32 L 34.5 32 Z" 
+        fill="#ffffff" />
+        
+  <!-- Artistic Electric Orange Accent Notch -->
+  <circle cx="48" cy="16" r="3.2" fill="#ff5500" />
+</svg>

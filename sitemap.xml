@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://annexbd.tech/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://annexbd.tech/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://annexbd.tech/" />
+    <image:image>
+      <image:loc>https://annexbd.tech/assets/og-image.png</image:loc>
+      <image:title>ANNEX BD - High-Performance Web Development, Meta Ads &amp; IT Solutions</image:title>
+      <image:caption>Next-generation digital engineering hub operating from Dhaka-1215, Bangladesh</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://annexbd.tech/assets/logo-white-trimmed.png</image:loc>
+      <image:title>ANNEX BD Official Logo</image:title>
+    </image:image>
+  </url>
+</urlset>

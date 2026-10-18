@@ -98,8 +98,8 @@
         <!-- 4 Nav Links -->
         <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-neutral-300">
           <a href="#services" class="hover:text-white transition-colors">Services</a>
+          <a href="#architecture" class="hover:text-white transition-colors">Architecture</a>
           <a href="#work" class="hover:text-white transition-colors">Work</a>
-          <a href="#process" class="hover:text-white transition-colors">Process</a>
           <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
         </nav>
 
@@ -137,8 +137,8 @@
 
       <nav class="mt-8 flex flex-col gap-5 text-lg font-medium text-neutral-300">
         <a href="#services" class="mobile-nav-link hover:text-white">Services</a>
+        <a href="#architecture" class="mobile-nav-link hover:text-white">Architecture</a>
         <a href="#work" class="mobile-nav-link hover:text-white">Work</a>
-        <a href="#process" class="mobile-nav-link hover:text-white">Process</a>
         <a href="#faq" class="mobile-nav-link hover:text-white">FAQ</a>
       </nav>
     </div>
@@ -411,19 +411,101 @@
     </section>
 
     <!-- ==========================================================================
-         5. SELECTED WORK (Section Dark)
+         WEB ARCHITECTURE & STANDARDS (NEW SECTION - Section Dark)
+         Showcasing the new web platform asset in a bespoke studio layout.
+         ========================================================================== -->
+    <section id="architecture" class="section-dark section-rhythm border-t border-white/10">
+      <div class="site-container space-y-16">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Image Column (Left) -->
+          <div class="lg:col-span-6">
+            <div class="browser-frame shadow-2xl">
+              <div class="browser-chrome">
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+                <span class="ml-2 font-technical-mono text-[11px] text-neutral-400 opacity-60">annexbd.tech/architecture</span>
+              </div>
+              <div class="relative aspect-[4/3] bg-[#161616] overflow-hidden flex items-center justify-center p-4">
+                <img src="assets/web-trimmed.png" 
+                     alt="ANNEX Web Platform Architecture" 
+                     class="w-full h-full object-contain"
+                     width="745" 
+                     height="641">
+                <div class="absolute top-3 right-3">
+                  <span class="placeholder-badge text-[10px]">PLACEHOLDER</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Column (Right) -->
+          <div class="lg:col-span-6 space-y-6">
+            <span class="font-technical-mono text-xs uppercase tracking-wider text-neutral-400 font-semibold">
+              Web Architecture &amp; Standards
+            </span>
+
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl text-white font-serif-display leading-tight">
+              Engineered for speed, stability, and measurable business impact.
+            </h2>
+
+            <p class="text-base sm:text-lg text-neutral-300 leading-relaxed font-normal">
+              Whether building an e-commerce platform with automated payment gateways, an institutional school portal, or an enterprise corporate presence, we engineer clean-code architectures deployed directly to the Vercel edge.
+            </p>
+
+            <div class="space-y-4 pt-2 border-t border-white/10">
+              <div class="space-y-1">
+                <strong class="text-white text-base font-semibold block">E-Commerce &amp; Gateway Integration</strong>
+                <p class="text-sm text-neutral-400">Streamlined checkout flows supporting bKash Merchant, Nagad, Rocket, SSLCommerz, and Stripe, paired with courier tracking logistics.</p>
+              </div>
+
+              <div class="space-y-1">
+                <strong class="text-white text-base font-semibold block">School &amp; Institutional Systems</strong>
+                <p class="text-sm text-neutral-400">Digital student enrollment, automated tuition fee collection with computerized receipts, and faculty administration.</p>
+              </div>
+
+              <div class="space-y-1">
+                <strong class="text-white text-base font-semibold block">Corporate Governance &amp; Portfolios</strong>
+                <p class="text-sm text-neutral-400">Institutional authority platforms with investor relations, compliance, and bespoke personal brand showcases.</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-6 pt-4">
+              <button type="button" class="open-booking-modal btn-cta-primary">
+                Book a free 20-minute call
+              </button>
+
+              <a href="#work" class="link-quiet text-neutral-300 hover:text-white">
+                <span>View case studies</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. SELECTED WORK (Section Light: Warm Off-White #F6F4EF)
          Bento grid of 3-4 case study tiles with mixed sizes and large image areas.
          Each tile: project image, client name, one-line result (PLACEHOLDER).
          ========================================================================== -->
-    <section id="work" class="section-dark section-rhythm border-t border-white/10">
+    <section id="work" class="section-light section-rhythm border-t border-neutral-300">
       <div class="site-container space-y-16">
         
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div class="max-w-2xl space-y-3">
-            <h2 class="text-4xl sm:text-5xl lg:text-6xl text-white font-serif-display">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl text-neutral-900 font-serif-display">
               Selected work
             </h2>
-            <p class="text-base text-neutral-400">
+            <p class="text-base text-neutral-600">
               A collection of digital platforms, e-commerce stores, and performance campaigns built for our partners.
             </p>
           </div>
@@ -438,17 +520,17 @@
           
           <!-- Case Study 1 (Large - 8 Cols) -->
           <article class="md:col-span-8 space-y-4">
-            <div class="placeholder-slot aspect-[16/10] bg-neutral-900 border-white/15">
+            <div class="placeholder-slot aspect-[16/10] bg-neutral-200/60 border-neutral-300">
               <span class="placeholder-badge">PLACEHOLDER</span>
               <p class="text-xs text-neutral-500 text-center max-w-[280px]">
                 Case Study 01: E-Commerce Retail Platform Screenshot
               </p>
             </div>
             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 pt-1">
-              <h3 class="text-2xl font-serif-display text-white">
+              <h3 class="text-2xl font-serif-display text-neutral-900">
                 Client Name [PLACEHOLDER]
               </h3>
-              <span class="text-sm text-neutral-400 font-technical-mono">
+              <span class="text-sm text-neutral-600 font-technical-mono">
                 Result: 3.4x ROAS on Meta ads &amp; sub-second page loads [PLACEHOLDER]
               </span>
             </div>
@@ -456,17 +538,17 @@
 
           <!-- Case Study 2 (Compact - 4 Cols) -->
           <article class="md:col-span-4 space-y-4">
-            <div class="placeholder-slot aspect-[4/3] md:aspect-auto md:h-[calc(100%-48px)] bg-neutral-900 border-white/15">
+            <div class="placeholder-slot aspect-[4/3] md:aspect-auto md:h-[calc(100%-48px)] bg-neutral-200/60 border-neutral-300">
               <span class="placeholder-badge">PLACEHOLDER</span>
               <p class="text-xs text-neutral-500 text-center max-w-[200px]">
                 Case Study 02: School SIS Portal
               </p>
             </div>
             <div class="pt-1">
-              <h3 class="text-2xl font-serif-display text-white">
+              <h3 class="text-2xl font-serif-display text-neutral-900">
                 School Client [PLACEHOLDER]
               </h3>
-              <p class="text-sm text-neutral-400 font-technical-mono mt-1">
+              <p class="text-sm text-neutral-600 font-technical-mono mt-1">
                 Result: Automated fee collection for 1,200+ students [PLACEHOLDER]
               </p>
             </div>
@@ -474,17 +556,17 @@
 
           <!-- Case Study 3 (Equal - 6 Cols) -->
           <article class="md:col-span-6 space-y-4">
-            <div class="placeholder-slot aspect-[16/10] bg-neutral-900 border-white/15">
+            <div class="placeholder-slot aspect-[16/10] bg-neutral-200/60 border-neutral-300">
               <span class="placeholder-badge">PLACEHOLDER</span>
               <p class="text-xs text-neutral-500 text-center max-w-[240px]">
                 Case Study 03: Corporate Enterprise Platform
               </p>
             </div>
             <div class="pt-1">
-              <h3 class="text-2xl font-serif-display text-white">
+              <h3 class="text-2xl font-serif-display text-neutral-900">
                 Enterprise Co. [PLACEHOLDER]
               </h3>
-              <p class="text-sm text-neutral-400 font-technical-mono mt-1">
+              <p class="text-sm text-neutral-600 font-technical-mono mt-1">
                 Result: Institutional site deployed with zero-downtime DNS cutover [PLACEHOLDER]
               </p>
             </div>
@@ -492,17 +574,17 @@
 
           <!-- Case Study 4 (Equal - 6 Cols) -->
           <article class="md:col-span-6 space-y-4">
-            <div class="placeholder-slot aspect-[16/10] bg-neutral-900 border-white/15">
+            <div class="placeholder-slot aspect-[16/10] bg-neutral-200/60 border-neutral-300">
               <span class="placeholder-badge">PLACEHOLDER</span>
               <p class="text-xs text-neutral-500 text-center max-w-[240px]">
                 Case Study 04: Brand Identity &amp; Creator Portfolio
               </p>
             </div>
             <div class="pt-1">
-              <h3 class="text-2xl font-serif-display text-white">
+              <h3 class="text-2xl font-serif-display text-neutral-900">
                 Creative Studio [PLACEHOLDER]
               </h3>
-              <p class="text-sm text-neutral-400 font-technical-mono mt-1">
+              <p class="text-sm text-neutral-600 font-technical-mono mt-1">
                 Result: High-intent inquiry rate increased 2.2x post-redesign [PLACEHOLDER]
               </p>
             </div>
@@ -917,8 +999,8 @@
         <div class="md:col-span-3 space-y-2 font-medium">
           <div class="text-xs font-technical-mono uppercase tracking-wider text-neutral-500 mb-2">Navigation</div>
           <div><a href="#services" class="hover:text-white transition-colors">Services</a></div>
+          <div><a href="#architecture" class="hover:text-white transition-colors">Architecture</a></div>
           <div><a href="#work" class="hover:text-white transition-colors">Selected Work</a></div>
-          <div><a href="#process" class="hover:text-white transition-colors">Delivery Process</a></div>
           <div><a href="#faq" class="hover:text-white transition-colors">FAQ</a></div>
         </div>
 

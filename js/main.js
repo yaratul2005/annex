@@ -225,8 +225,9 @@ function initMobileNav() {
   const toggleBtn = document.getElementById('mobile-nav-toggle');
   const closeBtn  = document.getElementById('mobile-nav-close');
   const drawer    = document.getElementById('mobile-nav-drawer');
+  const backdrop  = document.getElementById('mobile-nav-backdrop');
   const links     = document.querySelectorAll('.mobile-nav-link');
-  const pageRegions = [document.querySelector('main'), document.querySelector('.site-footer')].filter(Boolean);
+  const pageRegions = [document.querySelector('.site-header'), document.querySelector('main'), document.querySelector('.site-footer')].filter(Boolean);
 
   if (!toggleBtn || !drawer) return;
 
@@ -234,9 +235,14 @@ function initMobileNav() {
     drawer.classList.add('is-open');
     drawer.setAttribute('aria-hidden', 'false');
     drawer.inert = false;
+    if (backdrop) {
+      backdrop.setAttribute('aria-hidden', 'false');
+      backdrop.inert = false;
+    }
     toggleBtn.setAttribute('aria-expanded', 'true');
     toggleBtn.setAttribute('aria-label', 'Close navigation menu');
     document.body.classList.add('nav-open');
+    document.body.classList.add('mobile-nav-open');
     pageRegions.forEach(region => { region.inert = true; });
     closeBtn?.focus();
   }
@@ -245,15 +251,24 @@ function initMobileNav() {
     drawer.classList.remove('is-open');
     drawer.setAttribute('aria-hidden', 'true');
     drawer.inert = true;
+    if (backdrop) {
+      backdrop.setAttribute('aria-hidden', 'true');
+      backdrop.inert = true;
+    }
     toggleBtn.setAttribute('aria-expanded', 'false');
     toggleBtn.setAttribute('aria-label', 'Open navigation menu');
     document.body.classList.remove('nav-open');
+    document.body.classList.remove('mobile-nav-open');
     pageRegions.forEach(region => { region.inert = false; });
     if (restoreFocus) toggleBtn.focus();
   }
 
   toggleBtn.addEventListener('click', openMenu);
   if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  backdrop?.addEventListener('click', () => closeMenu());
+  drawer.querySelectorAll('.open-booking-modal').forEach(button => {
+    button.addEventListener('click', () => closeMenu(false));
+  });
 
   links.forEach(link => link.addEventListener('click', () => closeMenu()));
 

@@ -6,19 +6,19 @@ GitHub Repository: [https://github.com/yaratul2005/annex](https://github.com/yar
 
 ---
 
-## Aesthetic & Design Philosophy (Hand-Crafted Studio)
+## Visual system
 
 - **Color System:**
-  - **Alternating Section Rhythm:** Alternating between a warm off-white (`#F6F4EF`) and a deep neutral dark (`#111111`) for organic reading cadence.
-  - **Single Accent Color:** Warm studio terracotta (`#D94826`) used strictly for primary CTAs, links, and key highlights.
+  - **Alternating Section Rhythm:** Cool mineral surfaces (`#EAF0F1`) balance deep blue-green ink (`#10242D`) for a technical, calm reading cadence.
+  - **Single Accent Color:** Signal teal (`#087985`) marks primary actions and key interactions; a brighter mint is reserved for dark surfaces.
 - **Typography:**
-  - **Headings:** Distinctive editorial display serif (`Instrument Serif`).
+  - **Headings:** Direct, geometric `Space Grotesk` typography gives the studio a clear engineering voice.
   - **Body Text:** Clean, legible sans-serif (`Inter`).
-  - **Technical Details:** Monospace reserved strictly for tiny specs, tags, and prices.
-- **CTA Rule:** Exactly one primary CTA label everywhere: `"Book a free 20-minute call"`, accompanied by a mobile floating WhatsApp button.
-- **Content Integrity:** Hand-crafted studio structure with clean `[PLACEHOLDER]` slots for case studies, testimonials, and team bios. Zero fabricated numbers or client names. Zero emojis.
+  - **Technical Details:** Monospace reserved for small labels and technical specs.
+- **CTA Rule:** Keep the primary CTA label consistent: `"Book a free 20-minute call"`. Use the verified studio email for direct inquiries.
+- **Content Integrity:** No invented clients, testimonials, or campaign results. Portfolio visuals are presented as concept directions. Zero emojis.
 - **Brand Assets:** Transparent high-resolution logo formatted and trimmed for dark headers (`assets/logo-white-trimmed.png`) and standard web use (`assets/logo-trimmed.png`).
-- **Interactive Features:** Real-time Dhaka-1215 telemetry clock, interactive particle constellation canvas, project scope & timeline calculator, dynamic service architecture tabs, and contact/quote dispatch modal with email and direct WhatsApp hooks.
+- **Interactive Features:** Responsive mobile navigation, FAQ accordion, scope and indicative timeline planner, and a contact request modal that opens a prefilled email.
 - **SEO + GEO + AEO Optimization:** Google Rich Snippets Schema JSON-LD, localized geographic meta tags for **Dhaka-1215, Bangladesh**, Answer Engine Optimization (AEO) for Perplexity, ChatGPT, Gemini, and Claude AI search indexing.
 - **Vercel Edge Ready:** Pre-configured with `vercel.json` for instant zero-config edge deployments with clean URLs, security headers, and asset caching.
 
@@ -45,13 +45,20 @@ D:\ANNEX\
 │   ├── logo-white.png       # Pure white inverted transparent logo
 │   ├── logo-trimmed.png     # Trimmed transparent logo (tight padding)
 │   ├── logo-white-trimmed.png # Optimized white navbar logo (811x151)
-│   └── og-image.png         # 1200x630 OpenGraph / Twitter social preview banner
+│   ├── og-image.png         # 1200x630 OpenGraph / Twitter social preview banner
+│   ├── extra/
+│       ├── laptop branding.png # Hero section background artwork
+│       └── web.png             # Web architecture section background artwork
+│   └── shapes/
+│       ├── orbit-system.svg    # Hero orbital ornament
+│       ├── blueprint-grid.svg  # Architecture linework
+│       └── signal-path.svg     # Process section signal motif
 │
 ├── css/
-│   └── styles.css           # Pitch Black & White primary theme with artistic accents
+│   └── styles.css           # Mineral blue-gray surfaces, deep blue-green sections, and signal-teal accents
 │
 └── js/
-    └── main.js              # Canvas particles, Dhaka BST clock, scope estimator & modals
+    └── main.js              # Navigation, FAQ, scope planner, and accessible booking modal
 ```
 
 ---

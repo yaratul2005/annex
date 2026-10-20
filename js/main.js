@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initEstimator();
   initBookingModal();
-  initScrollReveal();
 });
 
 /* --------------------------------------------------------------------------
@@ -20,31 +19,58 @@ function initMobileNav() {
   const closeBtn  = document.getElementById('mobile-nav-close');
   const drawer    = document.getElementById('mobile-nav-drawer');
   const links     = document.querySelectorAll('.mobile-nav-link');
+  const pageRegions = [document.querySelector('main'), document.querySelector('.site-footer')].filter(Boolean);
 
   if (!toggleBtn || !drawer) return;
 
   function openMenu() {
     drawer.classList.add('is-open');
     drawer.setAttribute('aria-hidden', 'false');
+    drawer.inert = false;
     toggleBtn.setAttribute('aria-expanded', 'true');
+    toggleBtn.setAttribute('aria-label', 'Close navigation menu');
     document.body.classList.add('nav-open');
+    pageRegions.forEach(region => { region.inert = true; });
+    closeBtn?.focus();
   }
 
-  function closeMenu() {
+  function closeMenu(restoreFocus = true) {
     drawer.classList.remove('is-open');
     drawer.setAttribute('aria-hidden', 'true');
+    drawer.inert = true;
     toggleBtn.setAttribute('aria-expanded', 'false');
+    toggleBtn.setAttribute('aria-label', 'Open navigation menu');
     document.body.classList.remove('nav-open');
+    pageRegions.forEach(region => { region.inert = false; });
+    if (restoreFocus) toggleBtn.focus();
   }
 
   toggleBtn.addEventListener('click', openMenu);
   if (closeBtn) closeBtn.addEventListener('click', closeMenu);
 
-  links.forEach(link => link.addEventListener('click', closeMenu));
+  links.forEach(link => link.addEventListener('click', () => closeMenu()));
 
   // Close on Escape key
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeMenu();
+    if (!drawer.classList.contains('is-open')) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeMenu();
+      return;
+    }
+    if (e.key === 'Tab') {
+      const focusable = [...drawer.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled])')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (e.shiftKey && (document.activeElement === first || !drawer.contains(document.activeElement))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !drawer.contains(document.activeElement))) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 }
 
@@ -84,7 +110,6 @@ function initEstimator() {
   const scaleSelect    = document.getElementById('estimator-scale');
   const addons         = document.querySelectorAll('.estimator-addon');
   const timelineEl     = document.getElementById('estimator-timeline');
-  const priceRangeEl   = document.getElementById('estimator-price-range');
   const deliverablesEl = document.getElementById('estimator-deliverables');
   const bookBtn        = document.getElementById('estimator-book-btn');
 
@@ -96,7 +121,6 @@ function initEstimator() {
       scales: {
         starter: {
           timeline: '2–3 weeks',
-          price: '$750 – $1,200',
           deliverables: [
             'Bespoke visual architecture & responsive design',
             'Full mobile optimization & Vercel edge deployment',
@@ -106,7 +130,6 @@ function initEstimator() {
         },
         growth: {
           timeline: '3–5 weeks',
-          price: '$1,500 – $2,800',
           deliverables: [
             'Full e-commerce or institutional portal architecture',
             'Payment gateway integration (bKash, Nagad, Stripe, Card)',
@@ -116,7 +139,6 @@ function initEstimator() {
         },
         enterprise: {
           timeline: '5–8 weeks',
-          price: '$3,200 – $5,500+',
           deliverables: [
             'Custom web application & database architecture',
             'Bespoke dashboard, reporting & API integration',
@@ -131,7 +153,6 @@ function initEstimator() {
       scales: {
         starter: {
           timeline: '1 week setup + 30 days management',
-          price: '$450 – $750 / mo',
           deliverables: [
             'Conversions API (CAPI) server-side tracking setup',
             'Audience research & campaign structure',
@@ -140,7 +161,6 @@ function initEstimator() {
         },
         growth: {
           timeline: '1 week setup + ongoing scale',
-          price: '$850 – $1,400 / mo',
           deliverables: [
             'Full-funnel lead generation & retargeting framework',
             'Creative copy testing matrix',
@@ -149,7 +169,6 @@ function initEstimator() {
         },
         enterprise: {
           timeline: 'Immediate onboarding + dedicated management',
-          price: '$1,800 – $3,000+ / mo',
           deliverables: [
             'Omnichannel scaling (Meta + supporting acquisition)',
             'Dynamic product catalog ads & server telemetry',
@@ -173,7 +192,6 @@ function initEstimator() {
     });
 
     if (timelineEl)   timelineEl.textContent   = scaleData.timeline;
-    if (priceRangeEl) priceRangeEl.textContent = scaleData.price;
 
     if (deliverablesEl) {
       deliverablesEl.innerHTML = '';
@@ -199,12 +217,11 @@ function initEstimator() {
       const serviceName = (catalog[serviceSelect.value] || catalog.web_dev).name;
       const scaleText   = scaleSelect.options[scaleSelect.selectedIndex].text;
 
-      if (notesInput && timelineEl && priceRangeEl) {
+      if (notesInput && timelineEl) {
         notesInput.value =
           `Selected Service: ${serviceName}\n` +
           `Scale: ${scaleText}\n` +
-          `Timeline: ${timelineEl.textContent}\n` +
-          `Estimated Range: ${priceRangeEl.textContent}`;
+          `Timeline: ${timelineEl.textContent}`;
       }
 
       if (modal) openModal(modal);
@@ -216,14 +233,20 @@ function initEstimator() {
    4. Booking Modal
    -------------------------------------------------------------------------- */
 function openModal(modal) {
+  modal._returnFocusTo = document.activeElement;
   modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+  modal.inert = false;
   document.body.classList.add('nav-open');
   modal.querySelector('.modal-input, .modal-textarea')?.focus();
 }
 
 function closeModal(modal) {
   modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  modal.inert = true;
   document.body.classList.remove('nav-open');
+  if (modal._returnFocusTo instanceof HTMLElement) modal._returnFocusTo.focus();
 }
 
 function initBookingModal() {
@@ -244,12 +267,34 @@ function initBookingModal() {
 
   // Escape key
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(modal);
+    if (!modal.classList.contains('is-open')) return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeModal(modal);
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusable = [...modal.querySelectorAll('button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')]
+        .filter(el => !el.hidden && el.getClientRects().length);
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (e.shiftKey && (document.activeElement === first || !modal.contains(document.activeElement))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !modal.contains(document.activeElement))) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 
   if (form) {
     form.addEventListener('submit', e => {
       e.preventDefault();
+      if (!form.reportValidity()) return;
 
       const name  = document.getElementById('booking-name')?.value  || 'Client';
       const email = document.getElementById('booking-email')?.value || '';
@@ -267,33 +312,4 @@ function initBookingModal() {
       closeModal(modal);
     });
   }
-}
-
-/* --------------------------------------------------------------------------
-   5. Scroll Reveal (Intersection Observer)
-   -------------------------------------------------------------------------- */
-function initScrollReveal() {
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (prefersReduced) {
-    // If user prefers reduced motion, just make everything visible immediately
-    document.querySelectorAll('.reveal').forEach(el => {
-      el.classList.add('is-visible');
-    });
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }

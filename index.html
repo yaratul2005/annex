@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) — GA4 measurement for annexbd.tech -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    // Keep local and preview traffic out of the production Analytics property.
-    if (window.location.hostname === 'www.annexbd.tech' || window.location.hostname === 'annexbd.tech') {
-      var googleTag = document.createElement('script');
-      googleTag.async = true;
-      googleTag.src = 'https://www.googletagmanager.com/gtag/js?id=G-WLNJ46L9RH';
-      document.head.appendChild(googleTag);
-      gtag('config', 'G-WLNJ46L9RH');
-    }
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ANNEX — Web Development &amp; Meta Ads Studio</title>
@@ -50,12 +34,6 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <meta name="theme-color" content="#10242D">
-
-  <!-- Fonts (preconnect + preload for LCP) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Studio Stylesheet (self-contained, zero Tailwind dependency) -->
   <link rel="stylesheet" href="css/styles.css">
@@ -145,6 +123,17 @@
   </script>
 </head>
 <body>
+
+<div id="site-loader" class="site-loader" aria-hidden="true">
+  <div class="loader-core">
+    <div class="fluid-orb fluid-orb-one"></div>
+    <div class="fluid-orb fluid-orb-two"></div>
+    <div class="fluid-orb fluid-orb-three"></div>
+    <span class="loader-wordmark">ANNEX</span>
+    <span class="loader-caption">Digital, in motion</span>
+    <span class="loader-progress"><i></i></span>
+  </div>
+</div>
 
 <!-- =========================================================================
      1. HEADER
@@ -793,6 +782,14 @@
         </div>
       </div>
 
+      <div>
+        <span class="footer-col-label">Privacy</span>
+        <div class="footer-nav">
+          <a href="privacy.html">Privacy &amp; cookies</a>
+          <button type="button" id="cookie-settings-trigger" class="footer-text-button">Cookie settings</button>
+        </div>
+      </div>
+
     </div>
 
     <div class="footer-review" aria-labelledby="footer-review-title">
@@ -830,7 +827,7 @@
     <div class="modal-header">
       <div>
         <h3 id="modal-title" class="font-serif-display" style="font-size:26px;color:#ffffff;margin-bottom:4px;">Book a free 20-minute call</h3>
-        <p id="modal-description" style="font-size:13px;color:var(--text-light-muted);">Share a few details. Your email app will open with a ready-to-send request.</p>
+        <p id="modal-description" style="font-size:13px;color:var(--text-light-muted);">Share a few details and we’ll get back to you about your project.</p>
       </div>
       <button type="button" id="booking-modal-close" class="modal-close" aria-label="Close booking modal">
         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -842,29 +839,72 @@
     <form id="booking-form" class="modal-form">
       <div class="modal-field">
         <label class="modal-label" for="booking-name">Your Name</label>
-        <input type="text" id="booking-name" name="name" autocomplete="name" class="modal-input" required placeholder="e.g. Ratul or Enterprise Co…">
+        <input type="text" id="booking-name" name="name" autocomplete="name" class="modal-input" required minlength="2" maxlength="100" placeholder="e.g. Ratul or Enterprise Co…">
       </div>
       <div class="modal-field">
         <label class="modal-label" for="booking-email">Email Address</label>
-        <input type="email" id="booking-email" name="email" autocomplete="email" inputmode="email" class="modal-input" required placeholder="name@company.com…">
+        <input type="email" id="booking-email" name="email" autocomplete="email" inputmode="email" class="modal-input" required maxlength="254" placeholder="name@company.com…">
       </div>
       <div class="modal-field">
         <label class="modal-label" for="booking-notes">Project Notes / Preferred Time</label>
-        <textarea id="booking-notes" name="notes" class="modal-textarea" rows="4" placeholder="Briefly describe what you’d like to build or achieve…"></textarea>
+        <textarea id="booking-notes" name="notes" class="modal-textarea" rows="4" maxlength="5000" placeholder="Briefly describe what you’d like to build or achieve…"></textarea>
+      </div>
+      <div class="contact-honeypot" aria-hidden="true">
+        <label for="booking-website">Leave this field blank</label>
+        <input type="text" id="booking-website" name="website" tabindex="-1" autocomplete="off">
       </div>
       <div style="padding-top:8px;">
         <button type="submit" class="btn-cta-primary btn-full">Book a free 20-minute call</button>
       </div>
+      <p class="form-privacy-note">Your details are used to respond to this inquiry. <a href="privacy.html">Privacy notice</a></p>
+      <p id="booking-form-status" class="form-status" role="status" aria-live="polite" tabindex="-1" hidden></p>
+      <a id="booking-mailto-fallback" class="booking-mailto-fallback" href="#" hidden>Open your email app to send this request</a>
     </form>
 
+  </div>
+</div>
+
+<!-- Privacy & cookie choices -->
+<div id="cookie-consent" class="consent-overlay" role="dialog" aria-modal="true" aria-labelledby="consent-title" aria-describedby="consent-description" aria-hidden="true" hidden>
+  <div class="consent-card">
+    <div class="consent-kicker"><span class="consent-mark" aria-hidden="true">A</span> Your privacy, your choice</div>
+    <div id="consent-intro">
+      <h2 id="consent-title">Choose what works for you.</h2>
+      <p id="consent-description">ANNEX uses essential storage to remember this choice. With your permission, we also use Google Analytics to understand site visits and load the Trustpilot review experience. Optional tools stay off until you choose.</p>
+      <a class="consent-policy-link" href="privacy.html">Read our privacy &amp; cookie notice <span aria-hidden="true">↗</span></a>
+      <div class="consent-actions">
+        <button type="button" id="consent-accept" class="btn-cta-primary">Accept all</button>
+        <button type="button" id="consent-reject" class="btn-cta-secondary">Reject optional</button>
+        <button type="button" id="consent-manage" class="consent-manage-button">Manage preferences</button>
+      </div>
+    </div>
+    <div id="consent-preferences" hidden>
+      <h2 id="consent-preferences-title">Privacy preferences</h2>
+      <p id="consent-preferences-copy" class="consent-preferences-copy">Choose which optional services may load. You can change this at any time from the footer.</p>
+      <div class="consent-category consent-category-locked">
+        <div><strong>Essential storage</strong><span>Remembers your privacy choices. Always active.</span></div>
+        <span class="consent-always-on">Always on</span>
+      </div>
+      <label class="consent-category" for="consent-analytics">
+        <span><strong>Audience measurement</strong><span>Google Analytics 4 helps us understand aggregate site usage.</span></span>
+        <input id="consent-analytics" type="checkbox">
+      </label>
+      <label class="consent-category" for="consent-external">
+        <span><strong>External review content</strong><span>Loads Trustpilot’s review widget from Trustpilot servers.</span></span>
+        <input id="consent-external" type="checkbox">
+      </label>
+      <div class="consent-actions consent-actions-preferences">
+        <button type="button" id="consent-save" class="btn-cta-primary">Save my choices</button>
+        <button type="button" id="consent-preferences-reject" class="btn-cta-secondary">Reject optional</button>
+        <button type="button" id="consent-back" class="consent-manage-button">Back</button>
+      </div>
+    </div>
   </div>
 </div>
 
 
 <!-- Front-End Controller -->
 <script src="js/main.js"></script>
-<!-- Trustpilot TrustBox bootstrap, supplied for ANNEX's Review Collector -->
-<script src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 
 </body>
 </html>

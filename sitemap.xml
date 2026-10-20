@@ -19,4 +19,10 @@
       <image:title>ANNEX BD Official Logo</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://www.annexbd.tech/privacy.html</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

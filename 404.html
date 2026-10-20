@@ -7,27 +7,26 @@
   <meta name="robots" content="noindex, follow">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#111111] text-white min-h-screen flex items-center justify-center p-6 antialiased font-sans-body">
-  <div class="max-w-md w-full border border-white/10 rounded-[12px] p-8 sm:p-10 text-center space-y-6 bg-[#161616]">
-    <span class="font-serif-display text-5xl text-neutral-400 block">404</span>
+<body class="error-page">
+  <main class="error-card">
+    <span class="error-code">404</span>
 
-    <div class="space-y-2">
-      <h1 class="text-3xl font-serif-display text-white">Page not found</h1>
-      <p class="text-sm text-neutral-400">
+    <div>
+      <h1 class="font-serif-display">Page not found</h1>
+      <p>
         The page you are looking for doesn't exist or has been moved.
       </p>
     </div>
 
-    <div class="pt-2 flex flex-col gap-3 text-sm">
-      <a href="/" class="btn-cta-primary w-full text-center">
+    <div class="error-actions">
+      <a href="/" class="btn-cta-primary">
         Return to home
       </a>
-      <a href="mailto:support@annexbd.tech" class="text-neutral-400 hover:text-white transition-colors text-xs font-technical-mono">
+      <a href="mailto:support@annexbd.tech" class="error-email">
         support@annexbd.tech
       </a>
     </div>
-  </div>
+  </main>
 </body>
 </html>

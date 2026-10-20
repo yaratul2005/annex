@@ -18,7 +18,7 @@ GitHub Repository: [https://github.com/yaratul2005/annex](https://github.com/yar
 - **CTA Rule:** Keep the primary CTA label consistent: `"Book a free 20-minute call"`. Use the verified studio email for direct inquiries.
 - **Content Integrity:** No invented clients, testimonials, or campaign results. Portfolio visuals are presented as concept directions. Zero emojis.
 - **Brand Assets:** Transparent high-resolution logo formatted and trimmed for dark headers (`assets/logo-white-trimmed.png`) and standard web use (`assets/logo-trimmed.png`).
-- **Interactive Features:** Responsive mobile navigation, FAQ accordion, scope and indicative timeline planner, and a contact request modal that opens a prefilled email.
+- **Interactive Features:** Responsive mobile navigation, FAQ accordion, scope planner, fluid first-paint animation, privacy consent choices, and a booking form with server-side email delivery.
 - **SEO + GEO + AEO Optimization:** Google Rich Snippets Schema JSON-LD, localized geographic meta tags for **Dhaka-1215, Bangladesh**, Answer Engine Optimization (AEO) for Perplexity, ChatGPT, Gemini, and Claude AI search indexing.
 - **Cloudflare Pages Ready:** A static build packages only the site files, while Cloudflare Pages provides the CDN and deployment-aware asset caching.
 
@@ -29,18 +29,23 @@ GitHub Repository: [https://github.com/yaratul2005/annex](https://github.com/yar
 ```
 D:\ANNEX\
 │
-├── index.html               # Main production page with complete 2026 UI/UX and Schema.org
+├── index.html               # Main production page with structured data and consent-gated optional services
+├── privacy.html             # Privacy and cookie notice with a visitor settings link
 ├── 404.html                 # Branded custom 404 error page
 ├── vercel.json              # Retained for the previous Vercel deployment
 ├── _headers                 # Cloudflare Pages security headers
 ├── robots.txt               # Crawler directives optimized for Google, Bing, and AI engines (AEO)
 ├── sitemap.xml              # Structured XML sitemap with image metadata
 ├── package.json             # Cloudflare Pages build and local preview scripts
-├── scripts/build-pages.mjs  # Prepares a clean static site in dist/
+├── scripts/build-pages.mjs  # Prepares the static Cloudflare Pages site in dist/
+├── api/contact.mjs          # Vercel booking-request endpoint
+├── functions/api/contact.js # Cloudflare Pages booking-request endpoint
+├── lib/contact-handler.mjs  # Shared validated Resend delivery logic
 ├── .gitignore               # Repository ignore rules
 │
 ├── assets/
 │   ├── favicon.svg          # Modern cyber geometric SVG monogram favicon
+│   ├── fonts/                # Self-hosted Inter and Space Grotesk WOFF2 files + OFL licenses
 │   ├── logo bg.png          # Original source logo
 │   ├── logo.png             # Standard URL-safe logo
 │   ├── logo-white.png       # Pure white inverted transparent logo
@@ -115,11 +120,23 @@ npm run test:emoji
 ```
 Local address: `http://localhost:3000`
 
-## Analytics & Canonical Domain
+## Privacy Consent & Analytics
 
-- The Google Analytics 4 tag (`G-WLNJ46L9RH`) is installed globally in `index.html` using Google's `gtag.js` snippet.
+- Google Analytics 4 (`G-WLNJ46L9RH`) and the Trustpilot widget are not requested until a visitor opts into their respective categories. Rejecting optional services leaves both off. The consent record is stored in local storage for up to 180 days and can be changed from the footer.
+- Fonts are self-hosted, so Google Fonts does not receive a request before a visitor makes a choice.
+- Audience measurement is the only analytics category; the site has no advertising pixel or ad-personalization integration. Google signals and ad-personalization signals are disabled in the GA4 config.
+- The notice and consent UI apply the same opt-in default to all visitors rather than relying on imprecise IP-based region detection. This is a privacy-preserving implementation baseline, not a guarantee of legal compliance in every jurisdiction. Confirm the organization's data practices and applicable local requirements before relying on the notice.
 - `www.annexbd.tech` is the canonical host. Cloudflare's zone redirect rule sends the apex domain to `www`; configure both names as custom domains on the Pages project.
 - The provided `G-...` value is a GA4 measurement ID, not a Google Tag Manager container ID. A GTM container requires a separate `GTM-...` ID. If GTM is added later, avoid loading the same GA4 property through both GTM and the direct `gtag.js` snippet, which can duplicate page views.
+
+## Booking Email Delivery
+
+The booking form submits to `/api/contact` on Vercel or `/api/contact` through the Cloudflare Pages Function. Both use the shared Resend delivery handler and send messages to `support@annexbd.tech`. To activate delivery, configure these server-side environment variables in the hosting project:
+
+- `RESEND_API_KEY`: a Resend API key with permission to send email.
+- `RESEND_FROM_EMAIL`: a sender address/domain verified in the Resend account, for example `ANNEX website <inquiries@your-verified-domain>`.
+
+Never put these values in browser JavaScript or commit them to this repository. Until both are configured, the endpoint returns a setup status and the form displays a prefilled email-app fallback. The form validates fields, limits input length, rejects cross-origin JSON requests, and uses a honeypot; production anti-abuse limits should also be configured at the host/provider layer.
 
 ---
 

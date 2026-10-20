@@ -1,4 +1,4 @@
-# ANNEX BD (annexbd.tech)
+# ANNEX BD (www.annexbd.tech)
 **Next-Generation IT, Web Architecture & Meta Performance Growth Suite**
 *Operational Hub: Dhaka-1215, Bangladesh | Virtual Global Delivery*
 
@@ -102,7 +102,7 @@ D:\ANNEX\
    - Root Directory: `./`.
    - Click **Deploy**.
 3. Under **Settings** > **Domains**, add your custom domain:
-   - Add **`annexbd.tech`** and **`www.annexbd.tech`**.
+   - Add **`www.annexbd.tech`** as the primary domain and **`annexbd.tech`** as its redirecting alias.
    - Configure DNS records (CNAME or A records) as directed by Vercel.
 
 ---
@@ -119,10 +119,16 @@ npm run test:emoji
 ```
 Local address: `http://localhost:3000`
 
+## Analytics & Canonical Domain
+
+- The Google Analytics 4 tag (`G-WLNJ46L9RH`) is installed globally in `index.html` using Google's `gtag.js` snippet.
+- `www.annexbd.tech` is the canonical host. Vercel redirects the apex domain to `www`; configure both domains in Vercel and keep `www.annexbd.tech` as the primary domain.
+- The provided `G-...` value is a GA4 measurement ID, not a Google Tag Manager container ID. A GTM container requires a separate `GTM-...` ID. If GTM is added later, avoid loading the same GA4 property through both GTM and the direct `gtag.js` snippet, which can duplicate page views.
+
 ---
 
 ## Contact & Official Channels
-- **Domain:** `https://annexbd.tech`
+- **Primary domain:** `https://www.annexbd.tech` (apex redirects here)
 - **Official Support Email:** `support@annexbd.tech`
 - **Location:** Dhaka-1215, Bangladesh
 - **GitHub:** `https://github.com/yaratul2005/annex`

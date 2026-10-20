@@ -1,4 +1,4 @@
-# robots.txt for https://annexbd.tech/
+# robots.txt for https://www.annexbd.tech/
 # Optimized for Google, Bing, and AI Answer Engine Search Crawlers
 
 User-agent: *
@@ -23,4 +23,4 @@ User-agent: Applebot-Extended
 Allow: /
 
 # Sitemap Location
-Sitemap: https://annexbd.tech/sitemap.xml
+Sitemap: https://www.annexbd.tech/sitemap.xml

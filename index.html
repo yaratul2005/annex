@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) — GA4 measurement for annexbd.tech -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // Keep local and preview traffic out of the production Analytics property.
+    if (window.location.hostname === 'www.annexbd.tech' || window.location.hostname === 'annexbd.tech') {
+      var googleTag = document.createElement('script');
+      googleTag.async = true;
+      googleTag.src = 'https://www.googletagmanager.com/gtag/js?id=G-WLNJ46L9RH';
+      document.head.appendChild(googleTag);
+      gtag('config', 'G-WLNJ46L9RH');
+    }
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ANNEX — Web Development &amp; Meta Ads Studio</title>
@@ -10,7 +26,7 @@
   <meta name="description" content="ANNEX (annexbd.tech) is a digital design and engineering studio. We build custom websites and performance Meta ad systems for growing businesses, operating virtually from Dhaka-1215, Bangladesh.">
   <meta name="author" content="ANNEX BD">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://annexbd.tech/">
+  <link rel="canonical" href="https://www.annexbd.tech/">
 
   <!-- GEO Location -->
   <meta name="geo.region" content="BD-13">
@@ -20,16 +36,16 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://annexbd.tech/">
+  <meta property="og:url" content="https://www.annexbd.tech/">
   <meta property="og:title" content="ANNEX — Web Development &amp; Meta Ads Studio">
   <meta property="og:description" content="We design and build high-performance websites and Meta ad systems for growing businesses.">
-  <meta property="og:image" content="https://annexbd.tech/assets/og-image.png">
+  <meta property="og:image" content="https://www.annexbd.tech/assets/og-image.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ANNEX — Web Development &amp; Meta Ads Studio">
   <meta name="twitter:description" content="Bespoke web engineering and ROI-focused Meta advertising from Dhaka, Bangladesh.">
-  <meta name="twitter:image" content="https://annexbd.tech/assets/og-image.png">
+  <meta name="twitter:image" content="https://www.annexbd.tech/assets/og-image.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -51,10 +67,10 @@
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://annexbd.tech/#organization",
+        "@id": "https://www.annexbd.tech/#organization",
         "name": "ANNEX",
-        "url": "https://annexbd.tech",
-        "logo": "https://annexbd.tech/assets/logo-white-trimmed.png",
+        "url": "https://www.annexbd.tech",
+        "logo": "https://www.annexbd.tech/assets/logo-white-trimmed.png",
         "email": "support@annexbd.tech",
         "address": {
           "@type": "PostalAddress",
@@ -66,9 +82,9 @@
       },
       {
         "@type": "ProfessionalService",
-        "@id": "https://annexbd.tech/#service",
+        "@id": "https://www.annexbd.tech/#service",
         "name": "ANNEX Studio",
-        "url": "https://annexbd.tech",
+        "url": "https://www.annexbd.tech",
         "email": "support@annexbd.tech",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
@@ -88,7 +104,7 @@
       },
       {
         "@type": "FAQPage",
-        "@id": "https://annexbd.tech/#faq",
+        "@id": "https://www.annexbd.tech/#faq",
         "mainEntity": [
           {
             "@type": "Question",

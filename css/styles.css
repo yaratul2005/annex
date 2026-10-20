@@ -1398,9 +1398,9 @@ body.nav-open { overflow: hidden; }
 :focus-visible { outline-color:var(--accent-bright); }
 @media (max-width:767px) {
   :root { --section-v-mobile:66px; }
-  /* Keep section backgrounds flush with the viewport on narrow devices. */
-  html, body { width:100%; max-width:100%; }
-  .site-header, main, main > section { width:100%; max-width:100%; }
+  /* Paint the shell against the device viewport even if an embed constrains its parent. */
+  html, body { width:100vw; min-width:100vw; max-width:none; }
+  .site-header, main, main > section { width:100vw; max-width:none; }
   main > section { min-width:0; }
   .header-inner { height:68px; }
   section[id] { scroll-margin-top: 84px; }

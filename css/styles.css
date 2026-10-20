@@ -1482,10 +1482,15 @@ body.nav-open, body.consent-open { overflow: hidden; }
 :focus-visible { outline-color:var(--accent-bright); }
 @media (max-width:767px) {
   :root { --section-v-mobile:66px; }
-  /* Let the document and its sections follow their containing block. */
-  html, body { min-width:0; }
-  .site-header, main, main > section { min-width:0; }
-  .site-container, .estimator-layout, .estimator-inputs, .estimator-output { min-width:0; }
+  html, body { width:100%; min-width:0; }
+  .site-header, main, main > section { width:100%; min-width:0; }
+  .site-container {
+    width:100%;
+    max-width:none;
+    padding-left:16px;
+    padding-right:16px;
+  }
+  .estimator-layout, .estimator-inputs, .estimator-output { width:100%; min-width:0; }
   .header-inner { height:68px; }
   section[id] { scroll-margin-top: 84px; }
   .header-logo img { height:27px; }

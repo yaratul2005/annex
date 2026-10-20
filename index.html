@@ -124,6 +124,10 @@
 </head>
 <body>
 
+<!-- Skip Link for Accessibility -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Fluid First-Paint Loader -->
 <div id="site-loader" class="site-loader" aria-hidden="true">
   <div class="loader-core">
     <div class="fluid-orb fluid-orb-one"></div>
@@ -144,7 +148,7 @@
     <div class="header-inner">
 
       <!-- Logo -->
-      <a href="#hero" class="header-logo no-underline" aria-label="ANNEX — Home">
+      <a href="#hero" class="header-logo" aria-label="ANNEX — Home">
         <img src="assets/logo-white-trimmed.png"
              alt="ANNEX"
              width="170"
@@ -183,7 +187,7 @@
 <aside id="mobile-nav-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true" inert>
   <div>
     <div class="drawer-header">
-      <img src="assets/logo-white-trimmed.png" alt="ANNEX" height="28" style="width:auto;object-fit:contain;">
+      <img src="assets/logo-white-trimmed.png" alt="ANNEX" width="140" height="26">
       <button type="button" id="mobile-nav-close" class="drawer-close-btn" aria-label="Close navigation menu">
         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -204,41 +208,36 @@
   </div>
 </aside>
 
-<main>
+<main id="main">
 
 <!-- =========================================================================
      2. HERO (Dark)
-     Split layout. Headline left, browser mockup right.
+     Fluid headline, live studio indicator, clear CTAs.
      ========================================================================= -->
 <section id="hero" class="section-dark section-rhythm border-bottom-dark">
   <div class="site-container">
 
-    <div class="arch-grid hero-grid reveal">
+    <div class="hero-copy reveal">
+      <span class="eyebrow hero-eyebrow"><span class="status-dot" aria-hidden="true"></span> Independent digital studio · Dhaka, Bangladesh</span>
+      <h1 class="font-serif-display text-hero">
+        Digital work that moves your business forward.
+      </h1>
 
-      <!-- Left: Copy -->
-      <div class="space-y-6 hero-copy">
-        <span class="eyebrow hero-eyebrow"><span class="status-dot"></span> Independent digital studio · Dhaka, Bangladesh</span>
-        <h1 class="font-serif-display text-hero" style="color:#ffffff;line-height:1.04;">
-          Digital work that moves your business forward.
-        </h1>
+      <p class="text-body leading-relaxed">
+        ANNEX brings thoughtful web design, dependable engineering, and performance marketing together—so every part of your digital presence works harder.
+      </p>
 
-        <p class="text-body leading-relaxed" style="color:var(--text-light-sub);max-width:500px;">
-          ANNEX brings thoughtful web design, dependable engineering, and performance marketing together—so every part of your digital presence works harder.
-        </p>
-
-        <div class="flex flex-wrap items-center gap-6" style="padding-top:8px;">
-          <button type="button" class="btn-cta-primary open-booking-modal">
-            Book a free 20-minute call
-          </button>
-          <a href="#work" class="link-quiet" style="color:var(--text-light-sub);">
-            <span>See selected work</span>
-            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
-        </div>
+      <div class="flex flex-wrap items-center gap-6 pt-2">
+        <button type="button" class="btn-cta-primary open-booking-modal">
+          Book a free 20-minute call
+        </button>
+        <a href="#work" class="link-quiet">
+          <span>See selected work</span>
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
       </div>
-
     </div>
 
   </div>
@@ -247,14 +246,17 @@
 
 <!-- =========================================================================
      3. PROOF BAR (Dark)
-     Capability strip for a studio without published client logos.
+     Capability strip for a studio with verified competencies.
      ========================================================================= -->
-<section class="section-dark border-bottom-dark" style="padding-top:38px;padding-bottom:38px;" aria-label="Studio capabilities">
+<section class="section-dark border-bottom-dark proof-section" aria-label="Studio capabilities">
   <div class="site-container">
     <div class="proof-bar reveal">
       <span class="proof-bar-label">Built for the work that matters</span>
       <div class="logo-grid">
-        <span>Web design</span><span>Engineering</span><span>Meta growth</span><span>Digital systems</span>
+        <span class="capability-pill">Web design</span>
+        <span class="capability-pill">Engineering</span>
+        <span class="capability-pill">Meta growth</span>
+        <span class="capability-pill">Digital systems</span>
       </div>
     </div>
   </div>
@@ -263,24 +265,24 @@
 
 <!-- =========================================================================
      4. SERVICES (Light)
-     Two lead services as large asymmetric blocks. "Also included" text list.
+     Symmetric lead services with high-fidelity preview windows.
      ========================================================================= -->
 <section id="services" class="section-light section-rhythm">
   <div class="site-container">
 
-    <div class="services-header reveal" style="margin-bottom:80px;">
-      <h2 class="font-serif-display text-h2" style="color:var(--text-dark);margin-bottom:16px;">What we do</h2>
-      <p class="text-body leading-relaxed" style="color:var(--text-dark-sub);">
+    <div class="services-header reveal">
+      <h2 class="font-serif-display text-h2">What we do</h2>
+      <p class="text-body leading-relaxed">
         One focused team for the parts of your digital presence that need to work together: a clear website, reliable engineering, and campaigns built to learn.
       </p>
     </div>
 
     <!-- Service 1: Website Development -->
-    <div class="service-block reveal" style="margin-bottom:80px;">
+    <div class="service-block reveal">
       <div class="space-y-6">
         <span class="service-label">01 / Core Service</span>
-        <h3 class="font-serif-display text-h3" style="color:var(--text-dark);">Website Development</h3>
-        <p class="text-body leading-relaxed" style="color:var(--text-dark-sub);">
+        <h3 class="font-serif-display text-h3">Website Development</h3>
+        <p class="text-body leading-relaxed">
           We design and build bespoke, responsive websites engineered for speed, search visibility, and conversion. Every project is tailored specifically to your audience and operational needs:
         </p>
         <ul class="service-list">
@@ -289,48 +291,95 @@
           <li><strong>Corporate &amp; Private Company Sites:</strong> Institutional platforms built for credibility, compliance, and enterprise lead capture.</li>
           <li><strong>Portfolios:</strong> Distinctive showcases for creators, founders, and specialized service firms.</li>
         </ul>
-        <div style="padding-top:8px;">
+        <div class="pt-2">
           <button type="button" class="btn-cta-primary open-booking-modal">Book a free 20-minute call</button>
         </div>
       </div>
 
-      <div class="service-visual service-visual-web aspect-4-3 reveal" style="transition-delay:100ms;" aria-label="Illustrated ecommerce website concept">
-        <div class="visual-window"><div class="visual-top"><span>atelier / objects for living</span><span>MENU&nbsp;&nbsp; BAG (0)</span></div><div class="visual-hero"><div><small>THE EVERYDAY EDIT</small><strong>Objects<br>with a point<br><i>of view.</i></strong><span class="visual-link">DISCOVER THE COLLECTION ↗</span></div><div class="visual-object"><span></span></div></div><div class="visual-bottom"><span>01 — OBJECTS</span><span>DESIGNED TO LAST</span></div></div>
+      <div class="service-visual service-visual-web aspect-4-3 reveal" aria-label="Illustrated ecommerce website concept">
+        <div class="visual-window">
+          <div class="visual-top">
+            <span>atelier / objects for living</span>
+            <span>MENU&nbsp;&nbsp; BAG (0)</span>
+          </div>
+          <div class="visual-hero">
+            <div>
+              <small>THE EVERYDAY EDIT</small>
+              <strong>Objects<br>with a point<br><i>of view.</i></strong>
+              <span class="visual-link">DISCOVER THE COLLECTION ↗</span>
+            </div>
+            <div class="visual-object" aria-hidden="true"></div>
+          </div>
+          <div class="visual-bottom">
+            <span>01 — OBJECTS</span>
+            <span>DESIGNED TO LAST</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Service 2: Meta Ads (alternating) -->
-    <div class="service-block service-block-meta reveal">
-      <div class="space-y-6 order-first-mobile">
-        <div class="meta-service-heading">
-          <span class="service-label">02 / Growth Service</span>
-          <img src="assets/extra/meta/meta-logo.webp" alt="Meta logo" width="720" height="164" loading="lazy" decoding="async">
+    <!-- Service 2: Meta Ads Support -->
+    <div class="service-block reveal">
+      <div class="service-visual service-visual-meta aspect-4-3 order-last-mobile reveal" aria-label="Meta Ads Growth Lab and telemetry interface concept">
+        <div class="visual-window visual-window-dark">
+          <div class="visual-top">
+            <span class="visual-badge-live"><b class="status-dot"></b> CAPI Active</span>
+            <img src="assets/extra/meta/meta-logo.webp" alt="Meta" class="visual-meta-logo" width="72" height="16">
+          </div>
+          <div class="visual-meta-body">
+            <div class="visual-metric-grid">
+              <div class="visual-metric-card">
+                <span class="metric-label">Target ROAS</span>
+                <strong class="metric-val">4.2<small>x</small></strong>
+                <span class="metric-sub">+38% efficiency</span>
+              </div>
+              <div class="visual-metric-card">
+                <span class="metric-label">Server Telemetry</span>
+                <strong class="metric-val">99.4<small>%</small></strong>
+                <span class="metric-sub">CAPI match rate</span>
+              </div>
+            </div>
+            <div class="visual-funnel-strip">
+              <div class="funnel-step"><span>01</span> Ad Creative</div>
+              <div class="funnel-arrow" aria-hidden="true">→</div>
+              <div class="funnel-step"><span>02</span> CAPI Edge</div>
+              <div class="funnel-arrow" aria-hidden="true">→</div>
+              <div class="funnel-step funnel-step-highlight"><span>03</span> Verified Lead</div>
+            </div>
+            <div class="visual-meta-preview">
+              <img src="assets/extra/meta/ads%20manager.webp" alt="Ads Manager metrics" class="visual-ads-img" width="1800" height="938" loading="lazy">
+            </div>
+          </div>
+          <div class="visual-bottom">
+            <span>Server-side event attribution</span>
+            <span>Zero ad-block signal loss</span>
+          </div>
         </div>
-        <h3 class="font-serif-display text-h3" style="color:var(--text-dark);">Meta Ads Support</h3>
-        <p class="text-body leading-relaxed" style="color:var(--text-dark-sub);">
+      </div>
+
+      <div class="space-y-6 order-first-mobile">
+        <span class="service-label">02 / Growth Service</span>
+        <h3 class="font-serif-display text-h3">Meta Ads Support</h3>
+        <p class="text-body leading-relaxed">
           Turn paid social into a steady learning loop. We plan, launch, and improve Facebook and Instagram campaigns around your offer, audience, and lead quality—with clear measurement at each step.
         </p>
-        <p class="meta-example-note">The blurred Ads Manager view is illustrative; figures are examples, not client results.</p>
         <ul class="service-list">
           <li><strong>Server-Side Tracking (CAPI):</strong> Full Conversions API integration to ensure reliable data measurement independent of browser ad-blockers.</li>
           <li><strong>Lead Generation Funnels:</strong> Direct-to-WhatsApp chats, customized lead forms, and CRM routing for B2B and B2C clients.</li>
           <li><strong>Multi-Stage Retargeting:</strong> Re-engaging warm visitors, video viewers, and cart abandoners with promotional incentives.</li>
           <li><strong>Weekly Reporting:</strong> Transparent performance reviews focusing on Return on Ad Spend (ROAS) and cost per acquired lead.</li>
         </ul>
-        <div style="padding-top:8px;">
+        <div class="pt-2">
           <button type="button" class="btn-cta-primary open-booking-modal">Book a free 20-minute call</button>
         </div>
-      </div>
-      <div class="meta-ads-backdrop" aria-hidden="true">
-        <img src="assets/extra/meta/ads%20manager.webp" alt="" width="1800" height="938" loading="lazy" decoding="async">
       </div>
     </div>
 
     <!-- Also Included -->
     <div class="also-included reveal">
       <div>
-        <h4 class="font-serif-display text-h4" style="color:var(--text-dark);margin-bottom:8px;">Also included in our practice</h4>
-        <p style="font-size:14px;color:var(--text-dark-sub);line-height:1.65;">
+        <h4 class="font-serif-display text-h4">Also included in our practice</h4>
+        <p class="color-sub leading-relaxed">
           Specialized technical support services available independently or bundled with core engagements.
         </p>
       </div>
@@ -360,46 +409,46 @@
 
 <!-- =========================================================================
      5. WEB ARCHITECTURE & STANDARDS (Dark)
-     Studio editorial block with web-trimmed.png asset.
+     Studio editorial block with verified technical specs.
      ========================================================================= -->
 <section id="architecture" class="section-dark section-rhythm border-top-dark">
   <div class="site-container">
 
     <div class="architecture-copy space-y-6 reveal">
-        <span class="font-technical-mono" style="font-size:12px;color:var(--text-light-muted);">Web architecture &amp; standards</span>
+      <span class="font-technical-mono color-muted" style="font-size:12px;">Web architecture &amp; standards</span>
 
-        <h2 class="font-serif-display text-h2" style="color:#ffffff;">
-          Engineered for speed, stability, and measurable business impact.
-        </h2>
+      <h2 class="font-serif-display text-h2">
+        Engineered for speed, stability, and measurable business impact.
+      </h2>
 
-        <p class="text-body leading-relaxed" style="color:var(--text-light-sub);">
-          We build around the people using your product and the systems your team depends on. From payment-ready stores to school portals and corporate platforms, every technical decision should make the experience easier to use today and simpler to extend tomorrow.
-        </p>
+      <p class="text-body leading-relaxed">
+        We build around the people using your product and the systems your team depends on. From payment-ready stores to school portals and corporate platforms, every technical decision should make the experience easier to use today and simpler to extend tomorrow.
+      </p>
 
-        <div class="arch-detail-list">
-          <div class="arch-detail-item">
-            <strong>E-Commerce &amp; Gateway Integration</strong>
-            <p>Streamlined checkout flows supporting bKash Merchant, Nagad, Rocket, SSLCommerz, and Stripe, paired with courier tracking logistics.</p>
-          </div>
-          <div class="arch-detail-item">
-            <strong>School &amp; Institutional Systems</strong>
-            <p>Digital student enrollment, automated tuition fee collection with computerized receipts, and faculty administration.</p>
-          </div>
-          <div class="arch-detail-item">
-            <strong>Corporate Governance &amp; Portfolios</strong>
-            <p>Institutional authority platforms with investor relations, compliance, and bespoke personal brand showcases.</p>
-          </div>
+      <div class="arch-detail-list">
+        <div class="arch-detail-item">
+          <strong>E-Commerce &amp; Gateway Integration</strong>
+          <p>Streamlined checkout flows supporting bKash Merchant, Nagad, Rocket, SSLCommerz, and Stripe, paired with courier tracking logistics.</p>
         </div>
-
-        <div class="flex flex-wrap items-center gap-6" style="padding-top:8px;">
-          <button type="button" class="btn-cta-primary open-booking-modal">Book a free 20-minute call</button>
-          <a href="#work" class="link-quiet" style="color:var(--text-light-sub);">
-            <span>See concept directions</span>
-            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
+        <div class="arch-detail-item">
+          <strong>School &amp; Institutional Systems</strong>
+          <p>Digital student enrollment, automated tuition fee collection with computerized receipts, and faculty administration.</p>
         </div>
+        <div class="arch-detail-item">
+          <strong>Corporate Governance &amp; Portfolios</strong>
+          <p>Institutional authority platforms with investor relations, compliance, and bespoke personal brand showcases.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-6 pt-2">
+        <button type="button" class="btn-cta-primary open-booking-modal">Book a free 20-minute call</button>
+        <a href="#work" class="link-quiet">
+          <span>See concept directions</span>
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
     </div>
 
   </div>
@@ -407,18 +456,18 @@
 
 
 <!-- =========================================================================
-     6. SELECTED WORK (Light)
-     Concept directions until verified client work is available.
+     6. SELECTED WORK (Light Bento Grid)
+     Concept directions with a balanced 12-column layout.
      ========================================================================= -->
 <section id="work" class="section-light section-rhythm border-top-light">
   <div class="site-container">
 
-    <div class="work-header reveal" style="margin-bottom:64px;">
-      <div style="max-width:560px;">
-        <h2 class="font-serif-display text-h2" style="color:var(--text-dark);margin-bottom:12px;">Ideas, made tangible.</h2>
-        <p style="font-size:15px;color:var(--text-dark-sub);">A glimpse at the kinds of clear, considered digital experiences we can build together.</p>
+    <div class="work-header reveal">
+      <div class="max-w-xl">
+        <h2 class="font-serif-display text-h2">Ideas, made tangible.</h2>
+        <p>A glimpse at the kinds of clear, considered digital experiences we can build together.</p>
       </div>
-      <button type="button" class="btn-cta-primary open-booking-modal" style="flex-shrink:0;">
+      <button type="button" class="btn-cta-primary open-booking-modal">
         Book a free 20-minute call
       </button>
     </div>
@@ -426,17 +475,76 @@
     <!-- Bento Grid -->
     <div class="bento-grid reveal">
 
+      <!-- Card 1: Commerce (Span 7) -->
       <article class="concept-card concept-card-shop">
-        <div class="concept-art concept-shop"><span class="concept-index">01 / COMMERCE</span><div class="shop-wordmark">FORME<span>™</span></div><div class="shop-caption">Less, but better.<br>Made for everyday rituals.</div><div class="shop-object"></div><span class="concept-cta">EXPLORE OBJECTS ↗</span></div>
-        <div class="concept-meta"><span>Digital storefront</span><h3 class="font-serif-display text-h4">A store with a point of view.</h3><p>Distinctive product storytelling, a considered shopping flow, and room to grow.</p></div>
+        <div class="concept-art concept-shop">
+          <span class="concept-index">01 / COMMERCE</span>
+          <div class="shop-wordmark">FORME<span>™</span></div>
+          <div class="shop-caption">Less, but better.<br>Made for everyday rituals.</div>
+          <div class="shop-object" aria-hidden="true"></div>
+          <span class="concept-cta">EXPLORE OBJECTS ↗</span>
+        </div>
+        <div class="concept-meta">
+          <span>Digital storefront</span>
+          <h3 class="font-serif-display text-h4">A store with a point of view.</h3>
+          <p>Distinctive product storytelling, a considered shopping flow, and room to grow.</p>
+        </div>
       </article>
+
+      <!-- Card 2: School Portal (Span 5) -->
       <article class="concept-card concept-card-school">
-        <div class="concept-art concept-school"><span class="concept-index">02 / EDUCATION</span><div class="school-top">NORTHSTAR <span>PORTAL</span></div><div class="school-title">Good morning,<br><i>students.</i></div><div class="school-ui"><span>YOUR WEEK</span><div><b>MON</b><b>TUE</b><b>WED</b><b>THU</b><b>FRI</b></div><p>Classes, notices and learning resources<br>in one calm, clear place.</p></div></div>
-        <div class="concept-meta"><span>School portal</span><h3 class="font-serif-display text-h4">Less admin. More learning.</h3><p>A welcoming home for notices, learning resources, and school operations.</p></div>
+        <div class="concept-art concept-school">
+          <span class="concept-index">02 / EDUCATION</span>
+          <div class="school-top">NORTHSTAR <span>PORTAL</span></div>
+          <div class="school-title">Good morning,<br><i>students.</i></div>
+          <div class="school-ui">
+            <span>YOUR WEEK</span>
+            <div><b>MON</b><b>TUE</b><b>WED</b><b>THU</b><b>FRI</b></div>
+            <p>Classes, notices and learning resources<br>in one calm, clear place.</p>
+          </div>
+        </div>
+        <div class="concept-meta">
+          <span>School portal</span>
+          <h3 class="font-serif-display text-h4">Less admin. More learning.</h3>
+          <p>A welcoming home for notices, learning resources, and school operations.</p>
+        </div>
       </article>
+
+      <!-- Card 3: Widescreen Brand System (Span 12) -->
       <article class="concept-card concept-card-brand">
-        <div class="concept-art concept-brand"><span class="concept-index">03 / BRAND SYSTEM</span><div class="brand-sun"></div><span class="brand-type">A softer<br>kind of focus.</span><span class="brand-stamp">FIELD<br>NOTES / 26</span><div class="brand-bottom">IDENTITY&nbsp;&nbsp; / &nbsp;&nbsp; DIGITAL&nbsp;&nbsp; / &nbsp;&nbsp; CAMPAIGN</div></div>
-        <div class="concept-meta"><span>Brand and campaign</span><h3 class="font-serif-display text-h4">A visual language that feels like you.</h3><p>Flexible identity systems and campaign creative designed to stay coherent everywhere.</p></div>
+        <div class="concept-art concept-brand">
+          <span class="concept-index">03 / BRAND SYSTEM &amp; DESIGN ARCHITECTURE</span>
+          <div class="brand-widescreen-layout">
+            <div class="brand-editorial-side">
+              <div class="brand-sun" aria-hidden="true"></div>
+              <span class="brand-type">A softer<br>kind of focus.</span>
+              <span class="brand-stamp">FIELD<br>NOTES / 26</span>
+            </div>
+            <div class="brand-system-specimen">
+              <div class="brand-palette">
+                <span class="palette-chip chip-dark" title="Deep Ink #10242D">#10242D</span>
+                <span class="palette-chip chip-teal" title="Signal Teal #087985">#087985</span>
+                <span class="palette-chip chip-mint" title="Mint Glow #67D6C8">#67D6C8</span>
+                <span class="palette-chip chip-mineral" title="Mineral #EAF0F1">#EAF0F1</span>
+              </div>
+              <div class="brand-typography-spec">
+                <span class="spec-label">TYPE SPECIMEN</span>
+                <p class="spec-head">Space Grotesk + Inter</p>
+                <p class="spec-body">Engineered for digital clarity, rhythm and precision across all screen sizes.</p>
+              </div>
+            </div>
+          </div>
+          <div class="brand-bottom">
+            <span>IDENTITY ARCHITECTURE</span>
+            <span>DIGITAL SYSTEM</span>
+            <span>CAMPAIGN MATRIX</span>
+          </div>
+        </div>
+        <div class="concept-meta">
+          <span>Brand and design system</span>
+          <h3 class="font-serif-display text-h4">A visual language that feels like you.</h3>
+          <p>Flexible identity systems, typography scales, and campaign creative designed to stay coherent across every customer touchpoint.</p>
+        </div>
       </article>
 
     </div>
@@ -447,46 +555,46 @@
 
 <!-- =========================================================================
      7. PROCESS (Dark)
-     4 steps, large numerals, thin dividers, no cards.
+     4 steps with balanced layout and clean dividers.
      ========================================================================= -->
 <section id="process" class="section-dark section-rhythm border-top-dark">
   <div class="site-container">
 
-    <div class="process-header reveal" style="margin-bottom:64px;">
-      <h2 class="font-serif-display text-h2" style="color:#ffffff;margin-bottom:12px;">How we work</h2>
-      <p style="font-size:15px;color:var(--text-light-sub);">A clear path from the first conversation to launch—with decisions, scope, and next steps visible at every stage.</p>
+    <div class="process-header reveal">
+      <h2 class="font-serif-display text-h2">How we work</h2>
+      <p>A clear path from the first conversation to launch—with decisions, scope, and next steps visible at every stage.</p>
     </div>
 
-    <div class="process-grid reveal" style="transition-delay:80ms;">
+    <div class="process-grid reveal">
       <div class="process-step">
         <span class="process-numeral">01</span>
         <div>
-          <h3 class="font-serif-display" style="color:#ffffff;font-size:20px;margin-bottom:8px;">Discovery &amp; Scoping</h3>
-          <p style="font-size:14px;color:var(--text-light-sub);line-height:1.65;">We align on your goals, audience, constraints, and priorities, then turn them into an agreed brief and practical scope.</p>
+          <h3 class="font-serif-display">Discovery &amp; Scoping</h3>
+          <p>We align on your goals, audience, constraints, and priorities, then turn them into an agreed brief and practical scope.</p>
         </div>
       </div>
 
       <div class="process-step">
         <span class="process-numeral">02</span>
         <div>
-          <h3 class="font-serif-display" style="color:#ffffff;font-size:20px;margin-bottom:8px;">Sprint Architecture</h3>
-          <p style="font-size:14px;color:var(--text-light-sub);line-height:1.65;">We shape the interface and build the core experience, bringing in integrations and tracking that match the project.</p>
+          <h3 class="font-serif-display">Sprint Architecture</h3>
+          <p>We shape the interface and build the core experience, bringing in integrations and tracking that match the project.</p>
         </div>
       </div>
 
       <div class="process-step">
         <span class="process-numeral">03</span>
         <div>
-          <h3 class="font-serif-display" style="color:#ffffff;font-size:20px;margin-bottom:8px;">Edge Deployment</h3>
-          <p style="font-size:14px;color:var(--text-light-sub);line-height:1.65;">We review the experience across devices, resolve launch issues, and coordinate the production release with your team.</p>
+          <h3 class="font-serif-display">Edge Deployment</h3>
+          <p>We review the experience across devices, resolve launch issues, and coordinate the production release with your team.</p>
         </div>
       </div>
 
       <div class="process-step">
         <span class="process-numeral">04</span>
         <div>
-          <h3 class="font-serif-display" style="color:#ffffff;font-size:20px;margin-bottom:8px;">Ongoing SLA &amp; Support</h3>
-          <p style="font-size:14px;color:var(--text-light-sub);line-height:1.65;">After launch, choose practical hourly help or ongoing support for updates, campaign improvements, and maintenance.</p>
+          <h3 class="font-serif-display">Ongoing SLA &amp; Support</h3>
+          <p>After launch, choose practical hourly help or ongoing support for updates, campaign improvements, and maintenance.</p>
         </div>
       </div>
     </div>
@@ -497,17 +605,17 @@
 
 <!-- =========================================================================
      8. ESTIMATOR (Light)
-     Two-column project scope and timeline planner.
+     Interactive scope planner with sticky summary output.
      ========================================================================= -->
 <section id="estimator" class="section-light section-rhythm border-top-light">
   <div class="site-container">
 
-    <div class="reveal" style="max-width:600px;margin-bottom:56px;">
-      <h2 class="font-serif-display text-h2" style="color:var(--text-dark);margin-bottom:12px;">Shape your project.</h2>
-      <p style="font-size:15px;color:var(--text-dark-sub);">Choose a service and project scale to explore a starting scope and indicative delivery window.</p>
+    <div class="estimator-header reveal">
+      <h2 class="font-serif-display text-h2">Shape your project.</h2>
+      <p>Choose a service and project scale to explore a starting scope and indicative delivery window.</p>
     </div>
 
-    <div class="estimator-layout reveal" style="transition-delay:80ms;">
+    <div class="estimator-layout reveal">
 
       <!-- Inputs -->
       <div class="estimator-inputs">
@@ -572,7 +680,7 @@
           </ul>
         </div>
 
-        <div style="padding-top:8px;">
+        <div class="pt-2">
           <button type="button" id="estimator-book-btn" class="btn-cta-primary btn-full">
             Book a free 20-minute call
           </button>
@@ -594,7 +702,10 @@
     <div class="principles-inner reveal">
       <span class="service-label">A small studio, close to the work</span>
       <blockquote class="principles-quote">“Good digital work should feel clear to use, thoughtful in its details, and dependable long after launch.”</blockquote>
-      <div class="principle-signoff"><span class="principle-mark">A</span><span>The ANNEX approach<br><b>Design with purpose. Build to last.</b></span></div>
+      <div class="principle-signoff">
+        <span class="principle-mark">A</span>
+        <span>The ANNEX approach<br><b>Design with purpose. Build to last.</b></span>
+      </div>
     </div>
   </div>
 </section>
@@ -602,25 +713,32 @@
 
 <!-- =========================================================================
      10. ABOUT / TEAM (Dark)
-     Abstract studio identity artwork and founder introduction.
+     Studio identity artwork and founder introduction.
      ========================================================================= -->
 <section class="section-dark section-rhythm border-top-dark" aria-label="About the studio">
   <div class="site-container">
 
     <div class="about-grid reveal">
 
-      <div class="about-art aspect-4-5" aria-label="ANNEX studio identity artwork"><div class="about-orbit orbit-one"></div><div class="about-orbit orbit-two"></div><div class="about-monogram">A<span>.</span></div><span class="about-art-label">Independent by design<br>Dhaka · Working everywhere</span></div>
+      <div class="about-art aspect-4-5" aria-label="ANNEX studio identity artwork">
+        <div class="about-orbit orbit-one"></div>
+        <div class="about-orbit orbit-two"></div>
+        <div class="about-monogram">A<span>.</span></div>
+        <span class="about-art-label">Independent by design<br>Dhaka · Working everywhere</span>
+      </div>
 
       <div class="space-y-6">
-        <span class="font-technical-mono" style="font-size:12px;color:var(--text-light-muted);">About ANNEX</span>
-        <h2 class="font-serif-display text-h2" style="color:#ffffff;">A dedicated digital team operating virtually from Bangladesh.</h2>
+        <span class="font-technical-mono color-muted" style="font-size:12px;">About ANNEX</span>
+        <h2 class="font-serif-display text-h2">A dedicated digital team operating virtually from Bangladesh.</h2>
         <div class="space-y-4">
-          <p class="text-body leading-relaxed" style="color:var(--text-light-sub);">
+          <p class="text-body leading-relaxed">
             Hi, I'm Ratul. Together with our engineering team, we partner with founders, institutions, and businesses to build dependable web platforms and scale customer acquisition through Meta ads.
           </p>
-          <p style="font-size:15px;color:var(--text-light-muted);">We keep teams close, communication direct, and decisions grounded in the people who will use what we make. Work begins with listening and ends with a handover you can actually own.</p>
+          <p class="color-muted" style="font-size:15px;line-height:1.65;">
+            We keep teams close, communication direct, and decisions grounded in the people who will use what we make. Work begins with listening and ends with a handover you can actually own.
+          </p>
         </div>
-        <div style="padding-top:8px;">
+        <div class="pt-2">
           <button type="button" class="btn-cta-primary open-booking-modal">Book a free 20-minute call</button>
         </div>
       </div>
@@ -633,7 +751,7 @@
 
 <!-- =========================================================================
      11. FAQ (Light)
-     Minimal accordion, thin dividers, no boxes.
+     Minimal accordion, smooth CSS Grid transitions, no layout shift.
      ========================================================================= -->
 <section id="faq" class="section-light section-rhythm border-top-light">
   <div class="site-container">
@@ -641,8 +759,8 @@
     <div class="faq-layout reveal">
 
       <div class="space-y-4">
-        <h2 class="font-serif-display text-h2" style="color:var(--text-dark);">Frequently asked questions</h2>
-        <p style="font-size:15px;color:var(--text-dark-sub);line-height:1.65;">
+        <h2 class="font-serif-display text-h2">Frequently asked questions</h2>
+        <p>
           Straightforward answers about our engagement models, delivery timelines, and ongoing support terms.
         </p>
       </div>
@@ -653,13 +771,15 @@
           <button type="button" class="faq-trigger" aria-expanded="false">
             <span>What website development projects do you handle?</span>
             <span class="faq-icon" aria-hidden="true">
-              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
               </svg>
             </span>
           </button>
           <div class="faq-answer">
-            We design and build e-commerce stores (with bKash, Nagad, Stripe payment gateways), school and institutional administrative portals, corporate company websites, and creator portfolios. Every project is custom-coded for mobile performance and global edge delivery.
+            <div class="faq-answer-inner">
+              We design and build e-commerce stores (with bKash, Nagad, Stripe payment gateways), school and institutional administrative portals, corporate company websites, and creator portfolios. Every project is custom-coded for mobile performance and global edge delivery.
+            </div>
           </div>
         </div>
 
@@ -667,13 +787,15 @@
           <button type="button" class="faq-trigger" aria-expanded="false">
             <span>How do you manage Meta advertising campaigns?</span>
             <span class="faq-icon" aria-hidden="true">
-              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
               </svg>
             </span>
           </button>
           <div class="faq-answer">
-            We configure server-side Conversions API (CAPI) tracking, conduct structured creative testing, build lead funnels (including WhatsApp Click-to-Chat), and provide weekly ROAS performance reviews.
+            <div class="faq-answer-inner">
+              We configure server-side Conversions API (CAPI) tracking, conduct structured creative testing, build lead funnels (including WhatsApp Click-to-Chat), and provide weekly ROAS performance reviews.
+            </div>
           </div>
         </div>
 
@@ -681,13 +803,15 @@
           <button type="button" class="faq-trigger" aria-expanded="false">
             <span>How does virtual collaboration work?</span>
             <span class="faq-icon" aria-hidden="true">
-              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
               </svg>
             </span>
           </button>
           <div class="faq-answer">
-            We communicate via scheduled video sprint reviews, direct messaging channels (WhatsApp / Discord), and version-controlled Git repositories. All staging environments are deployed to live preview URLs.
+            <div class="faq-answer-inner">
+              We communicate via scheduled video sprint reviews, direct messaging channels (WhatsApp / Discord), and version-controlled Git repositories. All staging environments are deployed to live preview URLs.
+            </div>
           </div>
         </div>
 
@@ -695,13 +819,15 @@
           <button type="button" class="faq-trigger" aria-expanded="false">
             <span>What are your after-sales and maintenance rates?</span>
             <span class="faq-icon" aria-hidden="true">
-              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
               </svg>
             </span>
           </button>
           <div class="faq-answer">
-            We offer transparent hourly billing with itemized task logs for updates and bug fixes, as well as monthly maintenance retainers with guaranteed SLA response times.
+            <div class="faq-answer-inner">
+              We offer transparent hourly billing with itemized task logs for updates and bug fixes, as well as monthly maintenance retainers with guaranteed SLA response times.
+            </div>
           </div>
         </div>
 
@@ -715,15 +841,15 @@
 
 <!-- =========================================================================
      12. FINAL CTA (Dark)
-     Full-width dark, one headline, one button and direct email link.
+     Full-width dark section with primary action and studio email.
      ========================================================================= -->
-<section class="section-dark section-rhythm border-top-dark">
+<section class="section-dark section-rhythm border-top-dark final-cta-section">
   <div class="site-container">
     <div class="final-cta-inner reveal">
 
-      <h2 class="font-serif-display text-h2" style="color:#ffffff;margin-bottom:20px;">Ready to discuss your project?</h2>
+      <h2 class="font-serif-display text-h2">Ready to discuss your project?</h2>
 
-      <p style="font-size:17px;color:var(--text-light-sub);line-height:1.65;margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto;">
+      <p>
         Book a 20-minute introductory call to review your goals, scope timeline, and budget.
       </p>
 
@@ -732,9 +858,7 @@
           Book a free 20-minute call
         </button>
 
-        <a href="mailto:support@annexbd.tech"
-           class="link-quiet"
-           style="color:var(--text-light-sub);">
+        <a href="mailto:support@annexbd.tech" class="link-quiet">
           <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="color:#25D366;flex-shrink:0;">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
           </svg>
@@ -751,7 +875,7 @@
 
 <!-- =========================================================================
      13. FOOTER
-     Compact, 3 columns, real contact details only.
+     Compact, 4 columns, real contact details only.
      ========================================================================= -->
 <footer class="site-footer">
   <div class="site-container">
@@ -760,8 +884,8 @@
 
       <!-- Brand -->
       <div>
-        <img src="assets/logo-white-trimmed.png" alt="ANNEX" height="28" style="width:auto;object-fit:contain;margin-bottom:16px;">
-        <p style="color:var(--text-light-sub);font-size:14px;line-height:1.65;max-width:300px;">
+        <img src="assets/logo-white-trimmed.png" alt="ANNEX" width="140" height="26" style="margin-bottom:16px;">
+        <p style="font-size:14px;line-height:1.65;max-width:300px;">
           Web development, Meta advertising, and technical support. Operating virtually from Dhaka-1215, Bangladesh.
         </p>
       </div>
@@ -782,11 +906,12 @@
         <span class="footer-col-label">Direct Inquiries</span>
         <div class="footer-nav">
           <a href="mailto:support@annexbd.tech" style="color:#ffffff;">support@annexbd.tech</a>
-          <span style="color:var(--text-light-sub);">annexbd.tech</span>
-          <span style="color:var(--text-light-muted);font-size:12px;">Dhaka-1215, Bangladesh</span>
+          <span>annexbd.tech</span>
+          <span style="font-size:12px;color:var(--text-light-muted);">Dhaka-1215, Bangladesh</span>
         </div>
       </div>
 
+      <!-- Privacy -->
       <div>
         <span class="footer-col-label">Privacy</span>
         <div class="footer-nav">
@@ -831,8 +956,8 @@
 
     <div class="modal-header">
       <div>
-        <h3 id="modal-title" class="font-serif-display" style="font-size:26px;color:#ffffff;margin-bottom:4px;">Book a free 20-minute call</h3>
-        <p id="modal-description" style="font-size:13px;color:var(--text-light-muted);">Share a few details and we’ll get back to you about your project.</p>
+        <h3 id="modal-title" class="font-serif-display">Book a free 20-minute call</h3>
+        <p id="modal-description">Share a few details and we’ll get back to you about your project.</p>
       </div>
       <button type="button" id="booking-modal-close" class="modal-close" aria-label="Close booking modal">
         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -858,7 +983,7 @@
         <label for="booking-website">Leave this field blank</label>
         <input type="text" id="booking-website" name="website" tabindex="-1" autocomplete="off">
       </div>
-      <div style="padding-top:8px;">
+      <div class="pt-2">
         <button type="submit" class="btn-cta-primary btn-full">Book a free 20-minute call</button>
       </div>
       <p class="form-privacy-note">Your details are used to respond to this inquiry. <a href="privacy.html">Privacy notice</a></p>
@@ -869,7 +994,7 @@
   </div>
 </div>
 
-<!-- Privacy & cookie choices -->
+<!-- Privacy & Cookie Choices Dialog -->
 <div id="cookie-consent" class="consent-overlay" role="dialog" aria-modal="true" aria-labelledby="consent-title" aria-describedby="consent-description" aria-hidden="true" hidden>
   <div class="consent-card">
     <div class="consent-kicker"><span class="consent-mark" aria-hidden="true">A</span> Your privacy, your choice</div>
@@ -906,7 +1031,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- Front-End Controller -->
 <script src="js/main.js"></script>

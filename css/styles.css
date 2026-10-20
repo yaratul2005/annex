@@ -1042,6 +1042,55 @@ h1, h2, h3, h4,
 
 .footer-nav a:hover { color: var(--text-light); }
 
+.footer-review {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px 0 28px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.footer-review-copy .footer-col-label { margin-bottom: 6px; }
+
+.footer-review-copy p {
+  margin: 0;
+  color: var(--text-light-sub);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.footer-trustpilot-widget {
+  width: min(100%, 420px);
+  min-height: 52px;
+}
+
+.footer-trustpilot-widget > a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 16px;
+  border: 1px solid var(--border-dark);
+  border-radius: 4px;
+  color: var(--text-light);
+  font-size: 13px;
+  text-decoration: none;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.footer-trustpilot-widget > a:hover {
+  border-color: var(--accent-bright);
+  background-color: rgba(103, 214, 200, .08);
+}
+
+@media (min-width: 768px) {
+  .footer-review {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+}
+
 .footer-bottom {
   display: flex;
   flex-direction: column;

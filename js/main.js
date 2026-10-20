@@ -123,7 +123,7 @@ function initEstimator() {
           timeline: '2–3 weeks',
           deliverables: [
             'Bespoke visual architecture & responsive design',
-            'Full mobile optimization & Vercel edge deployment',
+            'Full mobile optimization & global edge delivery',
             'SEO schema hierarchy (Organization, LocalBusiness)',
             'Direct lead capture & WhatsApp integration'
           ]

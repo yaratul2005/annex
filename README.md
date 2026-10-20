@@ -20,7 +20,7 @@ GitHub Repository: [https://github.com/yaratul2005/annex](https://github.com/yar
 - **Brand Assets:** Transparent high-resolution logo formatted and trimmed for dark headers (`assets/logo-white-trimmed.png`) and standard web use (`assets/logo-trimmed.png`).
 - **Interactive Features:** Responsive mobile navigation, FAQ accordion, scope and indicative timeline planner, and a contact request modal that opens a prefilled email.
 - **SEO + GEO + AEO Optimization:** Google Rich Snippets Schema JSON-LD, localized geographic meta tags for **Dhaka-1215, Bangladesh**, Answer Engine Optimization (AEO) for Perplexity, ChatGPT, Gemini, and Claude AI search indexing.
-- **Vercel Edge Ready:** Pre-configured with `vercel.json` for instant zero-config edge deployments with clean URLs, security headers, and asset caching.
+- **Cloudflare Pages Ready:** A static build packages only the site files, while Cloudflare Pages provides the CDN and deployment-aware asset caching.
 
 ---
 
@@ -31,11 +31,12 @@ D:\ANNEX\
 │
 ├── index.html               # Main production page with complete 2026 UI/UX and Schema.org
 ├── 404.html                 # Branded custom 404 error page
-├── vercel.json              # Vercel deployment configuration (security headers & cache)
-├── _headers                 # Cloudflare / Edge security headers compatibility
+├── vercel.json              # Retained for the previous Vercel deployment
+├── _headers                 # Cloudflare Pages security headers
 ├── robots.txt               # Crawler directives optimized for Google, Bing, and AI engines (AEO)
 ├── sitemap.xml              # Structured XML sitemap with image metadata
-├── package.json             # Dev scripts and preview tooling
+├── package.json             # Cloudflare Pages build and local preview scripts
+├── scripts/build-pages.mjs  # Prepares a clean static site in dist/
 ├── .gitignore               # Repository ignore rules
 │
 ├── assets/
@@ -76,7 +77,7 @@ D:\ANNEX\
    - Dynamic multi-tier retargeting and creative testing matrices.
 3. **Canva Branding & Visual Kits**
    - Editable Canva Pro templates, vector brand guideline kits, corporate pitch decks, and social media ad suites.
-4. **DevOps, DNS & Vercel Edge Hosting**
+4. **DevOps, DNS & Cloudflare Edge Hosting**
    - Zero-downtime server setups, automated Git CI/CD deployments, DNS management, and edge SSL security hardening.
 5. **Managed Tech & IT Supports**
    - System diagnosis, API integrations, database optimization, and virtual technical helpdesk.
@@ -85,25 +86,20 @@ D:\ANNEX\
 
 ---
 
-## Vercel Deployment Guide
+## Cloudflare Pages Deployment Guide
 
-### Deploying via GitHub (Recommended)
-1. Push your repository to GitHub:
-   ```bash
-   git add .
-   git commit -m "feat: launch annexbd.tech 2026 digital engineering website"
-   git branch -M main
-   git push -u origin main
-   ```
-2. In the [Vercel Dashboard](https://vercel.com/new):
-   - Click **Add New...** > **Project**.
-   - Select the **`yaratul2005/annex`** repository.
-   - Framework Preset: `Other` (or auto-detected).
-   - Root Directory: `./`.
-   - Click **Deploy**.
-3. Under **Settings** > **Domains**, add your custom domain:
-   - Add **`www.annexbd.tech`** as the primary domain and **`annexbd.tech`** as its redirecting alias.
-   - Configure DNS records (CNAME or A records) as directed by Vercel.
+The site is a static HTML project. Cloudflare Pages serves its assets from Cloudflare's CDN and revalidates browser copies between deploys. Do not put Cloudflare's proxy in front of the Vercel deployment; that creates a double-proxy setup and can add stale-cache and latency issues.
+
+### Connect GitHub
+
+1. In Cloudflare, open **Workers & Pages** → **Create** → **Pages** → **Connect to Git** and select `yaratul2005/annex`.
+2. Set the production branch to `main`, the build command to `npm run build:pages`, and the build output directory to `dist`.
+3. Deploy once and confirm the generated `*.pages.dev` preview loads correctly.
+4. In the Pages project, add `www.annexbd.tech` and `annexbd.tech` under **Custom domains**. Add them through the Pages custom-domain flow so Cloudflare creates the correct records.
+5. In the Cloudflare zone, create a redirect rule for `http.host eq "annexbd.tech"` to send requests to `https://www.annexbd.tech` plus the original path, with query-string preservation enabled and status `301`.
+6. After the Pages deployment and both custom domains are active, remove the old Vercel DNS targets and stop using the Vercel project for production traffic.
+
+The repository's `vercel.json` remains only as a fallback for the previous host; Cloudflare Pages ignores it. The `_headers` file leaves cache lifetime management to Pages so its stable, unversioned asset names do not stay pinned in visitors' browsers for days or months.
 
 ---
 
@@ -122,7 +118,7 @@ Local address: `http://localhost:3000`
 ## Analytics & Canonical Domain
 
 - The Google Analytics 4 tag (`G-WLNJ46L9RH`) is installed globally in `index.html` using Google's `gtag.js` snippet.
-- `www.annexbd.tech` is the canonical host. Vercel redirects the apex domain to `www`; configure both domains in Vercel and keep `www.annexbd.tech` as the primary domain.
+- `www.annexbd.tech` is the canonical host. Cloudflare's zone redirect rule sends the apex domain to `www`; configure both names as custom domains on the Pages project.
 - The provided `G-...` value is a GA4 measurement ID, not a Google Tag Manager container ID. A GTM container requires a separate `GTM-...` ID. If GTM is added later, avoid loading the same GA4 property through both GTM and the direct `gtag.js` snippet, which can duplicate page views.
 
 ---

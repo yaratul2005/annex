@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npx serve . -l 3000",
     "dev": "npx serve . -l 3000",
+    "build:pages": "node scripts/build-pages.mjs",
     "test:emoji": "powershell -Command \"$e = '[\\uD83C-\\uDBFF\\uDC00-\\uDFFF\\u2600-\\u27BF]'; Get-ChildItem -Recurse -Include *.html,*.css,*.js | ForEach-Object { if ((Get-Content $_.FullName -Raw) -match $e) { Write-Error ('Emoji found in ' + $_.Name) } }\""
   },
   "keywords": [

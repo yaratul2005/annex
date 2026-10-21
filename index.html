@@ -318,52 +318,70 @@
       </div>
     </div>
 
-    <!-- Service 2: Meta Ads Support -->
-    <div class="service-block reveal">
-      <div class="service-visual service-visual-meta aspect-4-3 order-last-mobile reveal" aria-label="Meta Ads Growth Lab and telemetry interface concept">
-        <div class="visual-window visual-window-dark">
-          <div class="visual-top">
-            <span class="visual-badge-live"><b class="status-dot"></b> CAPI Active</span>
-            <img src="assets/extra/meta/meta-logo.webp" alt="Meta" class="visual-meta-logo" width="72" height="16">
+    <!-- Service 2: Meta Ads Support — Full-bleed background composition -->
+    <div class="meta-service-fullbleed reveal">
+
+      <!-- Background: Ads Manager screenshot + deep gradient veil -->
+      <div class="meta-bg-layer" aria-hidden="true">
+        <img src="assets/extra/meta/ads%20manager.webp" alt="" class="meta-bg-img" width="1800" height="938" loading="lazy" decoding="async">
+        <div class="meta-bg-veil"></div>
+      </div>
+
+      <!-- Frosted glass metrics panel (left column) -->
+      <div class="meta-glass-panel">
+        <!-- Status bar -->
+        <div class="meta-glass-topbar">
+          <span class="meta-glass-live"><span class="status-dot" aria-hidden="true"></span> CAPI Active</span>
+          <img src="assets/extra/meta/meta-logo.webp" alt="Meta" class="meta-glass-logo" width="72" height="16" loading="lazy">
+        </div>
+
+        <!-- Metric cards -->
+        <div class="meta-glass-metrics">
+          <div class="meta-glass-card">
+            <span class="meta-glass-card-label">Target ROAS</span>
+            <strong class="meta-glass-card-val">4.2<em>x</em></strong>
+            <span class="meta-glass-card-delta meta-glass-card-delta--up">+38% efficiency</span>
           </div>
-          <div class="visual-meta-body">
-            <div class="visual-metric-grid">
-              <div class="visual-metric-card">
-                <span class="metric-label">Target ROAS</span>
-                <strong class="metric-val">4.2<small>x</small></strong>
-                <span class="metric-sub">+38% efficiency</span>
-              </div>
-              <div class="visual-metric-card">
-                <span class="metric-label">Server Telemetry</span>
-                <strong class="metric-val">99.4<small>%</small></strong>
-                <span class="metric-sub">CAPI match rate</span>
-              </div>
-            </div>
-            <div class="visual-funnel-strip">
-              <div class="funnel-step"><span>01</span> Ad Creative</div>
-              <div class="funnel-arrow" aria-hidden="true">→</div>
-              <div class="funnel-step"><span>02</span> CAPI Edge</div>
-              <div class="funnel-arrow" aria-hidden="true">→</div>
-              <div class="funnel-step funnel-step-highlight"><span>03</span> Verified Lead</div>
-            </div>
-            <div class="visual-meta-preview">
-              <img src="assets/extra/meta/ads%20manager.webp" alt="Ads Manager metrics" class="visual-ads-img" width="1800" height="938" loading="lazy">
-            </div>
+          <div class="meta-glass-card">
+            <span class="meta-glass-card-label">Server Telemetry</span>
+            <strong class="meta-glass-card-val">99.4<em>%</em></strong>
+            <span class="meta-glass-card-delta meta-glass-card-delta--up">CAPI match rate</span>
           </div>
-          <div class="visual-bottom">
-            <span>Server-side event attribution</span>
-            <span>Zero ad-block signal loss</span>
+        </div>
+
+        <!-- Signal funnel -->
+        <div class="meta-glass-funnel">
+          <div class="meta-glass-funnel-step">
+            <span class="meta-glass-funnel-num">01</span>
+            <span class="meta-glass-funnel-label">Ad Creative</span>
           </div>
+          <span class="meta-glass-funnel-arrow" aria-hidden="true"></span>
+          <div class="meta-glass-funnel-step">
+            <span class="meta-glass-funnel-num">02</span>
+            <span class="meta-glass-funnel-label">CAPI Edge</span>
+          </div>
+          <span class="meta-glass-funnel-arrow" aria-hidden="true"></span>
+          <div class="meta-glass-funnel-step meta-glass-funnel-step--active">
+            <span class="meta-glass-funnel-num">03</span>
+            <span class="meta-glass-funnel-label">Verified Lead</span>
+          </div>
+        </div>
+
+        <!-- Footer strip -->
+        <div class="meta-glass-footer">
+          <span>Server-side event attribution</span>
+          <span>Zero ad-block signal loss</span>
         </div>
       </div>
 
-      <div class="space-y-6 order-first-mobile">
-        <span class="service-label">02 / Growth Service</span>
-        <h3 class="font-serif-display text-h3">Meta Ads Support</h3>
-        <p class="text-body leading-relaxed">
+      <!-- Copy column (right) -->
+      <div class="meta-copy-panel">
+        <span class="service-label meta-copy-label">02 / Growth Service</span>
+        <h3 class="font-serif-display text-h3 meta-copy-heading">Meta Ads Support</h3>
+        <p class="text-body leading-relaxed meta-copy-body">
           Turn paid social into a steady learning loop. We plan, launch, and improve Facebook and Instagram campaigns around your offer, audience, and lead quality—with clear measurement at each step.
         </p>
-        <ul class="service-list">
+        <ul class="service-list meta-service-list">
           <li><strong>Server-Side Tracking (CAPI):</strong> Full Conversions API integration to ensure reliable data measurement independent of browser ad-blockers.</li>
           <li><strong>Lead Generation Funnels:</strong> Direct-to-WhatsApp chats, customized lead forms, and CRM routing for B2B and B2C clients.</li>
           <li><strong>Multi-Stage Retargeting:</strong> Re-engaging warm visitors, video viewers, and cart abandoners with promotional incentives.</li>
@@ -373,6 +391,7 @@
           <button type="button" class="btn-cta-primary open-booking-modal">Book a free 20-minute call</button>
         </div>
       </div>
+
     </div>
 
     <!-- Also Included -->

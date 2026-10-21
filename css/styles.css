@@ -1168,6 +1168,334 @@ body.mobile-nav-open .mobile-nav-backdrop {
 }
 
 /* Also Included Strip */
+
+/* ── Meta Ads Full-Bleed Composition ───────────────────────────────────── */
+
+.meta-service-fullbleed {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  margin-bottom: clamp(56px, 8vw, 96px);
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 480px;
+  border: 1px solid rgba(16, 36, 45, 0.1);
+  box-shadow: 0 24px 64px rgba(16, 36, 45, 0.12);
+}
+
+@media (min-width: 768px) {
+  .meta-service-fullbleed {
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .meta-service-fullbleed {
+    min-height: 600px;
+  }
+}
+
+/* Background screenshot layer */
+.meta-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.meta-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  filter: saturate(1.3) contrast(1.1) brightness(0.65);
+  transform: scale(1.04);
+}
+
+/* Veil: left side stays more open so the screenshot reads clearly;
+   right edge darkens to support the glass panel edge */
+.meta-bg-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(6, 14, 22, 0.45) 0%,
+    rgba(6, 14, 22, 0.30) 38%,
+    rgba(6, 14, 22, 0.18) 58%,
+    rgba(6, 14, 22, 0.10) 100%
+  );
+}
+
+/* ── Floating Metrics Panel (left column) — light treatment over screenshot */
+.meta-glass-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: clamp(24px, 4vw, 48px);
+  /* No heavy backdrop: metrics float ON the screenshot */
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-right: 1px solid rgba(103, 214, 200, 0.10);
+}
+
+@media (max-width: 767px) {
+  .meta-glass-panel {
+    border-right: none;
+    border-bottom: 1px solid rgba(103, 214, 200, 0.10);
+    padding: 22px 20px;
+    gap: 12px;
+  }
+}
+
+.meta-glass-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(103, 214, 200, 0.20);
+}
+
+.meta-glass-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  font-weight: 600;
+}
+
+.meta-glass-logo {
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: brightness(1.15);
+}
+
+.meta-glass-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.meta-glass-card {
+  background: rgba(6, 14, 22, 0.55);
+  border: 1px solid rgba(103, 214, 200, 0.22);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.meta-glass-card:hover {
+  background: rgba(8, 121, 133, 0.32);
+  border-color: rgba(103, 214, 200, 0.38);
+}
+
+.meta-glass-card-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(183, 199, 204, 0.75);
+  margin-bottom: 6px;
+}
+
+.meta-glass-card-val {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.2vw, 36px);
+  font-weight: 600;
+  line-height: 1;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+}
+
+.meta-glass-card-val em {
+  font-style: normal;
+  font-size: 0.52em;
+  color: var(--accent-bright);
+  letter-spacing: 0;
+}
+
+.meta-glass-card-delta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  margin-top: 6px;
+}
+
+.meta-glass-card-delta--up {
+  color: var(--accent-bright);
+}
+
+.meta-glass-funnel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(4, 10, 18, 0.60);
+  border: 1px solid rgba(103, 214, 200, 0.14);
+  border-radius: var(--radius-xs);
+  padding: 11px 14px;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.meta-glass-funnel-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.meta-glass-funnel-num {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: rgba(183, 199, 204, 0.55);
+}
+
+.meta-glass-funnel-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: var(--text-light-sub);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: center;
+}
+
+.meta-glass-funnel-step--active .meta-glass-funnel-num,
+.meta-glass-funnel-step--active .meta-glass-funnel-label {
+  color: var(--accent-bright);
+  font-weight: 600;
+}
+
+.meta-glass-funnel-arrow {
+  flex-shrink: 0;
+  width: 14px;
+  height: 1px;
+  background: rgba(103, 214, 200, 0.28);
+  position: relative;
+}
+
+.meta-glass-funnel-arrow::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -3px;
+  width: 0;
+  height: 0;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-left: 5px solid rgba(103, 214, 200, 0.36);
+}
+
+.meta-glass-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(103, 214, 200, 0.12);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(142, 163, 170, 0.65);
+}
+
+@media (max-width: 767px) {
+  .meta-glass-footer {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+/* ── Frosted Glass Copy Panel (right column) — heavy, immersive ─────────── */
+.meta-copy-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 5vw, 56px);
+  /* Heavy frosted glass — the star of the layout */
+  background: rgba(8, 18, 28, 0.74);
+  backdrop-filter: blur(28px) saturate(1.4) brightness(0.92);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4) brightness(0.92);
+  border-left: 1px solid rgba(103, 214, 200, 0.18);
+  box-shadow: inset 1px 0 0 rgba(103, 214, 200, 0.08);
+}
+
+@supports not (backdrop-filter: blur(28px)) {
+  .meta-copy-panel {
+    background: rgba(8, 18, 28, 0.95);
+  }
+}
+
+@media (max-width: 767px) {
+  .meta-copy-panel {
+    padding: 24px 20px 32px;
+    /* Keep heavy glass on mobile too */
+    background: rgba(8, 18, 28, 0.80);
+    backdrop-filter: blur(28px) saturate(1.4);
+    -webkit-backdrop-filter: blur(28px) saturate(1.4);
+    border-left: none;
+    border-top: 1px solid rgba(103, 214, 200, 0.14);
+  }
+}
+
+.meta-copy-label {
+  color: var(--accent-bright) !important;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.meta-copy-heading {
+  color: #ffffff !important;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+}
+
+.meta-copy-body {
+  color: rgba(183, 199, 204, 0.9) !important;
+  margin-bottom: 24px;
+}
+
+.meta-service-list li {
+  color: rgba(183, 199, 204, 0.82);
+}
+
+.meta-service-list li strong {
+  color: #f1f6f7;
+}
+
+.meta-service-list li::before {
+  background-color: var(--accent-bright);
+}
+
+/* ── End Meta Full-Bleed ─────────────────────────────────────────────────── */
+
+/* Also Included Strip */
 .also-included {
   padding-top: clamp(48px, 6vw, 68px);
   border-top: 1px solid var(--border-light);

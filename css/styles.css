@@ -914,61 +914,37 @@ body.mobile-nav-open .mobile-nav-backdrop {
 
 .service-slide .visual-window { width: 100%; }
 
-.service-slider-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+.service-slider-progress {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
   padding-top: 16px;
 }
 
-.service-slider-tabs { display: flex; gap: 6px; min-width: 0; }
-
-.service-slider-tabs button {
-  min-height: 40px;
-  padding: 0 11px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  background: transparent;
-  color: var(--text-dark-sub);
-  font: 600 11px/1 var(--font-sans);
-  white-space: nowrap;
-  cursor: pointer;
-  transition: color .2s ease, background .2s ease, border-color .2s ease;
+.service-slider-progress span {
+  position: relative;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(16, 36, 45, .14);
 }
 
-.service-slider-tabs button:hover,
-.service-slider-tabs button.is-active {
-  border-color: rgba(16, 36, 45, .12);
-  background: #fff;
-  color: var(--text-dark);
+.service-slider-progress span::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
 }
 
-.service-slider-tabs button:focus-visible,
-.service-slider-arrows button:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
+.service-slider-progress span.is-active::after { transform: scaleX(0); }
+.service-slider-progress span.is-complete::after { transform: scaleX(1); }
+.service-slider-progress span.is-running::after { animation: service-slide-progress 6.5s linear forwards; }
+
+@keyframes service-slide-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
-
-.service-slider-arrows { display: flex; gap: 7px; flex-shrink: 0; }
-
-.service-slider-arrows button {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(16, 36, 45, .16);
-  border-radius: 50%;
-  background: transparent;
-  color: var(--text-dark);
-  font-size: 18px;
-  cursor: pointer;
-  transition: background .2s ease, color .2s ease, transform .2s ease;
-}
-
-.service-slider-arrows button[data-slide-pause] { font-size: 13px; }
-
-.service-slider-arrows button:hover { background: var(--text-dark); color: white; transform: translateY(-2px); }
 
 .visual-object-portfolio {
   background: linear-gradient(145deg, #c2aaa0, #86736a);
@@ -1003,16 +979,12 @@ body.mobile-nav-open .mobile-nav-backdrop {
 
 @media (max-width: 600px) {
   .service-slider-stage { min-height: 265px; aspect-ratio: 1 / 1; }
-  .service-slider-controls { align-items: flex-start; }
-  .service-slider-tabs { overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
-  .service-slider-tabs::-webkit-scrollbar { display: none; }
-  .service-slider-tabs button { padding-inline: 9px; font-size: 10px; }
-  .service-slider-arrows { padding-top: 0; }
-  .service-slider-arrows button { width: 34px; height: 34px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .service-slide, .service-slider-tabs button, .service-slider-arrows button { transition-duration: .01ms; }
+  .service-slide { transition-duration: .01ms; }
+  .service-slider-progress span.is-running::after { animation: none; }
+  .service-slider-progress span.is-active::after { transform: scaleX(1); }
 }
 
 @media (min-width: 1024px) {

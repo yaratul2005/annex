@@ -946,36 +946,22 @@ body.mobile-nav-open .mobile-nav-backdrop {
   to { transform: scaleX(1); }
 }
 
-.visual-object-portfolio {
-  background: linear-gradient(145deg, #c2aaa0, #86736a);
+.service-slide-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #d8e0df;
+  box-shadow: 0 12px 28px rgba(15, 38, 45, .15);
 }
-.visual-object-portfolio::before {
-  width: 69%; height: 75%; left: 15%; bottom: 8%;
-  border-radius: 48% 48% 5% 5%;
-  background: linear-gradient(145deg, #f0d9c4 0 48%, #b76548 49% 100%);
-  transform: rotate(-7deg);
+
+.service-slide-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
 }
-.visual-object-portfolio span,
-.visual-object-school span,
-.visual-object-corporate span {
-  position: absolute; z-index: 1; right: 12px; top: 12px;
-  color: white; font: 500 12px/1 var(--font-mono);
-}
-.visual-object-school { background: linear-gradient(150deg, #80a69b, #396d68); }
-.visual-object-school::before {
-  width: 76%; height: 62%; left: 12%; bottom: 0;
-  border-radius: 55% 55% 0 0;
-  background: linear-gradient(90deg, #f0ddae 0 24%, #d8be89 25% 48%, #f5e8c6 49% 74%, #d1b67f 75%);
-  box-shadow: none;
-}
-.visual-object-school span { top: 42%; right: 38%; font: 600 32px/1 var(--font-display); }
-.visual-object-corporate { background: linear-gradient(145deg, #243d46, #10242d); }
-.visual-object-corporate::before {
-  width: 58%; height: 84%; left: 21%; bottom: -8%; border-radius: 48% 48% 0 0;
-  background: linear-gradient(90deg, #31505b 0 29%, #adc1bd 30% 36%, #1a343d 37% 66%, #8da9a8 67% 72%, #29434b 73%);
-  box-shadow: none;
-}
-.visual-object-corporate span { top: 38%; right: 38%; font: 500 38px/1 var(--font-display); }
 
 @media (max-width: 600px) {
   .service-slider-stage { min-height: 265px; aspect-ratio: 1 / 1; }
@@ -1130,65 +1116,6 @@ body.mobile-nav-open .mobile-nav-backdrop {
 .visual-window-dark .visual-bottom {
   border-top: 1px solid rgba(226, 241, 243, 0.12);
   color: var(--text-light-muted);
-}
-
-/* Service 1 Inner Visual */
-.visual-hero {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 12px;
-  padding-block: 8px;
-}
-
-.visual-hero small {
-  font-family: var(--font-mono);
-  font-size: 8px;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-}
-
-.visual-hero strong {
-  display: block;
-  margin-block: 8px 12px;
-  font-family: var(--font-display);
-  font-size: clamp(24px, 3.2vw, 36px);
-  line-height: 0.95;
-  font-weight: 500;
-  letter-spacing: -0.03em;
-}
-
-.visual-hero strong i {
-  color: var(--accent);
-  font-style: italic;
-}
-
-.visual-link {
-  font-family: var(--font-mono);
-  font-size: 8px;
-  letter-spacing: 0.06em;
-  color: #10242D;
-  font-weight: 600;
-}
-
-.visual-object {
-  position: relative;
-  height: 140px;
-  border-radius: var(--radius-xs);
-  background: linear-gradient(145deg, #A4B8BC, #7F959A);
-  overflow: hidden;
-}
-
-.visual-object::before {
-  content: '';
-  position: absolute;
-  width: 58%;
-  height: 64%;
-  background: linear-gradient(130deg, #D5E2E4, #9FB3B7);
-  border-radius: 48% 48% 12% 12%;
-  left: 21%;
-  bottom: 8%;
-  box-shadow: inset -10px -4px 18px rgba(25, 55, 64, 0.22), 0 12px 18px rgba(16, 36, 45, 0.18);
 }
 
 /* Service 2 Inner Visual (Meta Growth Lab Telemetry) */

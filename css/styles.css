@@ -879,6 +879,62 @@ body.mobile-nav-open .mobile-nav-backdrop {
 
 .service-slider { min-width: 0; }
 
+.tech-banner {
+  max-width: 560px;
+  margin-top: clamp(28px, 4vw, 42px);
+  overflow: hidden;
+  border: 1px solid rgba(16, 36, 45, .11);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, .58);
+}
+
+.tech-banner-heading {
+  display: block;
+  padding: 13px 16px 0;
+  color: var(--text-dark-sub);
+  font: 600 10px/1.2 var(--font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.tech-marquee {
+  overflow: hidden;
+  padding: 14px 0 15px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.tech-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: clamp(22px, 3vw, 40px);
+  padding-left: 20px;
+  animation: tech-banner-scroll 22s linear infinite;
+}
+
+.tech-banner:hover .tech-marquee-track { animation-play-state: paused; }
+
+.tech-mark {
+  display: inline-flex;
+  min-width: max-content;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-dark);
+  font: 600 12px/1 var(--font-sans);
+}
+
+.tech-mark svg { display: block; width: 34px; height: 34px; }
+.tech-react svg { color: #149eca; }
+.tech-html svg { color: #e34f26; }
+.tech-wordpress svg { color: #21759b; }
+.tech-php svg { width: 50px; color: #777bb3; }
+
+@keyframes tech-banner-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 .service-slider-stage {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -956,6 +1012,8 @@ body.mobile-nav-open .mobile-nav-backdrop {
   .service-slide { transition-duration: .01ms; }
   .service-slider-progress span.is-running::after { animation: none; }
   .service-slider-progress span.is-active::after { transform: scaleX(1); }
+  .tech-marquee-track { width: 100%; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 0 16px; animation: none; }
+  .tech-mark:nth-child(n + 5) { display: none; }
 }
 
 @media (min-width: 1024px) {

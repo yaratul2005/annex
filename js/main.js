@@ -25,7 +25,6 @@ function initServiceSlider() {
   const progress = [...slider.querySelectorAll('.service-slider-progress span')];
   const title = document.querySelector('[data-slider-title]');
   const description = document.querySelector('[data-slider-description]');
-  const current = document.querySelector('[data-slider-current]');
   const content = [
     ['Portfolio websites', 'A distinctive home for your work, point of view, and next opportunity.'],
     ['E-commerce websites', 'A smooth storefront built to make discovery, checkout, and repeat orders feel effortless.'],
@@ -50,7 +49,6 @@ function initServiceSlider() {
     });
     title.textContent = content[active][0];
     description.textContent = content[active][1];
-    current.textContent = String(active + 1).padStart(2, '0');
   };
 
   const stop = () => {

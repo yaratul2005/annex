@@ -3,7 +3,7 @@
    Domain: annexbd.tech
    Architecture: Cool mineral surfaces and deep blue-green ink
    Single Accent: Signal teal (#087985) & Mint highlight (#67D6C8)
-   Typography: Space Grotesk (Headings) + Inter (Body)
+   Typography: Space Grotesk (Headings), Inter (Body), Kaushan Script (Founder Quote)
    Zero Emojis | Respects Reduced Motion | Max 1200px Container
    ========================================================================== */
 
@@ -39,6 +39,13 @@
   font-display: swap;
   src: url('../assets/fonts/space-grotesk-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Kaushan Script';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/Kaushan/Kaushan_Script/KaushanScript-Regular.ttf') format('truetype');
 }
 
 /* ── 2. Design Tokens ───────────────────────────────────────────────────── */
@@ -348,36 +355,6 @@ h1, h2, h3, h4,
 .color-muted { color: var(--text-dark-muted); }
 .section-dark .color-sub { color: var(--text-light-sub); }
 .section-dark .color-muted { color: var(--text-light-muted); }
-
-/* Eyebrows & Status Indicators */
-.eyebrow, .hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-  color: var(--text-light-sub);
-  margin-bottom: 12px;
-}
-
-.status-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: var(--accent-bright);
-  border-radius: 50%;
-  box-shadow: 0 0 0 0 rgba(103, 214, 200, 0.6);
-  animation: status-pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  flex-shrink: 0;
-}
-
-@keyframes status-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(103, 214, 200, 0.6); }
-  70% { box-shadow: 0 0 0 8px rgba(103, 214, 200, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(103, 214, 200, 0); }
-}
 
 /* ── 6. Buttons & Interactive Controls ──────────────────────────────────── */
 .btn-cta-primary {
@@ -707,20 +684,14 @@ body.mobile-nav-open .mobile-nav-backdrop {
   }
 }
 
-.proof-bar-label {
-  font-family: var(--font-sans);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--text-light-muted);
-  flex-shrink: 0;
-}
-
 .logo-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
 }
+
+.proof-bar .logo-grid { width: 100%; justify-content: space-between; }
 
 @media (min-width: 640px) {
   .logo-grid {
@@ -793,7 +764,7 @@ body.mobile-nav-open .mobile-nav-backdrop {
 
 .hero-copy .text-hero {
   color: #ffffff;
-  margin-block: 16px 20px;
+  margin-block: 0 20px;
 }
 
 .hero-copy .text-body {
@@ -852,14 +823,6 @@ body.mobile-nav-open .mobile-nav-backdrop {
   margin: 32px 0 26px;
   padding-left: 17px;
   border-left: 2px solid var(--accent);
-}
-
-.service-slide-count {
-  display: block;
-  margin-bottom: 9px;
-  color: var(--accent);
-  font: 600 11px/1 var(--font-mono);
-  letter-spacing: .12em;
 }
 
 .service-slider-copy h4 {
@@ -1020,17 +983,6 @@ body.mobile-nav-open .mobile-nav-backdrop {
   .service-block {
     grid-template-columns: 1fr 1fr;
   }
-}
-
-.service-label {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 12px;
 }
 
 .service-block .text-h3 {
@@ -1417,12 +1369,6 @@ body.mobile-nav-open .mobile-nav-backdrop {
 .meta-copy-panel > :not(.meta-copy-logo-bg) {
   position: relative;
   z-index: 1;
-}
-
-.meta-copy-label {
-  color: var(--accent-bright) !important;
-  opacity: 0.9;
-  margin-bottom: 8px;
 }
 
 .meta-copy-heading {
@@ -2281,7 +2227,7 @@ body.mobile-nav-open .mobile-nav-backdrop {
   font-style: normal;
   letter-spacing: -0.025em;
   color: var(--text-dark);
-  margin-block: 16px 28px;
+  margin-block: 0 28px;
 }
 
 .principle-signoff {
@@ -2408,22 +2354,6 @@ body.mobile-nav-open .mobile-nav-backdrop {
   stroke-width: 1.5;
 }
 
-.founder-eyebrow,
-.founder-credentials-label {
-  color: var(--accent-bright);
-  font: 600 11px/1.4 var(--font-mono);
-  letter-spacing: .11em;
-  text-transform: uppercase;
-}
-
-.founder-kicker {
-  margin: 16px 0 9px;
-  color: var(--text-light-muted);
-  font: 500 13px/1.4 var(--font-sans);
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
 .founder-copy h2 {
   margin: 0;
   color: #fff;
@@ -2453,15 +2383,19 @@ body.mobile-nav-open .mobile-nav-backdrop {
   padding: 3px 0 3px 22px;
   border-left: 2px solid var(--accent-bright);
   color: #f5f7f6;
-  font: 400 clamp(19px, 2.1vw, 25px)/1.45 var(--font-display);
-  letter-spacing: -.015em;
+  font: 400 clamp(22px, 2.5vw, 31px)/1.65 'Kaushan Script', cursive;
+  letter-spacing: 0;
 }
 
 .founder-quote p { margin: 0; }
 
 .founder-credentials { margin-top: 27px; }
 
-.founder-credentials-label { display: block; margin-bottom: 11px; color: var(--text-light-muted); }
+.founder-credentials-title {
+  margin: 0 0 11px;
+  color: var(--text-light-sub);
+  font: 600 14px/1.4 var(--font-sans);
+}
 
 .founder-badge-row {
   display: grid;
@@ -2501,7 +2435,46 @@ body.mobile-nav-open .mobile-nav-backdrop {
 .founder-badge strong { color: #fff; font-size: 13px; font-weight: 600; }
 .founder-badge small { color: var(--text-light-muted); font-size: 10px; line-height: 1.35; }
 
-.founder-cta { margin-top: 26px; }
+.founder-links {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 11px;
+  margin-top: 26px;
+  max-width: 430px;
+}
+
+.founder-github-link,
+.founder-portfolio-link {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  transition: transform .2s ease, background-color .2s ease, border-color .2s ease;
+}
+
+.founder-github-link {
+  border: 1px solid var(--border-dark);
+  background: rgba(255, 255, 255, .045);
+  color: var(--text-light);
+}
+
+.founder-github-link svg { width: 25px; height: 25px; }
+.founder-github-link:hover { transform: translateY(-2px); border-color: var(--accent-bright); background: rgba(255, 255, 255, .09); }
+
+.founder-portfolio-link {
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 20px;
+  background: var(--accent-bright);
+  color: var(--bg-dark);
+  font: 700 16px/1.2 var(--font-sans);
+}
+
+.founder-portfolio-link svg { flex: 0 0 20px; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+.founder-portfolio-link:hover { transform: translateY(-2px); background: #80e3d7; }
+.founder-github-link:focus-visible, .founder-portfolio-link:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
 
 @media (max-width: 420px) {
   .founder-badge-row { grid-template-columns: 1fr; }
@@ -3166,10 +3139,7 @@ body.nav-open, body.consent-open {
   margin-inline: auto;
 }
 
-.privacy-page .service-label {
-  display: inline-block;
-  margin-bottom: 16px;
-}
+.privacy-page .privacy-updated { margin: -10px 0 22px; color: var(--text-dark-muted); font-size: 13px; line-height: 1.5; }
 
 .privacy-page h1 {
   margin-bottom: 20px;
@@ -3443,8 +3413,5 @@ body.nav-open, body.consent-open {
   .site-loader {
     display: none;
     transition: none;
-  }
-  .status-dot {
-    animation: none !important;
   }
 }

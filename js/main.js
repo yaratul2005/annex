@@ -11,7 +11,84 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initEstimator();
   initBookingModal();
+  initServiceSlider();
 });
+
+/* --------------------------------------------------------------------------
+   Website development service showcase
+   -------------------------------------------------------------------------- */
+function initServiceSlider() {
+  const slider = document.querySelector('[data-service-slider]');
+  if (!slider) return;
+
+  const slides = [...slider.querySelectorAll('[data-slide]')];
+  const tabs = [...slider.querySelectorAll('[data-slide-to]')];
+  const tabRail = slider.querySelector('.service-slider-tabs');
+  const title = document.querySelector('[data-slider-title]');
+  const description = document.querySelector('[data-slider-description]');
+  const current = document.querySelector('[data-slider-current]');
+  const content = [
+    ['Portfolio websites', 'A distinctive home for your work, point of view, and next opportunity.'],
+    ['E-commerce websites', 'A smooth storefront built to make discovery, checkout, and repeat orders feel effortless.'],
+    ['School & college websites', 'A helpful digital campus for admissions, announcements, and the whole learning community.'],
+    ['Corporate & private company websites', 'A credible platform that brings your capabilities, people, and business goals together.']
+  ];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let active = 0;
+  let timer;
+  let paused = false;
+  let hovered = false;
+  let focused = false;
+
+  const show = (index, interacted = false) => {
+    active = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      const selected = i === active;
+      slide.classList.toggle('is-active', selected);
+      slide.setAttribute('aria-hidden', String(!selected));
+    });
+    tabs.forEach((tab, i) => {
+      const selected = i === active;
+      tab.classList.toggle('is-active', selected);
+      tab.setAttribute('aria-pressed', String(selected));
+      if (selected && interacted && tabRail) {
+        const targetLeft = tab.offsetLeft - tabRail.offsetLeft - (tabRail.clientWidth - tab.clientWidth) / 2;
+        tabRail.scrollTo({ left: Math.max(0, targetLeft), behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+      }
+    });
+    title.textContent = content[active][0];
+    description.textContent = content[active][1];
+    current.textContent = String(active + 1).padStart(2, '0');
+  };
+
+  const stop = () => window.clearInterval(timer);
+  const start = () => {
+    stop();
+    if (paused || hovered || focused || reducedMotion.matches || document.hidden) return;
+    timer = window.setInterval(() => show(active + 1), 6500);
+  };
+
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => { show(i, true); start(); }));
+  slider.querySelector('[data-slide-prev]')?.addEventListener('click', () => { show(active - 1, true); start(); });
+  slider.querySelector('[data-slide-next]')?.addEventListener('click', () => { show(active + 1, true); start(); });
+  slider.querySelector('[data-slide-pause]')?.addEventListener('click', event => {
+    paused = !paused;
+    event.currentTarget.setAttribute('aria-pressed', String(paused));
+    event.currentTarget.setAttribute('aria-label', paused ? 'Play automatic slides' : 'Pause automatic slides');
+    event.currentTarget.textContent = paused ? '▶' : 'Ⅱ';
+    start();
+  });
+  slider.addEventListener('mouseenter', () => { hovered = true; stop(); });
+  slider.addEventListener('mouseleave', () => { hovered = false; start(); });
+  slider.addEventListener('focusin', () => { focused = true; stop(); });
+  slider.addEventListener('focusout', event => {
+    if (!slider.contains(event.relatedTarget)) { focused = false; start(); }
+  });
+  document.addEventListener('visibilitychange', start);
+  reducedMotion.addEventListener?.('change', start);
+  show(0);
+  start();
+}
 
 /* --------------------------------------------------------------------------
    0. Fluid first-paint animation

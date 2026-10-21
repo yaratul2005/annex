@@ -279,40 +279,76 @@
 
     <!-- Service 1: Website Development -->
     <div class="service-block reveal">
-      <div class="space-y-6">
+      <div class="service-intro">
         <span class="service-label">01 / Core Service</span>
         <h3 class="font-serif-display text-h3">Website Development</h3>
         <p class="text-body leading-relaxed">
-          We design and build bespoke, responsive websites engineered for speed, search visibility, and conversion. Every project is tailored specifically to your audience and operational needs:
+          Digital experiences shaped around the way your organization works. Explore four ways we turn a first impression into a useful, high-performing product.
         </p>
-        <ul class="service-list">
-          <li><strong>E-Commerce Platforms:</strong> Fast-loading online stores integrated with local payment gateways (bKash, Nagad, Rocket, SSLCommerz) and international gateways (Stripe, PayPal).</li>
-          <li><strong>School &amp; College Portals:</strong> Centralized digital administration for admissions, computerized fee payments, and staff records.</li>
-          <li><strong>Corporate &amp; Private Company Sites:</strong> Institutional platforms built for credibility, compliance, and enterprise lead capture.</li>
-          <li><strong>Portfolios:</strong> Distinctive showcases for creators, founders, and specialized service firms.</li>
-        </ul>
+        <div class="service-slider-copy" aria-live="off">
+          <span class="service-slide-count"><span data-slider-current>01</span><span aria-hidden="true"> / 04</span></span>
+          <h4 data-slider-title>Portfolio websites</h4>
+          <p data-slider-description>A distinctive home for your work, point of view, and next opportunity.</p>
+        </div>
         <div class="pt-2">
           <button type="button" class="btn-cta-primary open-booking-modal">Book a free 20-minute call</button>
         </div>
       </div>
 
-      <div class="service-visual service-visual-web aspect-4-3 reveal" aria-label="Illustrated ecommerce website concept">
-        <div class="visual-window">
-          <div class="visual-top">
-            <span>atelier / objects for living</span>
-            <span>MENU&nbsp;&nbsp; BAG (0)</span>
-          </div>
-          <div class="visual-hero">
-            <div>
-              <small>THE EVERYDAY EDIT</small>
-              <strong>Objects<br>with a point<br><i>of view.</i></strong>
-              <span class="visual-link">DISCOVER THE COLLECTION ↗</span>
+      <div class="service-slider" data-service-slider role="region" aria-roledescription="carousel" aria-label="Website development project types">
+        <div class="service-slider-stage">
+          <article class="service-slide is-active" data-slide="0" aria-hidden="false">
+            <div class="visual-window">
+              <div class="visual-top"><span>folio / selected work</span><span>ABOUT&nbsp;&nbsp; CONTACT ↗</span></div>
+              <div class="visual-hero">
+                <div><small>INDEPENDENT DESIGNER — 2026</small><strong>Ideas made<br><i>visible.</i></strong><span class="visual-link">EXPLORE SELECTED WORK ↗</span></div>
+                <div class="visual-object visual-object-portfolio" aria-hidden="true"><span>01</span></div>
+              </div>
+              <div class="visual-bottom"><span>IDENTITY — DIGITAL — ART DIRECTION</span><span>SCROLL TO EXPLORE ↓</span></div>
             </div>
-            <div class="visual-object" aria-hidden="true"></div>
+          </article>
+          <article class="service-slide" data-slide="1" aria-hidden="true">
+            <div class="visual-window">
+              <div class="visual-top"><span>atelier / objects for living</span><span>MENU&nbsp;&nbsp; BAG (0)</span></div>
+              <div class="visual-hero">
+                <div><small>THE EVERYDAY EDIT</small><strong>Objects<br>with a point<br><i>of view.</i></strong><span class="visual-link">DISCOVER THE COLLECTION ↗</span></div>
+                <div class="visual-object visual-object-store" aria-hidden="true"></div>
+              </div>
+              <div class="visual-bottom"><span>01 — OBJECTS</span><span>DESIGNED TO LAST</span></div>
+            </div>
+          </article>
+          <article class="service-slide" data-slide="2" aria-hidden="true">
+            <div class="visual-window visual-window-school">
+              <div class="visual-top"><span>northfield / learning portal</span><span>PORTAL&nbsp;&nbsp; ADMISSIONS</span></div>
+              <div class="visual-hero">
+                <div><small>LEARN WITHOUT LIMITS</small><strong>A brighter<br><i>way forward.</i></strong><span class="visual-link">EXPLORE NORTHFIELD ↗</span></div>
+                <div class="visual-object visual-object-school" aria-hidden="true"><span>n.</span></div>
+              </div>
+              <div class="visual-bottom"><span>LEARN — CONNECT — GROW</span><span>ADMISSIONS OPEN</span></div>
+            </div>
+          </article>
+          <article class="service-slide" data-slide="3" aria-hidden="true">
+            <div class="visual-window visual-window-corporate">
+              <div class="visual-top"><span>forma / built for what’s next</span><span>CAPABILITIES&nbsp;&nbsp; CONTACT</span></div>
+              <div class="visual-hero">
+                <div><small>STRATEGY MEETS PRECISION</small><strong>Built to<br><i>move business.</i></strong><span class="visual-link">OUR APPROACH ↗</span></div>
+                <div class="visual-object visual-object-corporate" aria-hidden="true"><span>F</span></div>
+              </div>
+              <div class="visual-bottom"><span>ADVISORY — ENGINEERING — GROWTH</span><span>GLOBAL PARTNERS</span></div>
+            </div>
+          </article>
+        </div>
+        <div class="service-slider-controls">
+          <div class="service-slider-tabs" role="group" aria-label="Choose a website type">
+            <button type="button" class="is-active" data-slide-to="0" aria-label="Show portfolio websites" aria-pressed="true">Portfolio</button>
+            <button type="button" data-slide-to="1" aria-label="Show e-commerce websites" aria-pressed="false">E-commerce</button>
+            <button type="button" data-slide-to="2" aria-label="Show school websites" aria-pressed="false">Schools</button>
+            <button type="button" data-slide-to="3" aria-label="Show corporate and private company websites" aria-pressed="false">Corporate</button>
           </div>
-          <div class="visual-bottom">
-            <span>01 — OBJECTS</span>
-            <span>DESIGNED TO LAST</span>
+          <div class="service-slider-arrows">
+            <button type="button" data-slide-prev aria-label="Previous website type">←</button>
+            <button type="button" data-slide-next aria-label="Next website type">→</button>
+            <button type="button" data-slide-pause aria-label="Pause automatic slides" aria-pressed="false">Ⅱ</button>
           </div>
         </div>
       </div>

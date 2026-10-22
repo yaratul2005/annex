@@ -1729,6 +1729,40 @@ body.mobile-nav-open .mobile-nav-backdrop {
   letter-spacing: 0.02em;
 }
 
+.streamflix-github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 23px;
+  color: #c796ff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.streamflix-github-link:hover {
+  color: #e4c9ff;
+}
+
+.streamflix-github-mark {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  color: #a64dff;
+  filter: drop-shadow(0 0 7px rgba(166, 77, 255, 0.4));
+  animation: streamflix-github-float 2.4s ease-in-out infinite;
+}
+
+.streamflix-github-arrow {
+  color: #a64dff;
+  transition: transform 200ms ease;
+}
+
+.streamflix-github-link:hover .streamflix-github-arrow {
+  transform: translate(3px, -3px);
+}
+
 .streamflix-facts {
   display: grid;
   gap: 0;
@@ -1901,6 +1935,11 @@ body.mobile-nav-open .mobile-nav-backdrop {
 @keyframes streamflix-enter {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes streamflix-github-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 /* ── 14. Principles & About Studio ──────────────────────────────────────── */

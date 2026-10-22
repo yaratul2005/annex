@@ -17,5 +17,8 @@
     "cloudflare"
   ],
   "author": "ANNEX BD <support@annexbd.tech>",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "nodemailer": "^10.2.0"
+  }
 }

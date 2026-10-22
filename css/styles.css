@@ -2646,6 +2646,25 @@ body.nav-open, body.consent-open {
   line-height: 1.55;
 }
 
+.submit-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  border: 2px solid rgba(255, 255, 255, 0.42);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: submit-spin 700ms linear infinite;
+}
+
+.submit-spinner[hidden] {
+  display: none;
+}
+
+@keyframes submit-spin {
+  to { transform: rotate(360deg); }
+}
+
 .form-status[data-state="success"] {
   border-color: #67D6C8;
   color: #DDF8F4;

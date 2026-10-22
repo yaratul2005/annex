@@ -906,7 +906,10 @@
         <input type="text" id="booking-website" name="website" tabindex="-1" autocomplete="off">
       </div>
       <div class="pt-2">
-        <button type="submit" class="btn-cta-primary btn-full">Book a free 20-minute call</button>
+        <button type="submit" class="btn-cta-primary btn-full">
+          <span class="submit-spinner" aria-hidden="true" hidden></span>
+          <span class="submit-button-label">Book a free 20-minute call</span>
+        </button>
       </div>
       <p class="form-privacy-note">Your details are used to respond to this inquiry. <a href="privacy">Privacy notice</a></p>
       <p id="booking-form-status" class="form-status" role="status" aria-live="polite" tabindex="-1" hidden></p>

@@ -459,12 +459,17 @@ function initBookingModal() {
 }
 
 async function submitBookingRequest(form, modal) {
+  if (form.dataset.submitting === 'true') return;
+  form.dataset.submitting = 'true';
+
   const name = document.getElementById('booking-name')?.value.trim() || '';
   const email = document.getElementById('booking-email')?.value.trim() || '';
   const notes = document.getElementById('booking-notes')?.value.trim() || '';
   const status = document.getElementById('booking-form-status');
   const fallback = document.getElementById('booking-mailto-fallback');
   const submitButton = form.querySelector('button[type="submit"]');
+  const submitLabel = submitButton?.querySelector('.submit-button-label');
+  const submitSpinner = submitButton?.querySelector('.submit-spinner');
   const subject = `Consultation Request: 20-Minute Call — ${name}`;
   const body = `Name: ${name}\nEmail: ${email}\n\nProject Notes:\n${notes}\n\nSubmitted via annexbd.tech`;
   const mailto = `mailto:support@annexbd.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -478,7 +483,9 @@ async function submitBookingRequest(form, modal) {
   if (submitButton) {
     submitButton.disabled = true;
     submitButton.setAttribute('aria-busy', 'true');
-    submitButton.textContent = 'Sending request…';
+    if (submitLabel) submitLabel.textContent = 'Sending request…';
+    if (submitSpinner) submitSpinner.hidden = false;
+    form.setAttribute('aria-busy', 'true');
   }
 
   try {
@@ -508,8 +515,11 @@ async function submitBookingRequest(form, modal) {
     if (submitButton) {
       submitButton.disabled = false;
       submitButton.removeAttribute('aria-busy');
-      submitButton.textContent = 'Book a free 20-minute call';
+      if (submitLabel) submitLabel.textContent = 'Book a free 20-minute call';
+      if (submitSpinner) submitSpinner.hidden = true;
+      form.removeAttribute('aria-busy');
     }
+    delete form.dataset.submitting;
   }
 }
 

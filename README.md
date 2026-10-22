@@ -40,7 +40,7 @@ D:\ANNEX\
 ├── scripts/build-pages.mjs  # Prepares the static Cloudflare Pages site in dist/
 ├── api/contact.mjs          # Vercel booking-request endpoint
 ├── functions/api/contact.js # Cloudflare Pages booking-request endpoint
-├── lib/contact-handler.mjs  # Shared validated Resend delivery logic
+├── lib/contact-handler.mjs  # Shared booking validation and mailer dispatch
 ├── .gitignore               # Repository ignore rules
 │
 ├── assets/
@@ -131,12 +131,22 @@ Local address: `http://localhost:3000`
 
 ## Booking Email Delivery
 
-The booking form submits to `/api/contact` on Vercel or `/api/contact` through the Cloudflare Pages Function. Both use the shared Resend delivery handler and send messages to `support@annexbd.tech`. To activate delivery, configure these server-side environment variables in the hosting project:
+The booking form submits to `/api/contact` on Vercel or `/api/contact` through the Cloudflare Pages Function. Vercel sends through Zoho Mail SMTP; the optional Cloudflare Pages deployment retains Resend over HTTPS. Both deliver inquiries to `support@annexbd.tech` and use the submitted visitor email as `Reply-To`.
+
+### Vercel / Zoho Mail
+
+- `SMTP_PASS`: Zoho mailbox password or app-specific password, stored as a Vercel encrypted environment variable.
+- `SMTP_HOST`: optional; defaults to `smtppro.zoho.com` for a domain-based Zoho Mail organization account. Confirm the exact host in Zoho Mail's Server Configuration Details for the account's data center.
+- `SMTP_PORT`: optional; defaults to `465` with SSL. Port `587` is supported for TLS; when using it, set `SMTP_HOST` to the host Zoho lists for the account.
+
+If Zoho Mail has two-factor authentication enabled, `SMTP_PASS` may need to be an app-specific password. The sender address is kept aligned with the authenticated mailbox to avoid Zoho relay rejection. Vercel's Node.js function awaits SMTP delivery before returning its response.
+
+### Optional Cloudflare Pages deployment / Resend
 
 - `RESEND_API_KEY`: a Resend API key with permission to send email.
 - `RESEND_FROM_EMAIL`: a sender address/domain verified in the Resend account, for example `ANNEX website <inquiries@your-verified-domain>`.
 
-Never put these values in browser JavaScript or commit them to this repository. Until both are configured, the endpoint returns a setup status and the form displays a prefilled email-app fallback. The form validates fields, limits input length, rejects cross-origin JSON requests, and uses a honeypot; production anti-abuse limits should also be configured at the host/provider layer.
+Never put these values in browser JavaScript or commit them to this repository. If delivery credentials are missing, the endpoint returns a setup status and the form displays a prefilled email-app fallback. The form validates fields, limits input length, rejects cross-origin JSON requests, and uses a honeypot; production anti-abuse limits should also be configured at the host/provider layer.
 
 ---
 

@@ -179,6 +179,7 @@
       <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="#services">Services</a>
         <a href="#architecture">Architecture</a>
+        <a href="#projects">Projects</a>
         <a href="#faq">FAQ</a>
       </nav>
 
@@ -216,6 +217,7 @@
     <nav class="drawer-nav" aria-label="Mobile navigation">
       <a href="#services" class="mobile-nav-link">Services</a>
       <a href="#architecture" class="mobile-nav-link">Architecture</a>
+      <a href="#projects" class="mobile-nav-link">Projects</a>
       <a href="#faq" class="mobile-nav-link">FAQ</a>
     </nav>
   </div>
@@ -534,90 +536,55 @@
 
 
 <!-- =========================================================================
-     7. ESTIMATOR (Light)
-     Interactive scope planner with sticky summary output.
+     7. STREAMFLIX PROJECT SHOWCASE
+     Product overview and responsive screenshot gallery.
      ========================================================================= -->
-<section id="estimator" class="section-light section-rhythm border-top-light">
+<section id="projects" class="section-dark section-rhythm border-top-dark streamflix-section" aria-labelledby="streamflix-title">
   <div class="site-container">
 
-    <div class="estimator-header reveal">
-      <h2 class="font-serif-display text-h2">Shape your project.</h2>
-      <p>Choose a service and project scale to explore a starting scope and indicative delivery window.</p>
+    <div class="streamflix-intro">
+      <div class="streamflix-copy">
+        <span class="streamflix-eyebrow"><span aria-hidden="true"></span> Featured project / 01</span>
+        <h2 id="streamflix-title" class="font-serif-display streamflix-title">Stream<span>Flix</span></h2>
+        <p class="streamflix-lede">A cinematic discovery and streaming experience for movies and series, designed and built by YASER AH. RATUL.</p>
+        <div class="streamflix-tags" aria-label="Project technologies and capabilities">
+          <span>Next.js</span><span>TMDB API</span><span>Open-source APIs</span><span>User accounts</span><span>Dashboard</span>
+        </div>
+      </div>
+
+      <div class="streamflix-facts" aria-label="Project overview">
+        <div><span>01 / Product</span><strong>Streaming discovery</strong></div>
+        <div><span>02 / Data</span><strong>TMDB + open APIs</strong></div>
+        <div><span>03 / By</span><strong>YASER AH. RATUL</strong></div>
+      </div>
     </div>
 
-    <div class="estimator-layout reveal">
-
-      <!-- Inputs -->
-      <div class="estimator-inputs">
-
-        <div class="form-group">
-          <label class="form-label" for="estimator-service">Service Category</label>
-          <select id="estimator-service" class="form-select">
-            <option value="web_dev" selected>Website Development (Portfolio, E-Commerce, School, Corporate)</option>
-            <option value="meta_ads">Meta Ads Support (Promotion, Lead Generation, CAPI Tracking)</option>
-          </select>
+    <div class="streamflix-gallery" aria-label="StreamFlix project screenshots">
+      <figure class="streamflix-shot streamflix-shot-feature">
+        <div class="streamflix-image-wrap">
+          <img src="assets/extra/github/front.png" alt="StreamFlix home page showing movie discovery, featured title, and trending movies" loading="lazy" decoding="async">
         </div>
+        <figcaption><span>01</span><div><strong>Discover</strong><small>Featured titles, search, and trending collections</small></div><span class="streamflix-shot-arrow" aria-hidden="true">↗</span></figcaption>
+      </figure>
 
-        <div class="form-group">
-          <label class="form-label" for="estimator-scale">Project Scale</label>
-          <select id="estimator-scale" class="form-select">
-            <option value="starter" selected>Starter — Focused Launch Sprint</option>
-            <option value="growth">Growth — Comprehensive Feature Integration</option>
-            <option value="enterprise">Enterprise — Custom Platform Architecture</option>
-          </select>
+      <figure class="streamflix-shot streamflix-shot-auth">
+        <div class="streamflix-image-wrap">
+          <img src="assets/extra/github/login.png" alt="StreamFlix sign-in and registration screen with user authentication" loading="lazy" decoding="async">
         </div>
+        <figcaption><span>02</span><div><strong>Your account</strong><small>Login, registration, and a personal dashboard</small></div><span class="streamflix-shot-arrow" aria-hidden="true">↗</span></figcaption>
+      </figure>
 
-        <div class="form-group">
-          <span class="form-label">Optional Support Add-ons</span>
-          <div class="addon-grid">
-            <label class="addon-label">
-              <input type="checkbox" class="estimator-addon" data-title="Payment Gateway Integration (bKash / Nagad / Stripe)">
-              <span>Payment Gateways</span>
-            </label>
-            <label class="addon-label">
-              <input type="checkbox" class="estimator-addon" data-title="Meta CAPI Server Tracking">
-              <span>Meta CAPI Tracking</span>
-            </label>
-            <label class="addon-label">
-              <input type="checkbox" class="estimator-addon" data-title="Canva Brand Kit &amp; Pitch Deck">
-              <span>Canva Brand Kit</span>
-            </label>
-            <label class="addon-label">
-              <input type="checkbox" class="estimator-addon" data-title="Dedicated Hourly Retainer Support">
-              <span>Hourly Retainer SLA</span>
-            </label>
-          </div>
+      <figure class="streamflix-shot streamflix-shot-player">
+        <div class="streamflix-image-wrap">
+          <img src="assets/extra/github/player.png" alt="StreamFlix player page with a separate embedded streaming experience" loading="lazy" decoding="async">
         </div>
+        <figcaption><span>03</span><div><strong>Watch experience</strong><small>Embedded player handled by separate streaming logic</small></div><span class="streamflix-shot-arrow" aria-hidden="true">↗</span></figcaption>
+      </figure>
+    </div>
 
-      </div>
-
-      <!-- Output Card -->
-      <div class="estimator-output">
-
-        <div class="output-row">
-          <span class="output-label">Indicative timeline</span>
-          <div id="estimator-timeline" class="output-value">2–3 weeks</div>
-        </div>
-
-        <div class="output-row">
-          <p class="output-note">Timing is indicative. We’ll confirm scope and delivery milestones together before work begins.</p>
-        </div>
-
-        <div>
-          <span class="output-label" style="display:block;margin-bottom:12px;">Included Deliverables</span>
-          <ul id="estimator-deliverables" class="deliverables-list">
-            <!-- Populated via JS -->
-          </ul>
-        </div>
-
-        <div class="pt-2">
-          <button type="button" id="estimator-book-btn" class="btn-cta-primary btn-full">
-            Book a free 20-minute call
-          </button>
-        </div>
-
-      </div>
-
+    <div class="streamflix-bottomline">
+      <p>One cohesive product, from catalog discovery to signed-in viewing.</p>
+      <button type="button" class="streamflix-contact open-booking-modal">Discuss a similar platform <span aria-hidden="true">↗</span></button>
     </div>
 
   </div>
@@ -847,6 +814,7 @@
         <nav class="footer-nav" aria-label="Footer navigation">
           <a href="#services">Services</a>
           <a href="#architecture">Architecture</a>
+          <a href="#projects">Projects</a>
           <a href="#faq">FAQ</a>
         </nav>
       </div>

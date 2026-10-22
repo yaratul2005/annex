@@ -1,26 +1,3 @@
-# robots.txt for https://www.annexbd.tech/
-# Optimized for Google, Bing, and AI Answer Engine Search Crawlers
-
 User-agent: *
 Allow: /
-Disallow: /private/
-Disallow: /temp/
-
-# Dedicated AI Answer Engine Crawlers (AEO)
-User-agent: GPTBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-# Sitemap Location
 Sitemap: https://www.annexbd.tech/sitemap.xml

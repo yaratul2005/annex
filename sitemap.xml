@@ -4,7 +4,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.annexbd.tech/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.annexbd.tech/" />
@@ -20,8 +20,8 @@
     </image:image>
   </url>
   <url>
-    <loc>https://www.annexbd.tech/privacy.html</loc>
-    <lastmod>2026-10-20</lastmod>
+    <loc>https://www.annexbd.tech/privacy</loc>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

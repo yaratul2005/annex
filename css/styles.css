@@ -840,7 +840,10 @@ body.mobile-nav-open .mobile-nav-backdrop {
   line-height: 1.6;
 }
 
-.service-slider { min-width: 0; }
+.service-slider {
+  width: 100%;
+  min-width: 0;
+}
 
 .tech-banner {
   max-width: 560px;
@@ -968,7 +971,20 @@ body.mobile-nav-open .mobile-nav-backdrop {
 }
 
 @media (max-width: 600px) {
-  .service-slider-stage { aspect-ratio: 16 / 10; }
+  .service-slider-stage {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .service-slide-image {
+    inset: 0 auto auto 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

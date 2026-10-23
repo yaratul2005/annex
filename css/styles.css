@@ -1690,6 +1690,31 @@ body.mobile-nav-open .mobile-nav-backdrop {
   box-shadow: 0 0 18px rgba(155, 77, 255, 0.8);
 }
 
+.streamflix-project-kind {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 20px;
+  color: #e6dcff;
+}
+
+.streamflix-next-icon {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  color: #c4b5fd;
+}
+
+.streamflix-project-kind h3 {
+  margin: 0;
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.5vw, 18px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
 .streamflix-title {
   margin: 16px 0 12px;
   font-size: clamp(54px, 8vw, 104px);

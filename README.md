@@ -30,6 +30,8 @@ GitHub Repository: [https://github.com/yaratul2005/annex](https://github.com/yar
 D:\ANNEX\
 │
 ├── index.html               # Main production page with structured data and consent-gated optional services
+├── about.html               # Studio and founder overview
+├── terms.html               # Website and service terms
 ├── privacy.html             # Privacy and cookie notice with a visitor settings link
 ├── 404.html                 # Branded custom 404 error page
 ├── vercel.json              # Retained for the previous Vercel deployment

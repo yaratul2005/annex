@@ -137,7 +137,7 @@ Local address: `http://localhost:3000`
 
 The booking popup submits to `/api/contact` on Vercel and writes directly to MongoDB Atlas; this route does not send email. Visitors provide their name, a preferred contact method (email or phone with a country calling code), and a short message. New records are saved in the `annex.contact_requests` collection with a 30-day TTL expiry. The handler validates and bounds fields, rejects cross-origin JSON requests, ignores a honeypot field, and returns a retryable error if MongoDB is unavailable.
 
-- `annex_MONGODB_URL`: MongoDB Atlas Marketplace integration variable on Vercel. `MONGODB_URI` is also supported as an alternate name.
+- `annex_MONGODB_URI`: MongoDB Atlas Marketplace integration variable shown in Vercel. `annex_MONGODB_URL` and `MONGODB_URI` are also supported as alternate names.
 - `GLOBAL_CONFIG`: Vercel Global Config connection used for the boolean `contact_paused` switch.
 - `SiteK`: public Google reCAPTCHA v3 site key; served to the browser by `/api/recaptcha-config`.
 - `SecretK`: private Google reCAPTCHA v3 secret key; only the Vercel contact function reads it.

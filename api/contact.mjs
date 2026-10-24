@@ -1,5 +1,6 @@
 import { handleContactRequest } from '../lib/contact-handler.mjs';
 import { storeContactRequest } from '../lib/contact-store.mjs';
+import { verifyRecaptcha } from '../lib/recaptcha.mjs';
 import { get } from '@vercel/global-config';
 
 const contactControls = {
@@ -9,6 +10,9 @@ const contactControls = {
   },
   async storeContactRequest(contact, env) {
     return storeContactRequest(contact, env);
+  },
+  async verifyRecaptcha(token, hostname, env) {
+    return verifyRecaptcha(token, hostname, env);
   }
 };
 

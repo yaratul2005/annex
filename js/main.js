@@ -507,6 +507,56 @@ function resetBookingForm(form) {
   updateBookingContactFields(form);
 }
 
+async function getContactRecaptchaToken() {
+  if (!window.__annexRecaptchaConfigPromise) {
+    window.__annexRecaptchaConfigPromise = fetch('/api/recaptcha-config', { headers: { Accept: 'application/json' } })
+      .then(async response => {
+        const config = await response.json().catch(() => ({}));
+        if (!response.ok || config.ok !== true || typeof config.siteKey !== 'string' || !config.siteKey) {
+          throw new Error('reCAPTCHA is not configured.');
+        }
+        return config.siteKey;
+      })
+      .catch(error => {
+        delete window.__annexRecaptchaConfigPromise;
+        throw error;
+      });
+  }
+
+  const siteKey = await window.__annexRecaptchaConfigPromise;
+  if (!window.grecaptcha?.execute) {
+    if (!window.__annexRecaptchaScriptPromise) {
+      window.__annexRecaptchaScriptPromise = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(siteKey)}`;
+        script.async = true;
+        script.defer = true;
+        script.onload = resolve;
+        script.onerror = () => reject(new Error('Could not load reCAPTCHA.'));
+        document.head.appendChild(script);
+      }).catch(error => {
+        delete window.__annexRecaptchaScriptPromise;
+        throw error;
+      });
+    }
+    await window.__annexRecaptchaScriptPromise;
+  }
+
+  if (!window.grecaptcha?.ready || !window.grecaptcha?.execute) throw new Error('reCAPTCHA did not initialize.');
+  await new Promise(resolve => window.grecaptcha.ready(resolve));
+  return window.grecaptcha.execute(siteKey, { action: 'contact_submit' });
+}
+
+function waitForContactRecaptcha(timeoutMs = 15_000) {
+  return new Promise((resolve, reject) => {
+    const timeout = window.setTimeout(() => reject(new Error('reCAPTCHA timed out.')), timeoutMs);
+    getContactRecaptchaToken().then(
+      token => { window.clearTimeout(timeout); resolve(token); },
+      error => { window.clearTimeout(timeout); reject(error); }
+    );
+  });
+}
+
 async function submitBookingRequest(form) {
   if (form.dataset.submitting === 'true') return;
   form.dataset.submitting = 'true';
@@ -541,6 +591,7 @@ async function submitBookingRequest(form) {
   }
 
   try {
+    const recaptchaToken = await waitForContactRecaptcha();
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -549,6 +600,7 @@ async function submitBookingRequest(form) {
         contactMethod,
         ...(contactMethod === 'email' ? { email } : { phone, phoneCountryCode }),
         message,
+        recaptchaToken,
         website: document.getElementById('booking-website')?.value || ''
       })
     });
@@ -556,7 +608,7 @@ async function submitBookingRequest(form) {
     if (!response.ok || result.ok !== true) {
       if (status) {
         status.dataset.state = 'error';
-        status.textContent = result.message || 'We could not save your request. Please try again shortly.';
+        status.textContent = result.message || 'We could not verify and save your request. Please try again shortly.';
         status.focus();
       }
       if (progress) progress.hidden = true;
@@ -577,7 +629,7 @@ async function submitBookingRequest(form) {
   } catch (_) {
     if (status) {
       status.dataset.state = 'error';
-      status.textContent = 'We could not save your request. Please check your connection and try again.';
+      status.textContent = 'The security check is unavailable or timed out. Please try again shortly.';
       status.focus();
     }
     if (progress) progress.hidden = true;

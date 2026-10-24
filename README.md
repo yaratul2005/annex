@@ -18,7 +18,7 @@ GitHub Repository: [https://github.com/yaratul2005/annex](https://github.com/yar
 - **CTA Rule:** Keep the primary CTA label consistent: `"Book a free 20-minute call"`. Use the verified studio email for direct inquiries.
 - **Content Integrity:** No invented clients, testimonials, or campaign results. Portfolio visuals are presented as concept directions. Zero emojis.
 - **Brand Assets:** Transparent high-resolution logo formatted and trimmed for dark headers (`assets/logo-white-trimmed.png`) and standard web use (`assets/logo-trimmed.png`).
-- **Interactive Features:** Responsive mobile navigation, FAQ accordion, scope planner, fluid first-paint animation, privacy consent choices, and a booking form with server-side email delivery.
+- **Interactive Features:** Responsive mobile navigation, FAQ accordion, scope planner, fluid first-paint animation, privacy consent choices, and a MongoDB-backed booking form protected by Google reCAPTCHA v3.
 - **SEO + GEO + AEO Optimization:** Google Rich Snippets Schema JSON-LD, localized geographic meta tags for **Dhaka-1215, Bangladesh**, Answer Engine Optimization (AEO) for Perplexity, ChatGPT, Gemini, and Claude AI search indexing.
 - **Cloudflare Pages Ready:** A static build packages only the site files, while Cloudflare Pages provides the CDN and deployment-aware asset caching.
 
@@ -34,15 +34,17 @@ D:\ANNEX\
 ├── terms.html               # Website and service terms
 ├── privacy.html             # Privacy and cookie notice with a visitor settings link
 ├── 404.html                 # Branded custom 404 error page
-├── vercel.json              # Retained for the previous Vercel deployment
+├── vercel.json              # Vercel redirects and security headers
 ├── _headers                 # Cloudflare Pages security headers
 ├── robots.txt               # Crawler directives optimized for Google, Bing, and AI engines (AEO)
 ├── sitemap.xml              # Structured XML sitemap with image metadata
 ├── package.json             # Cloudflare Pages build and local preview scripts
 ├── scripts/build-pages.mjs  # Prepares the static Cloudflare Pages site in dist/
 ├── api/contact.mjs          # Vercel booking-request endpoint
-├── functions/api/contact.js # Cloudflare Pages booking-request endpoint
-├── lib/contact-handler.mjs  # Shared booking validation and mailer dispatch
+├── api/recaptcha-config.mjs # Public reCAPTCHA site-key endpoint
+├── lib/contact-handler.mjs  # Booking validation, reCAPTCHA, and database dispatch
+├── lib/contact-store.mjs    # MongoDB Atlas collection and expiry index
+├── lib/recaptcha.mjs        # Server-side Google token verification
 ├── .gitignore               # Repository ignore rules
 │
 ├── assets/
@@ -137,6 +139,11 @@ The booking popup submits to `/api/contact` on Vercel and writes directly to Mon
 
 - `annex_MONGODB_URL`: MongoDB Atlas Marketplace integration variable on Vercel. `MONGODB_URI` is also supported as an alternate name.
 - `GLOBAL_CONFIG`: Vercel Global Config connection used for the boolean `contact_paused` switch.
+- `RECAPTCHA_SITE_KEY`: public Google reCAPTCHA v3 site key; served to the browser by `/api/recaptcha-config`.
+- `RECAPTCHA_SECRET_KEY`: private Google reCAPTCHA v3 secret key; only the Vercel contact function reads it.
+- `RECAPTCHA_MIN_SCORE`: optional score threshold from `0` to `1`; defaults to `0.5`.
+
+Register the production hostname(s) in Google's reCAPTCHA settings and use the matching Vercel environment variable names above. The browser requests a token for `contact_submit` only at submit time; Vercel verifies its success, action, score, and exact request hostname with Google's verification endpoint before inserting into MongoDB. Tokens expire after two minutes and are single-use. Keep the reCAPTCHA badge visible; never expose the secret key in browser code or commit it.
 
 ### Vercel Global Config: temporary contact-form pause
 
@@ -148,7 +155,7 @@ Atlas records contain the selected contact fields, short message, source, and cr
 
 ### Other hosting targets
 
-The MongoDB-backed `/api/contact` function is implemented for Vercel. The former Cloudflare Pages email function has been removed; deploy the contact API on Vercel or provide a host-compatible MongoDB backend before enabling submissions on another platform.
+The MongoDB- and reCAPTCHA-backed `/api/contact` function is implemented for Vercel. The former Cloudflare Pages email function has been removed; deploy the contact API on Vercel or provide a host-compatible MongoDB and reCAPTCHA backend before enabling submissions on another platform.
 
 ---
 

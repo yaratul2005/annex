@@ -2858,15 +2858,12 @@ body.nav-open, body.consent-open {
 }
 
 .consent-mark {
-  display: grid;
+  display: block;
   width: 26px;
   height: 26px;
-  place-items: center;
-  background: #10242D;
-  color: #67D6C8;
-  font-family: var(--font-display);
-  font-size: 15px;
-  border-radius: 2px;
+  flex: 0 0 26px;
+  border-radius: 4px;
+  object-fit: cover;
 }
 
 .consent-card h2 {

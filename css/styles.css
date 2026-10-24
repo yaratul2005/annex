@@ -3365,24 +3365,19 @@ body.nav-open, body.consent-open {
   animation: fluid-orbit 2.8s ease-in-out infinite;
 }
 
-.fluid-orb-two {
-  width: 28px;
-  height: 28px;
-  top: 25px;
-  margin-left: -54px;
-  background: radial-gradient(circle at 32% 26%, #EAF0F1, #67D6C8 62%, #087985);
-  animation-delay: -900ms;
-  animation-duration: 2.3s;
+.fluid-orb-one {
+  top: 2px;
+  width: 76px;
+  height: 76px;
+  background: url("../assets/fav/icon.png") center / contain no-repeat;
+  box-shadow: none;
+  filter: drop-shadow(0 0 16px rgba(103, 214, 200, 0.34));
+  mix-blend-mode: screen;
 }
 
+.fluid-orb-two,
 .fluid-orb-three {
-  width: 20px;
-  height: 20px;
-  top: 12px;
-  margin-left: 50px;
-  background: radial-gradient(circle at 30% 24%, #EAF0F1, #67D6C8 65%, #087985);
-  animation-delay: -1500ms;
-  animation-duration: 3.1s;
+  display: none;
 }
 
 .loader-wordmark {

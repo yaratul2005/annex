@@ -19,6 +19,7 @@
   "author": "ANNEX BD <support@annexbd.tech>",
   "license": "UNLICENSED",
   "dependencies": {
+    "@vercel/global-config": "^1.5.1",
     "nodemailer": "^10.2.0"
   }
 }

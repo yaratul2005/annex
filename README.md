@@ -143,6 +143,10 @@ The booking form submits to `/api/contact` on Vercel or `/api/contact` through t
 
 If Zoho Mail has two-factor authentication enabled, `SMTP_PASS` may need to be an app-specific password. The sender address is kept aligned with the authenticated mailbox to avoid Zoho relay rejection. Vercel's Node.js function awaits SMTP delivery before returning its response.
 
+### Vercel Global Config: temporary contact-form pause
+
+The Vercel contact function reads one boolean setting from the connected Global Config store before sending a valid inquiry. Add the item `contact_paused` with value `false` to keep inquiries enabled; change it to `true` to temporarily pause form submissions, then set it back to `false` to resume. The change can take up to 10 seconds to propagate globally. If the setting is absent or a Global Config read fails, the handler allows normal email delivery and logs only a sanitized error type. The connection string stays in Vercel's `GLOBAL_CONFIG` environment variable. Do not put leads, IP addresses, device identifiers, or other personal data in Global Config.
+
 ### Optional Cloudflare Pages deployment / Resend
 
 - `RESEND_API_KEY`: a Resend API key with permission to send email.

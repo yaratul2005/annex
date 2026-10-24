@@ -496,8 +496,10 @@ async function submitBookingRequest(form, modal) {
     });
     const result = await response.json().catch(() => ({}));
     if (!response.ok || result.ok !== true) {
-      const message = response.status === 503
-        ? 'Secure email delivery is not configured yet. You can send this request directly from your email app.'
+      const message = result.code === 'contact_temporarily_paused'
+        ? 'The inquiry form is temporarily paused. Please email support@annexbd.tech to reach us.'
+        : result.code === 'email_delivery_unconfigured'
+          ? 'Secure email delivery is not configured yet. You can send this request directly from your email app.'
         : 'We could not deliver your request right now. Please use the email link below or try again shortly.';
       showBookingFallback(status, fallback, mailto, message);
       return;

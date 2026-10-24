@@ -1,5 +1,6 @@
 import { handleContactRequest } from '../lib/contact-handler.mjs';
 import nodemailer from 'nodemailer';
+import { get } from '@vercel/global-config';
 
 const MAILBOX = 'support@annexbd.tech';
 
@@ -42,8 +43,15 @@ const zohoMailer = {
   }
 };
 
+const contactControls = {
+  async isContactPaused() {
+    if (!process.env.GLOBAL_CONFIG) return false;
+    return (await get('contact_paused')) === true;
+  }
+};
+
 export default {
   async fetch(request) {
-    return handleContactRequest(request, process.env, zohoMailer);
+    return handleContactRequest(request, process.env, zohoMailer, contactControls);
   }
 };

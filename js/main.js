@@ -415,6 +415,7 @@ function initBookingModal() {
   openButtons.forEach(btn => btn.addEventListener('click', () => {
     resetBookingForm(form);
     openModal(modal);
+    warmContactRecaptcha();
     trackAnalyticsEvent('booking_modal_open');
   }));
   if (closeButton) closeButton.addEventListener('click', () => closeModal(modal));
@@ -507,7 +508,7 @@ function resetBookingForm(form) {
   updateBookingContactFields(form);
 }
 
-async function getContactRecaptchaToken() {
+async function loadContactRecaptcha() {
   if (!window.__annexRecaptchaConfigPromise) {
     window.__annexRecaptchaConfigPromise = fetch('/api/recaptcha-config', { headers: { Accept: 'application/json' } })
       .then(async response => {
@@ -544,10 +545,20 @@ async function getContactRecaptchaToken() {
 
   if (!window.grecaptcha?.ready || !window.grecaptcha?.execute) throw new Error('reCAPTCHA did not initialize.');
   await new Promise(resolve => window.grecaptcha.ready(resolve));
+  return siteKey;
+}
+
+function warmContactRecaptcha() {
+  // Fetch the library while the visitor fills the form; tokens are still created only on submit.
+  loadContactRecaptcha().catch(() => {});
+}
+
+async function getContactRecaptchaToken() {
+  const siteKey = await loadContactRecaptcha();
   return window.grecaptcha.execute(siteKey, { action: 'contact_submit' });
 }
 
-function waitForContactRecaptcha(timeoutMs = 15_000) {
+function waitForContactRecaptcha(timeoutMs = 30_000) {
   return new Promise((resolve, reject) => {
     const timeout = window.setTimeout(() => reject(new Error('reCAPTCHA timed out.')), timeoutMs);
     getContactRecaptchaToken().then(
@@ -590,8 +601,10 @@ async function submitBookingRequest(form) {
     form.setAttribute('aria-busy', 'true');
   }
 
+  let submissionStage = 'security';
   try {
     const recaptchaToken = await waitForContactRecaptcha();
+    submissionStage = 'contact';
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -629,7 +642,9 @@ async function submitBookingRequest(form) {
   } catch (_) {
     if (status) {
       status.dataset.state = 'error';
-      status.textContent = 'The security check is unavailable or timed out. Please try again shortly.';
+      status.textContent = submissionStage === 'security'
+        ? 'Google’s security check could not load or finish. Check your connection or content blocker, then try again.'
+        : 'We could not reach the contact service. Please check your connection and try again.';
       status.focus();
     }
     if (progress) progress.hidden = true;

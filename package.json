@@ -20,6 +20,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "@vercel/global-config": "^1.5.1",
+    "mongodb": "^7.7.0",
     "nodemailer": "^10.2.0"
   }
 }

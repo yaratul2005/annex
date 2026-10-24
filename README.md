@@ -147,6 +147,10 @@ If Zoho Mail has two-factor authentication enabled, `SMTP_PASS` may need to be a
 
 The Vercel contact function reads one boolean setting from the connected Global Config store before sending a valid inquiry. Add the item `contact_paused` with value `false` to keep inquiries enabled; change it to `true` to temporarily pause form submissions, then set it back to `false` to resume. The change can take up to 10 seconds to propagate globally. If the setting is absent or a Global Config read fails, the handler allows normal email delivery and logs only a sanitized error type. The connection string stays in Vercel's `GLOBAL_CONFIG` environment variable. Do not put leads, IP addresses, device identifiers, or other personal data in Global Config.
 
+### Temporary contact-request backup in MongoDB Atlas
+
+On Vercel, successfully emailed contact requests are also copied to MongoDB Atlas when the integration's `annex_MONGODB_URL` variable is available (or `MONGODB_URI` is set). Records contain the submitted name, email, notes, source, and creation time. A 30-day TTL index schedules automatic deletion; Atlas TTL cleanup may run after the expiry time rather than at that exact moment. Email delivery still succeeds if Atlas is temporarily unavailable. Keep the MongoDB URI in Vercel environment variables and never commit it.
+
 ### Optional Cloudflare Pages deployment / Resend
 
 - `RESEND_API_KEY`: a Resend API key with permission to send email.

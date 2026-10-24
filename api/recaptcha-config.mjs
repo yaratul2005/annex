@@ -12,7 +12,7 @@ function jsonResponse(status, payload) {
 export default {
   async fetch(request) {
     if (request.method !== 'GET') return jsonResponse(405, { ok: false, message: 'Method not allowed.' });
-    const siteKey = process.env.RECAPTCHA_SITE_KEY;
+    const siteKey = process.env.SiteK;
     if (!siteKey) return jsonResponse(503, { ok: false, code: 'recaptcha_unavailable' });
     return jsonResponse(200, { ok: true, siteKey });
   }

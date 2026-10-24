@@ -139,11 +139,11 @@ The booking popup submits to `/api/contact` on Vercel and writes directly to Mon
 
 - `annex_MONGODB_URL`: MongoDB Atlas Marketplace integration variable on Vercel. `MONGODB_URI` is also supported as an alternate name.
 - `GLOBAL_CONFIG`: Vercel Global Config connection used for the boolean `contact_paused` switch.
-- `RECAPTCHA_SITE_KEY`: public Google reCAPTCHA v3 site key; served to the browser by `/api/recaptcha-config`.
-- `RECAPTCHA_SECRET_KEY`: private Google reCAPTCHA v3 secret key; only the Vercel contact function reads it.
+- `SiteK`: public Google reCAPTCHA v3 site key; served to the browser by `/api/recaptcha-config`.
+- `SecretK`: private Google reCAPTCHA v3 secret key; only the Vercel contact function reads it.
 - `RECAPTCHA_MIN_SCORE`: optional score threshold from `0` to `1`; defaults to `0.5`.
 
-Register the production hostname(s) in Google's reCAPTCHA settings and use the matching Vercel environment variable names above. The browser requests a token for `contact_submit` only at submit time; Vercel verifies its success, action, score, and exact request hostname with Google's verification endpoint before inserting into MongoDB. Tokens expire after two minutes and are single-use. Keep the reCAPTCHA badge visible; never expose the secret key in browser code or commit it.
+Register the production hostname(s) in Google's reCAPTCHA settings and set `SiteK` and `SecretK` in the Vercel Production environment. The browser requests a token for `contact_submit` only at submit time; Vercel verifies its success, action, score, and exact request hostname with Google's verification endpoint before inserting into MongoDB. Tokens expire after two minutes and are single-use. Keep the reCAPTCHA badge visible; never expose the secret key in browser code or commit it.
 
 ### Vercel Global Config: temporary contact-form pause
 

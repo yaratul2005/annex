@@ -885,8 +885,8 @@
 
     <div class="modal-header">
       <div>
-        <h3 id="modal-title" class="font-serif-display">Book a free 20-minute call</h3>
-        <p id="modal-description">Share a few details and we’ll get back to you about your project.</p>
+        <h3 id="modal-title" class="font-serif-display">Tell us what you’re building.</h3>
+        <p id="modal-description">Leave a few details. We’ll reach out through the contact method you choose.</p>
       </div>
       <button type="button" id="booking-modal-close" class="modal-close" aria-label="Close booking modal">
         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -897,31 +897,71 @@
 
     <form id="booking-form" class="modal-form">
       <div class="modal-field">
-        <label class="modal-label" for="booking-name">Your Name</label>
-        <input type="text" id="booking-name" name="name" autocomplete="name" class="modal-input" required minlength="2" maxlength="100" placeholder="e.g. Ratul or Enterprise Co…">
+        <label class="modal-label modal-label-strong" for="booking-name">Your name</label>
+        <input type="text" id="booking-name" name="name" autocomplete="name" class="modal-input" required minlength="2" maxlength="100" placeholder="Your name">
+      </div>
+      <fieldset class="modal-field modal-contact-choice">
+        <legend class="modal-label modal-label-strong">How should we reach you?</legend>
+        <div class="modal-method-options" role="radiogroup" aria-label="Choose email or phone">
+          <label class="modal-method-option"><input type="radio" name="contactMethod" value="email" checked><span>Email</span></label>
+          <label class="modal-method-option"><input type="radio" name="contactMethod" value="phone"><span>Phone</span></label>
+        </div>
+      </fieldset>
+      <div class="modal-field" id="booking-email-field">
+        <label class="modal-label modal-label-strong" for="booking-email">Your email</label>
+        <input type="email" id="booking-email" name="email" autocomplete="email" inputmode="email" class="modal-input" required maxlength="254" placeholder="name@company.com">
+      </div>
+      <div class="modal-field" id="booking-phone-field" hidden>
+        <label class="modal-label modal-label-strong" for="booking-phone">Your phone number</label>
+        <div class="modal-phone-row">
+          <select id="booking-phone-country" name="phoneCountryCode" class="modal-input modal-country-code" aria-label="Country calling code">
+            <option value="+880" selected>BD +880</option>
+            <option value="+1">US/CA +1</option>
+            <option value="+44">UK +44</option>
+            <option value="+61">AU +61</option>
+            <option value="+64">NZ +64</option>
+            <option value="+91">IN +91</option>
+            <option value="+92">PK +92</option>
+            <option value="+971">AE +971</option>
+            <option value="+966">SA +966</option>
+            <option value="+49">DE +49</option>
+            <option value="+33">FR +33</option>
+            <option value="+81">JP +81</option>
+            <option value="+65">SG +65</option>
+            <option value="+27">ZA +27</option>
+          </select>
+          <input type="tel" id="booking-phone" name="phone" autocomplete="tel-national" inputmode="tel" class="modal-input" maxlength="24" placeholder="Phone number">
+        </div>
       </div>
       <div class="modal-field">
-        <label class="modal-label" for="booking-email">Email Address</label>
-        <input type="email" id="booking-email" name="email" autocomplete="email" inputmode="email" class="modal-input" required maxlength="254" placeholder="name@company.com…">
-      </div>
-      <div class="modal-field">
-        <label class="modal-label" for="booking-notes">Project Notes / Preferred Time</label>
-        <textarea id="booking-notes" name="notes" class="modal-textarea" rows="4" maxlength="5000" placeholder="Briefly describe what you’d like to build or achieve…"></textarea>
+        <label class="modal-label modal-label-strong" for="booking-message">A short message</label>
+        <textarea id="booking-message" name="message" class="modal-textarea" rows="3" required minlength="5" maxlength="600" placeholder="What can we help you with?"></textarea>
+        <span class="modal-field-hint">A sentence or two is perfect.</span>
       </div>
       <div class="contact-honeypot" aria-hidden="true">
         <label for="booking-website">Leave this field blank</label>
         <input type="text" id="booking-website" name="website" tabindex="-1" autocomplete="off">
       </div>
+      <div id="booking-progress" class="booking-progress" role="progressbar" aria-label="Saving your request" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden>
+        <span></span>
+      </div>
       <div class="pt-2">
         <button type="submit" class="btn-cta-primary btn-full">
-          <span class="submit-spinner" aria-hidden="true" hidden></span>
-          <span class="submit-button-label">Book a free 20-minute call</span>
+          <span class="submit-button-label">Send inquiry</span>
         </button>
       </div>
-      <p class="form-privacy-note">Your details are used to respond to this inquiry. <a href="privacy">Privacy notice</a></p>
+      <p class="form-privacy-note">Your details are stored securely for up to 30 days. <a href="privacy">Privacy notice</a></p>
       <p id="booking-form-status" class="form-status" role="status" aria-live="polite" tabindex="-1" hidden></p>
-      <a id="booking-mailto-fallback" class="booking-mailto-fallback" href="#" hidden>Open your email app to send this request</a>
     </form>
+
+    <div id="booking-success" class="booking-success" role="status" aria-live="polite" tabindex="-1" hidden>
+      <div class="booking-success-icon" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none"><circle class="success-ring" cx="32" cy="32" r="28"/><path class="success-check" d="m19 33 9 9 18-20"/></svg>
+      </div>
+      <p class="booking-success-kicker">Message received</p>
+      <h4>Thank you.</h4>
+      <p>Your request is safely in. We’ll be in touch through your chosen contact method.</p>
+    </div>
 
   </div>
 </div>

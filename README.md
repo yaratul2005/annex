@@ -131,32 +131,24 @@ Local address: `http://localhost:3000`
 - `www.annexbd.tech` is the canonical host. Cloudflare's zone redirect rule sends the apex domain to `www`; configure both names as custom domains on the Pages project.
 - The provided `G-...` value is a GA4 measurement ID, not a Google Tag Manager container ID. A GTM container requires a separate `GTM-...` ID. If GTM is added later, avoid loading the same GA4 property through both GTM and the direct `gtag.js` snippet, which can duplicate page views.
 
-## Booking Email Delivery
+## Booking Form Storage
 
-The booking form submits to `/api/contact` on Vercel or `/api/contact` through the Cloudflare Pages Function. Vercel sends through Zoho Mail SMTP; the optional Cloudflare Pages deployment retains Resend over HTTPS. Both deliver inquiries to `support@annexbd.tech` and use the submitted visitor email as `Reply-To`.
+The booking popup submits to `/api/contact` on Vercel and writes directly to MongoDB Atlas; this route does not send email. Visitors provide their name, a preferred contact method (email or phone with a country calling code), and a short message. New records are saved in the `annex.contact_requests` collection with a 30-day TTL expiry. The handler validates and bounds fields, rejects cross-origin JSON requests, ignores a honeypot field, and returns a retryable error if MongoDB is unavailable.
 
-### Vercel / Zoho Mail
-
-- `SMTP_PASS`: Zoho mailbox password or app-specific password, stored as a Vercel encrypted environment variable.
-- `SMTP_HOST`: optional; defaults to `smtppro.zoho.com` for a domain-based Zoho Mail organization account. Confirm the exact host in Zoho Mail's Server Configuration Details for the account's data center.
-- `SMTP_PORT`: optional; defaults to `465` with SSL. Port `587` is supported for TLS; when using it, set `SMTP_HOST` to the host Zoho lists for the account.
-
-If Zoho Mail has two-factor authentication enabled, `SMTP_PASS` may need to be an app-specific password. The sender address is kept aligned with the authenticated mailbox to avoid Zoho relay rejection. Vercel's Node.js function awaits SMTP delivery before returning its response.
+- `annex_MONGODB_URL`: MongoDB Atlas Marketplace integration variable on Vercel. `MONGODB_URI` is also supported as an alternate name.
+- `GLOBAL_CONFIG`: Vercel Global Config connection used for the boolean `contact_paused` switch.
 
 ### Vercel Global Config: temporary contact-form pause
 
-The Vercel contact function reads one boolean setting from the connected Global Config store before sending a valid inquiry. Add the item `contact_paused` with value `false` to keep inquiries enabled; change it to `true` to temporarily pause form submissions, then set it back to `false` to resume. The change can take up to 10 seconds to propagate globally. If the setting is absent or a Global Config read fails, the handler allows normal email delivery and logs only a sanitized error type. The connection string stays in Vercel's `GLOBAL_CONFIG` environment variable. Do not put leads, IP addresses, device identifiers, or other personal data in Global Config.
+The Vercel contact function reads one boolean setting from the connected Global Config store before saving an inquiry. Add the item `contact_paused` with value `false` to keep inquiries enabled; change it to `true` to temporarily pause form submissions, then set it back to `false` to resume. The change can take up to 10 seconds to propagate globally. If the setting is absent or a Global Config read fails, the handler continues normal database storage and logs only a sanitized error type. The connection string stays in Vercel's `GLOBAL_CONFIG` environment variable. Do not put leads, IP addresses, device identifiers, or other personal data in Global Config.
 
-### Temporary contact-request backup in MongoDB Atlas
+### MongoDB Atlas contact collection
 
-On Vercel, successfully emailed contact requests are also copied to MongoDB Atlas when the integration's `annex_MONGODB_URL` variable is available (or `MONGODB_URI` is set). Records contain the submitted name, email, notes, source, and creation time. A 30-day TTL index schedules automatic deletion; Atlas TTL cleanup may run after the expiry time rather than at that exact moment. Email delivery still succeeds if Atlas is temporarily unavailable. Keep the MongoDB URI in Vercel environment variables and never commit it.
+Atlas records contain the selected contact fields, short message, source, and creation time. A 30-day TTL index schedules automatic deletion; Atlas TTL cleanup may run after the expiry time rather than at that exact moment. Keep the MongoDB URI in Vercel environment variables and never commit it.
 
-### Optional Cloudflare Pages deployment / Resend
+### Other hosting targets
 
-- `RESEND_API_KEY`: a Resend API key with permission to send email.
-- `RESEND_FROM_EMAIL`: a sender address/domain verified in the Resend account, for example `ANNEX website <inquiries@your-verified-domain>`.
-
-Never put these values in browser JavaScript or commit them to this repository. If delivery credentials are missing, the endpoint returns a setup status and the form displays a prefilled email-app fallback. The form validates fields, limits input length, rejects cross-origin JSON requests, and uses a honeypot; production anti-abuse limits should also be configured at the host/provider layer.
+The MongoDB-backed `/api/contact` function is implemented for Vercel. The former Cloudflare Pages email function has been removed; deploy the contact API on Vercel or provide a host-compatible MongoDB backend before enabling submissions on another platform.
 
 ---
 

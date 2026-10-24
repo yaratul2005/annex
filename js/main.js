@@ -413,10 +413,15 @@ function initBookingModal() {
   if (!modal) return;
 
   openButtons.forEach(btn => btn.addEventListener('click', () => {
+    resetBookingForm(form);
     openModal(modal);
     trackAnalyticsEvent('booking_modal_open');
   }));
   if (closeButton) closeButton.addEventListener('click', () => closeModal(modal));
+
+  const contactMethodInputs = form?.querySelectorAll('input[name="contactMethod"]') || [];
+  contactMethodInputs.forEach(input => input.addEventListener('change', () => updateBookingContactFields(form)));
+  updateBookingContactFields(form);
 
   // Click-outside to close
   modal.addEventListener('click', e => {
@@ -453,38 +458,85 @@ function initBookingModal() {
     form.addEventListener('submit', e => {
       e.preventDefault();
       if (!form.reportValidity()) return;
-      submitBookingRequest(form, modal);
+      submitBookingRequest(form);
     });
   }
 }
 
-async function submitBookingRequest(form, modal) {
+function updateBookingContactFields(form) {
+  if (!form) return;
+  const method = form.querySelector('input[name="contactMethod"]:checked')?.value || 'email';
+  const usePhone = method === 'phone';
+  const emailField = document.getElementById('booking-email-field');
+  const emailInput = document.getElementById('booking-email');
+  const phoneField = document.getElementById('booking-phone-field');
+  const phoneInput = document.getElementById('booking-phone');
+  const countryCode = document.getElementById('booking-phone-country');
+
+  if (emailField) emailField.hidden = usePhone;
+  if (emailInput) {
+    emailInput.required = !usePhone;
+    emailInput.disabled = usePhone;
+  }
+  if (phoneField) phoneField.hidden = !usePhone;
+  if (phoneInput) {
+    phoneInput.required = usePhone;
+    phoneInput.disabled = !usePhone;
+  }
+  if (countryCode) countryCode.disabled = !usePhone;
+}
+
+function resetBookingForm(form) {
+  if (!form) return;
+  form.reset();
+  form.hidden = false;
+  const success = document.getElementById('booking-success');
+  const status = document.getElementById('booking-form-status');
+  const progress = document.getElementById('booking-progress');
+  if (success) success.hidden = true;
+  if (status) {
+    status.hidden = true;
+    status.textContent = '';
+    delete status.dataset.state;
+  }
+  if (progress) {
+    progress.hidden = true;
+    progress.classList.remove('is-complete');
+    progress.setAttribute('aria-valuenow', '0');
+  }
+  updateBookingContactFields(form);
+}
+
+async function submitBookingRequest(form) {
   if (form.dataset.submitting === 'true') return;
   form.dataset.submitting = 'true';
 
   const name = document.getElementById('booking-name')?.value.trim() || '';
-  const email = document.getElementById('booking-email')?.value.trim() || '';
-  const notes = document.getElementById('booking-notes')?.value.trim() || '';
+  const contactMethod = form.querySelector('input[name="contactMethod"]:checked')?.value || 'email';
+  const email = contactMethod === 'email' ? document.getElementById('booking-email')?.value.trim() || '' : '';
+  const phone = contactMethod === 'phone' ? document.getElementById('booking-phone')?.value.trim() || '' : '';
+  const phoneCountryCode = document.getElementById('booking-phone-country')?.value || '';
+  const message = document.getElementById('booking-message')?.value.trim() || '';
   const status = document.getElementById('booking-form-status');
-  const fallback = document.getElementById('booking-mailto-fallback');
+  const progress = document.getElementById('booking-progress');
+  const success = document.getElementById('booking-success');
   const submitButton = form.querySelector('button[type="submit"]');
   const submitLabel = submitButton?.querySelector('.submit-button-label');
-  const submitSpinner = submitButton?.querySelector('.submit-spinner');
-  const subject = `Consultation Request: 20-Minute Call — ${name}`;
-  const body = `Name: ${name}\nEmail: ${email}\n\nProject Notes:\n${notes}\n\nSubmitted via annexbd.tech`;
-  const mailto = `mailto:support@annexbd.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
   if (status) {
     status.hidden = false;
     status.dataset.state = 'pending';
-    status.textContent = 'Sending your request securely…';
+    status.textContent = 'Saving your request securely…';
   }
-  if (fallback) fallback.hidden = true;
+  if (progress) {
+    progress.hidden = false;
+    progress.classList.remove('is-complete');
+    progress.setAttribute('aria-valuenow', '20');
+  }
   if (submitButton) {
     submitButton.disabled = true;
     submitButton.setAttribute('aria-busy', 'true');
-    if (submitLabel) submitLabel.textContent = 'Sending request…';
-    if (submitSpinner) submitSpinner.hidden = false;
+    if (submitLabel) submitLabel.textContent = 'Saving request…';
     form.setAttribute('aria-busy', 'true');
   }
 
@@ -492,49 +544,51 @@ async function submitBookingRequest(form, modal) {
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, email, notes, website: document.getElementById('booking-website')?.value || '' })
+      body: JSON.stringify({
+        name,
+        contactMethod,
+        ...(contactMethod === 'email' ? { email } : { phone, phoneCountryCode }),
+        message,
+        website: document.getElementById('booking-website')?.value || ''
+      })
     });
     const result = await response.json().catch(() => ({}));
     if (!response.ok || result.ok !== true) {
-      const message = result.code === 'contact_temporarily_paused'
-        ? 'The inquiry form is temporarily paused. Please email support@annexbd.tech to reach us.'
-        : result.code === 'email_delivery_unconfigured'
-          ? 'Secure email delivery is not configured yet. You can send this request directly from your email app.'
-        : 'We could not deliver your request right now. Please use the email link below or try again shortly.';
-      showBookingFallback(status, fallback, mailto, message);
+      if (status) {
+        status.dataset.state = 'error';
+        status.textContent = result.message || 'We could not save your request. Please try again shortly.';
+        status.focus();
+      }
+      if (progress) progress.hidden = true;
       return;
     }
 
-    if (status) {
-      status.dataset.state = 'success';
-      status.textContent = 'Thanks — your project request has been sent. ANNEX will follow up by email.';
-      status.focus();
+    if (progress) {
+      progress.classList.add('is-complete');
+      progress.setAttribute('aria-valuenow', '100');
+    }
+    await new Promise(resolve => window.setTimeout(resolve, 420));
+    form.hidden = true;
+    if (success) {
+      success.hidden = false;
+      success.focus();
     }
     trackAnalyticsEvent('booking_request_sent');
   } catch (_) {
-    showBookingFallback(status, fallback, mailto, 'We could not reach the request service. Please use the email link below to send your request.');
+    if (status) {
+      status.dataset.state = 'error';
+      status.textContent = 'We could not save your request. Please check your connection and try again.';
+      status.focus();
+    }
+    if (progress) progress.hidden = true;
   } finally {
     if (submitButton) {
       submitButton.disabled = false;
       submitButton.removeAttribute('aria-busy');
-      if (submitLabel) submitLabel.textContent = 'Book a free 20-minute call';
-      if (submitSpinner) submitSpinner.hidden = true;
+      if (submitLabel) submitLabel.textContent = 'Send inquiry';
       form.removeAttribute('aria-busy');
     }
     delete form.dataset.submitting;
-  }
-}
-
-function showBookingFallback(status, fallback, mailto, message) {
-  if (status) {
-    status.hidden = false;
-    status.dataset.state = 'error';
-    status.textContent = message;
-    status.focus();
-  }
-  if (fallback) {
-    fallback.href = mailto;
-    fallback.hidden = false;
   }
 }
 

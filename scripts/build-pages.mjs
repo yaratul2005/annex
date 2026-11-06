@@ -15,6 +15,7 @@ await mkdir(outputDirectory, { recursive: true });
 for (const entry of [
   'index.html',
   'about.html',
+  'invest.html',
   'terms.html',
   'privacy.html',
   '404.html',

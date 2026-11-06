@@ -119,9 +119,7 @@ function initPrivacyChoices() {
   if (gpcActive) {
     description.textContent = 'A Global Privacy Control signal is active. Optional analytics and external review content stay off. Essential storage only remembers your choice.';
   }
-  const backgroundRegions = [document.querySelector('.site-header'), document.querySelector('main'), document.querySelector('.site-footer')].filter(Boolean);
   let choices = { necessary: true, analytics: false, external: false };
-  let previouslyInert = [];
   let returnFocus = null;
 
   function readChoices() {
@@ -205,6 +203,8 @@ function initPrivacyChoices() {
   function setPanel(showPreferences) {
     intro.hidden = showPreferences;
     preferencesPanel.hidden = !showPreferences;
+    dialog.classList.toggle('is-preferences', showPreferences);
+    dialog.setAttribute('aria-modal', showPreferences ? 'true' : 'false');
     dialog.setAttribute('aria-labelledby', showPreferences ? 'consent-preferences-title' : 'consent-title');
     dialog.setAttribute('aria-describedby', showPreferences ? 'consent-preferences-copy' : 'consent-description');
     if (showPreferences) {
@@ -221,19 +221,18 @@ function initPrivacyChoices() {
   function openDialog(showPreferences = false) {
     returnFocus = document.activeElement;
     setPanel(showPreferences);
-    previouslyInert = backgroundRegions.map(region => region.inert);
-    backgroundRegions.forEach(region => { region.inert = true; });
     dialog.hidden = false;
     dialog.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('consent-open');
-    (showPreferences ? document.getElementById('consent-save') : document.getElementById('consent-reject')).focus();
+    dialog.setAttribute('aria-modal', showPreferences ? 'true' : 'false');
+    dialog.classList.toggle('is-preferences', showPreferences);
+    if (showPreferences) document.getElementById('consent-save')?.focus();
   }
 
   function closeDialog() {
     dialog.hidden = true;
     dialog.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('consent-open');
-    backgroundRegions.forEach((region, index) => { region.inert = previouslyInert[index] || false; });
+    dialog.setAttribute('aria-modal', 'false');
+    dialog.classList.remove('is-preferences');
     if (returnFocus instanceof HTMLElement && returnFocus.isConnected) returnFocus.focus();
   }
 
@@ -256,7 +255,7 @@ function initPrivacyChoices() {
   settingsButton?.addEventListener('click', () => openDialog(true));
 
   dialog.addEventListener('keydown', event => {
-    if (event.key !== 'Tab') return;
+    if (event.key !== 'Tab' || !dialog.classList.contains('is-preferences')) return;
     const focusable = [...dialog.querySelectorAll('button:not([disabled]), input:not([disabled]), a[href]')].filter(element => !element.hidden && element.getClientRects().length);
     const first = focusable[0];
     const last = focusable[focusable.length - 1];

@@ -15,7 +15,7 @@ GitHub Repository: [https://github.com/yaratul2005/annex](https://github.com/yar
   - **Headings:** Direct, geometric `Space Grotesk` typography gives the studio a clear engineering voice.
   - **Body Text:** Clean, legible sans-serif (`Inter`).
   - **Technical Details:** Monospace reserved for small labels and technical specs.
-- **CTA Rule:** Keep the primary CTA label consistent: `"Book a free 20-minute call"`. Use the verified studio email for direct inquiries.
+- **CTA Rule:** Keep the primary CTA label consistent: `"Request a call"`. Pair it with WhatsApp (`+880 1722-081109`) and the studio email for direct inquiries.
 - **Content Integrity:** No invented clients, testimonials, or campaign results. Portfolio visuals are presented as concept directions. Zero emojis.
 - **Brand Assets:** Transparent high-resolution logo formatted and trimmed for dark headers (`assets/logo-white-trimmed.png`) and standard web use (`assets/logo-trimmed.png`).
 - **Interactive Features:** Responsive mobile navigation, FAQ accordion, scope planner, fluid first-paint animation, privacy consent choices, and a MongoDB-backed booking form protected by Google reCAPTCHA v3.
